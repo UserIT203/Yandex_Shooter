@@ -1,0 +1,119 @@
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+
+public class Spawner : MonoBehaviour
+{
+    [Header("Main Settings")]
+    [SerializeField] private List<Enemy> _enemiesPrefab;
+    [SerializeField] private float _spawnInterval;
+    [SerializeField] private Player _player;
+    [SerializeField] private bool _canSpawn;
+
+    [Header("Spawning Zone")]
+    [SerializeField] private Vector2 _spawnAreaSize;
+
+    [Header("Pool Settings")]
+    [SerializeField] private Bullet _enemyBullet;
+    [SerializeField] private int _bulletCount;
+    [SerializeField] private Transform _bulletPoolContainer;
+
+    private int _enemyCount;
+    private List<EnemyInSpawner> _enemies;
+    private int _currentEnemyCount;
+    private Coroutine _spawnCoroutine;
+    private IEnemyObserver _waveManager;
+    private CustomPool<Bullet> _enemyBulletPool;
+
+    public void StartSpawning(List<EnemyInSpawner> enemies, int enemiesCount,
+        IEnemyObserver waveManager)
+    {
+        _canSpawn = true;
+        _currentEnemyCount = 0;
+
+        _waveManager = waveManager;
+        _enemies = enemies;
+        _enemyCount = enemiesCount;
+
+        _enemyBulletPool = new CustomPool<Bullet>(
+            _enemyBullet,
+            _bulletCount,
+            _bulletPoolContainer);
+
+        StartSpawningEnemy();   
+    }
+
+    private void StartSpawningEnemy()
+    {
+        if (_spawnCoroutine != null)
+            StopCoroutine(_spawnCoroutine);
+
+        StartCoroutine(SpawnEnemies());
+    }
+
+    private IEnumerator SpawnEnemies()
+    {
+        WaitForSeconds waitingTime = new WaitForSeconds(_spawnInterval);
+
+        while(_canSpawn == true)
+        {
+            if (_currentEnemyCount < _enemyCount)
+                CreateEnemy();
+            else
+                _canSpawn = false;
+
+            yield return waitingTime;
+        }
+    }
+
+    private void CreateEnemy()
+    {
+        int enemyTypeIndex = Random.Range(0, _enemies.Count);
+        EnemyInSpawner enemyType = _enemies[enemyTypeIndex];
+
+        Vector3 spawnPosition = GetSpawnPosition();
+
+        Enemy newEnemy = Instantiate(_enemiesPrefab[(int)enemyType.EnemyType],
+            spawnPosition, Quaternion.identity);
+
+        if(enemyType.EnemyType == EnemyType.Walk)
+            newEnemy.Initialized(_player, _waveManager);
+        else if(enemyType.EnemyType == EnemyType.Range)
+            newEnemy.Initialized(_player, _waveManager, _enemyBulletPool);
+
+        _currentEnemyCount++;
+    }
+
+    private Vector3 GetSpawnPosition()
+    {
+        float x = transform.position.x + Random.Range(-_spawnAreaSize.x / 2, 
+            _spawnAreaSize.x / 2);
+        float z = transform.position.z + Random.Range(-_spawnAreaSize.y / 2, 
+            _spawnAreaSize.y / 2);
+
+        return new Vector3(x, transform.position.y, z);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position, new Vector3(_spawnAreaSize.x, 
+            0.1f, _spawnAreaSize.y));
+    }
+}
+
+public enum EnemyType
+{
+    Walk = 0,
+    Range = 1,
+}
+
+[System.Serializable]
+public class EnemyInSpawner
+{
+    public EnemyType EnemyType;
+    public int EnemyCount;
+
+    public void SpawnEnemy() => EnemyCount -= 1;
+}
