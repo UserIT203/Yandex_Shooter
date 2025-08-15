@@ -13,6 +13,7 @@ public class SceneInstaller : MonoInstaller
     [SerializeField] private CanvasGroup _mobileInput;
     [SerializeField] private Joystick _joystick;
     [SerializeField] private Button _reloadButton;
+    [SerializeField] private Button _dashButton;
     [Header("Desktop Settings")]
     [SerializeField] private LayerMask _desktopShootingLayerMask;
     [Header("Player Links")]
@@ -22,6 +23,12 @@ public class SceneInstaller : MonoInstaller
     public override void InstallBindings()
     {
         BindPlayerSettings();
+        //GlobalBinding();
+    }
+
+    private void GlobalBinding()
+    {
+        Container.BindInterfacesAndSelfTo<MobileInput>().AsSingle().NonLazy();
     }
 
     private void BindPlayerSettings()
@@ -53,13 +60,17 @@ public class SceneInstaller : MonoInstaller
     private void BindMobileInput()
     {
         _mobileInput.Activate();
-        Container.Bind<IInput>().To<MobileInput>().AsSingle();
+
         Container.Bind<Joystick>().FromInstance(_joystick);
-        Container.Bind<Button>().FromInstance(_reloadButton).AsSingle();
+
+        Container.Bind<IInput>().To<MobileInput>().AsSingle()
+            .WithArguments(_dashButton);
 
         Container.Bind<LayerMask>().FromInstance(_mobileShootingLayerMask).AsSingle();
-        Container.Bind<IShootingSystem>().To<MobileShootingSystem>().AsSingle();
         Container.Bind<PlayerCombat>().FromInstance(_player.GetComponent<PlayerCombat>()).AsSingle();
+
+        Container.Bind<IShootingSystem>().To<MobileShootingSystem>().AsSingle()
+            .WithArguments(_reloadButton);
     }
 }
 

@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _input = input;
         _input.onMove += Moving;
+        _input.onDash += OnDash;
 
         _player = player;
     }
@@ -56,5 +57,13 @@ public class PlayerMovement : MonoBehaviour
             _currentVelocity.z = Mathf.Lerp(_currentVelocity.z, 0, 
                 _deceleration * Time.deltaTime);
         }
+    }
+
+    private void OnDash(Vector3 direction)
+    {
+        Debug.Log("Player Dash");
+
+        _player.GetComponent<PlayerCapabilities>()
+            .GetCapabilite(CapabilitiesType.Dash).Activate(direction);
     }
 }

@@ -6,7 +6,22 @@ using UnityEngine;
 public class Stat 
 {
     [SerializeField] private float _baseValue;
-    [SerializeField] private List<float> _modificators;
+    [SerializeField] private List<float> _modificators = new List<float>();
+
+    public List<float> Modificator => _modificators;
+
+    public Stat(float baseValue, List<float> modificator)
+    {
+        _baseValue = baseValue;
+
+        if (modificator == null | modificator.Count == 0)
+            return;
+
+        foreach (float value in modificator)
+        {
+            AddModifier(value);
+        }
+    }
 
     public float GetValue()
     {

@@ -12,16 +12,19 @@ public abstract class CapabilitieBase: ICapabilitie
 
     public List<CapabilitieConfig> Upgrades { get; protected set; }
 
+    public CapabilitieConfig DefaultConfig { get; protected set; }
+
     public CapabilitieBase(List<CapabilitieConfig> upgrades,
         CapabilitieConfig defaultConfig, Player player)
     {
         IsUnlock = false;
         Level = 0;
         Upgrades = upgrades;
+        DefaultConfig = defaultConfig;
         Player = player;
     }
 
-    public abstract void Activate();
+    public abstract void Activate(Vector3 direction);
 
     public virtual void Unlock()
     {

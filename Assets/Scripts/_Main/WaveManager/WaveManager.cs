@@ -50,7 +50,7 @@ public class WaveManager : MonoBehaviour, IEnemyObserver
     { 
         _currentEnemiesInWave = _waves[_currentWave].EnemyCount;
         _spawner.StartSpawning(_waves[_currentWave].Enemies, _currentEnemiesInWave,
-            this);
+            this, _currentWave);
     }
 }
 

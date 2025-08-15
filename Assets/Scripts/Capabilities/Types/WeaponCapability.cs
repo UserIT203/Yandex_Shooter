@@ -12,7 +12,7 @@ public class WeaponCapability : CapabilitieBase
         Unlock();
     }
 
-    public override void Activate()
+    public override void Activate(Vector3 direction)
     {
         throw new System.NotImplementedException();
     }

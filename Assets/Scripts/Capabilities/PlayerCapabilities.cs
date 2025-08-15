@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
+using Zenject;
 
 [RequireComponent(typeof(PlayerCombat))]
 public class PlayerCapabilities : MonoBehaviour
@@ -22,14 +23,19 @@ public class PlayerCapabilities : MonoBehaviour
         _maxSwordsCount = _swords.Count;
 
         _capabilities.Add(_capabilitiUpgrades[0].CapabilitieType,
-                new WeaponCapability(_capabilitiUpgrades[0].CapabilitieConfigs, 
-                _capabilitiUpgrades[0].DefaultConfig,
-                GetComponent<Player>()));
+               new WeaponCapability(_capabilitiUpgrades[0].CapabilitieConfigs,
+               _capabilitiUpgrades[0].DefaultConfig,
+               GetComponent<Player>()));
 
         _capabilities.Add(_capabilitiUpgrades[1].CapabilitieType,
             new SwordCapabilitie(_capabilitiUpgrades[1].CapabilitieConfigs,
                 _capabilitiUpgrades[1].DefaultConfig,
                 GetComponent<Player>()));
+
+        _capabilities.Add(_capabilitiUpgrades[2].CapabilitieType,
+           new DashCapabilitie(_capabilitiUpgrades[2].CapabilitieConfigs,
+               _capabilitiUpgrades[2].DefaultConfig,
+               GetComponent<Player>()));
     }
 
     public ICapabilitie GetCapabilite(CapabilitiesType type)
@@ -75,5 +81,6 @@ public class CapabiliteUpgradeLevel
 public enum CapabilitiesType
 {
     Weapon,
-    SwordAround
+    SwordAround,
+    Dash
 }

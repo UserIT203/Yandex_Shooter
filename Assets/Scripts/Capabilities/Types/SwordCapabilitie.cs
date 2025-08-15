@@ -17,7 +17,7 @@ public class SwordCapabilitie : CapabilitieBase
         _playerCapabilite.UnlockSwords();
     }
 
-    public override void Activate()
+    public override void Activate(Vector3 direction)
     {
         throw new System.NotImplementedException();
     }

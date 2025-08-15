@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour, IXPItemHandler
 {
@@ -25,7 +26,6 @@ public class GameManager : MonoBehaviour, IXPItemHandler
     public void HandleAction(float value)
     {
         _currentXP += value;
-        Debug.Log("Текущий опыт " +  _currentXP +"| максимальный " + _maxXP);
 
         if (_currentXP >= _maxXP) 
         { 

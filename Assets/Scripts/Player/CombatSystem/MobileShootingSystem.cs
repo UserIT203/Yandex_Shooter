@@ -5,7 +5,7 @@ using Zenject;
 
 public class MobileShootingSystem : IShootingSystem
 {
-    public float Range => 5f;
+    public float Range => 3f;
 
     private LayerMask _mask;
     private PlayerCombat _player;

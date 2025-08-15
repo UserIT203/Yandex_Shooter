@@ -11,6 +11,7 @@ public class PlayerStats : CharacterStats
     public PlayerStats(Config config) : base(config)
     {
         _playerConfig = config as PlayerConfig;
-        ItemPickUpRadius = _playerConfig.PickUpRadius;
+        ItemPickUpRadius = new Stat(_playerConfig.PickUpRadius.GetValue(), 
+            _playerConfig.PickUpRadius.Modificator);
     }
 }

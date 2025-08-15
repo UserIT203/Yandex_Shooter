@@ -10,7 +10,7 @@ public interface ICapabilitie
 
     void Unlock();
     bool TryUpgrade();
-    void Activate();
+    void Activate(Vector3 direction);
     CapabilitieConfig GetCurrentUpgradeConfig();
     bool IsMaxLevel();
 }

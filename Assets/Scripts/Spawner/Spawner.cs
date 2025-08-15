@@ -7,6 +7,7 @@ public class Spawner : MonoBehaviour
 {
     [Header("Main Settings")]
     [SerializeField] private List<Enemy> _enemiesPrefab;
+    [SerializeField] private EnemyConfig _enemyIncreaseConfig;
     [SerializeField] private float _spawnInterval;
     [SerializeField] private Player _player;
     [SerializeField] private bool _canSpawn;
@@ -19,6 +20,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private int _bulletCount;
     [SerializeField] private Transform _bulletPoolContainer;
 
+    private int _currentWave;
     private int _enemyCount;
     private List<EnemyInSpawner> _enemies;
     private int _currentEnemyCount;
@@ -26,20 +28,25 @@ public class Spawner : MonoBehaviour
     private IEnemyObserver _waveManager;
     private CustomPool<Bullet> _enemyBulletPool;
 
-    public void StartSpawning(List<EnemyInSpawner> enemies, int enemiesCount,
-        IEnemyObserver waveManager)
+    private void Start()
     {
-        _canSpawn = true;
-        _currentEnemyCount = 0;
-
-        _waveManager = waveManager;
-        _enemies = enemies;
-        _enemyCount = enemiesCount;
-
         _enemyBulletPool = new CustomPool<Bullet>(
             _enemyBullet,
             _bulletCount,
             _bulletPoolContainer);
+    }
+
+    public void StartSpawning(List<EnemyInSpawner> enemies, int enemiesCount,
+        IEnemyObserver enemyObserver, int currentWave)
+    {
+        _canSpawn = true;
+        _currentEnemyCount = 0;
+        _enemyCount = enemiesCount;
+        _currentWave = currentWave;
+
+        _waveManager = enemyObserver;
+        _enemies = enemies;
+        _enemyCount = enemiesCount;
 
         StartSpawningEnemy();   
     }
@@ -81,6 +88,11 @@ public class Spawner : MonoBehaviour
             newEnemy.Initialized(_player, _waveManager);
         else if(enemyType.EnemyType == EnemyType.Range)
             newEnemy.Initialized(_player, _waveManager, _enemyBulletPool);
+
+        for (int i = 0; i < _currentWave; i++)
+        {
+            newEnemy.Stats.ApplyModifiers(_enemyIncreaseConfig);
+        }
 
         _currentEnemyCount++;
     }
