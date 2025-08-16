@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using Zenject;
 
@@ -15,13 +12,8 @@ public class PlayerCapabilities : MonoBehaviour
 
     private Dictionary<CapabilitiesType, ICapabilitie> _capabilities = new Dictionary<CapabilitiesType, ICapabilitie>();
 
-    private int _maxSwordsCount;
-    private int _currentSwordsCount;
-
     private void Awake()
     {
-        _maxSwordsCount = _swords.Count;
-
         _capabilities.Add(_capabilitiUpgrades[0].CapabilitieType,
                new WeaponCapability(_capabilitiUpgrades[0].CapabilitieConfigs,
                _capabilitiUpgrades[0].DefaultConfig,
@@ -44,6 +36,39 @@ public class PlayerCapabilities : MonoBehaviour
     }
 
     #region Sword
+
+    private void ArrangeSwords()
+    {
+        int activeSwordsCount = 0;
+
+        foreach (Sword sword in _swords)
+        {
+            if (sword.gameObject.activeSelf)
+                activeSwordsCount++;
+        }
+
+        if (activeSwordsCount == 0) return;
+
+        float angleStep = 360f / activeSwordsCount;
+        float currentAngle = 0f;
+
+        foreach (Sword sword in _swords)
+        {
+            if (!sword.gameObject.activeSelf) continue;
+
+            Vector3 offset = Quaternion.Euler(0, currentAngle, 0) * Vector3.forward * sword.GetRadius();
+            Vector3 newPosition = transform.position + offset;
+            newPosition.y = sword.transform.position.y;
+            sword.transform.position = newPosition;
+
+            Vector3 direction = (newPosition - transform.position).normalized;
+            sword.transform.rotation = Quaternion.LookRotation(direction);
+            sword.transform.Rotate(90, 90, 180);
+
+            currentAngle += angleStep;
+        }
+    }
+
     public void UnlockSwords()
     {
         CapabilitieConfig config = GetCapabilite(CapabilitiesType.SwordAround).GetCurrentUpgradeConfig();
@@ -54,6 +79,7 @@ public class PlayerCapabilities : MonoBehaviour
             {
                 sword.UnlockSword();
                 sword.UpdateOptions(config.Damage, config.Speed);
+                ArrangeSwords();
                 break;
             }
         }

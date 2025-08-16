@@ -78,6 +78,10 @@ public class Spawner : MonoBehaviour
     {
         int enemyTypeIndex = Random.Range(0, _enemies.Count);
         EnemyInSpawner enemyType = _enemies[enemyTypeIndex];
+        
+        if (enemyType.EnemyCount <= 0) return;
+
+        enemyType.SpawnEnemy();
 
         Vector3 spawnPosition = GetSpawnPosition();
 

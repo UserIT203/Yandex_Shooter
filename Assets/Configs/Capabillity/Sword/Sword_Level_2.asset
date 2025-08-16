@@ -15,6 +15,6 @@ MonoBehaviour:
   <Icon>k__BackingField: {fileID: 21300000, guid: 84487d73ca4b791498332d8f6858417f, type: 3}
   <Damage>k__BackingField: 5
   <Delay>k__BackingField: 0
-  <Speed>k__BackingField: 45
+  <Speed>k__BackingField: 55
   <CanAddOne>k__BackingField: 1
   <WeaponConfig>k__BackingField: {fileID: 0}

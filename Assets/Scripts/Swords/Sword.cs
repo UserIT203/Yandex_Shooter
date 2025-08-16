@@ -15,6 +15,9 @@ public class Sword : MonoBehaviour
 
     private float _initialY;
 
+    public float GetRadius() => radius;
+    public float GetInitialY() => _initialY;
+
     private void Start()
     {
         _initialY = transform.position.y;
@@ -44,7 +47,10 @@ public class Sword : MonoBehaviour
         }
     }
 
-    public void UnlockSword() => gameObject.SetActive(true);
+    public void UnlockSword()
+    {
+        gameObject.SetActive(true);
+    }
 
     public void UpdateOptions(float damage, float speed)
     {
