@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using Zenject;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamagable
 {
     [Header("Player Settings")]
     [SerializeField] private LayerMask _picUpItemMask;
@@ -54,5 +54,11 @@ public class Player : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, 
             _characterStats.ItemPickUpRadius.GetValue());
+    }
+
+    public void TakeDamage(float damage)
+    {
+        _characterStats?.TakeDamage(damage);
+        Debug.Log("Player Bullet Damage");
     }
 }

@@ -24,15 +24,11 @@ public class Bullet : MonoBehaviour
     {
         if(other.tag == _targetTag)
         {
-            Enemy enemy;
-            if(other.TryGetComponent<Enemy>(out enemy))
+            IDamagable target;
+            if(other.TryGetComponent<IDamagable>(out target))
             {
-                enemy.Stats.TakeDamage(_damage);
+                target.TakeDamage(_damage);
             }
-
-            Player player;
-            if(other.TryGetComponent<Player>(out player))
-                player.Stats.TakeDamage(_damage);
 
             _pool.Release(this);
         }

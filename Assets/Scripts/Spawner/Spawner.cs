@@ -7,6 +7,7 @@ public class Spawner : MonoBehaviour
 {
     [Header("Main Settings")]
     [SerializeField] private List<Enemy> _enemiesPrefab;
+    [SerializeField] private List<Boss> _bosesPrefab;
     [SerializeField] private EnemyConfig _enemyIncreaseConfig;
     [SerializeField] private float _spawnInterval;
     [SerializeField] private Player _player;
@@ -49,6 +50,15 @@ public class Spawner : MonoBehaviour
         _enemyCount = enemiesCount;
 
         StartSpawningEnemy();   
+    }
+
+    public void CreateBoss()
+    {
+        int randomValue = Random.Range(0, _bosesPrefab.Count);
+        Vector3 spawnPosition = GetSpawnPosition();
+
+        Boss newBoss = Instantiate(_bosesPrefab[randomValue], spawnPosition, Quaternion.identity);
+        newBoss.Initialized(_player, _waveManager, _enemyBulletPool);
     }
 
     private void StartSpawningEnemy()

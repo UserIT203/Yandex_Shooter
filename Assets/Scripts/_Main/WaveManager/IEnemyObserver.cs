@@ -5,4 +5,5 @@ using UnityEngine;
 public interface IEnemyObserver 
 {
     void OnEnemyDestroed();
+    void OnBossDestroed();
 }

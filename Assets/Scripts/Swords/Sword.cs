@@ -40,8 +40,8 @@ public class Sword : MonoBehaviour
     {
         if(other.tag == EnemyTag)
         {
-            if (other.TryGetComponent<Enemy>(out var enemy))
-                enemy.Stats.TakeDamage(_damage);
+            if (other.TryGetComponent<IDamagable>(out var targer))
+                targer.TakeDamage(_damage);
                 
             Debug.Log("Sword: Enemy " + _damage);
         }

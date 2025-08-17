@@ -11,6 +11,7 @@ public class WaveManager : MonoBehaviour, IEnemyObserver
     private int _currentWave;
     private int _maxWave;
     private int _currentEnemiesInWave;
+    private bool _bossDie;
 
     private void Awake()
     {
@@ -22,12 +23,22 @@ public class WaveManager : MonoBehaviour, IEnemyObserver
     {
         Debug.Log("Enemy Die");
         _currentEnemiesInWave--;
+
+        if (_currentEnemiesInWave <= 0 && _waves[_currentWave].HasBoss == true)
+            _spawner.CreateBoss();
+
+        CheackWaveState();
+    }
+
+    public void OnBossDestroed()
+    {
+        _bossDie = true;
         CheackWaveState();
     }
 
     private void CheackWaveState()
     {
-        if (_currentEnemiesInWave > 0) return;
+        if (_currentEnemiesInWave > 0 || _bossDie == false) return;
 
         Debug.Log("Волна кончилась");
 
@@ -48,6 +59,9 @@ public class WaveManager : MonoBehaviour, IEnemyObserver
 
     private void InitilizedWave() 
     { 
+        if(_waves[_currentWave].HasBoss)
+            _bossDie = false;
+
         _currentEnemiesInWave = _waves[_currentWave].EnemyCount;
         _spawner.StartSpawning(_waves[_currentWave].Enemies, _currentEnemiesInWave,
             this, _currentWave);
@@ -59,6 +73,7 @@ public class Wave
 {
     public List<EnemyInSpawner> Enemies;
     public int EnemyCount { get => GetEnemiesCount(); }
+    public bool HasBoss;
 
     private int GetEnemiesCount()
     {

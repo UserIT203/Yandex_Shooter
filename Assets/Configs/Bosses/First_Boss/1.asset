@@ -10,20 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Config
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyConfig
+  m_Name: 1
+  m_EditorClassIdentifier: Assembly-CSharp::BossConfig
   <Speed>k__BackingField:
-    _baseValue: 2
+    _baseValue: 3
     _modificators: []
   <MaxHealth>k__BackingField:
-    _baseValue: 25
+    _baseValue: 100
     _modificators: []
   <Damage>k__BackingField:
     _baseValue: 5
     _modificators: []
   <RadiusAttack>k__BackingField:
-    _baseValue: 0.5
+    _baseValue: 1
     _modificators: []
   <AttackDealy>k__BackingField:
     _baseValue: 1
     _modificators: []
+  <Ultimait>k__BackingField: First

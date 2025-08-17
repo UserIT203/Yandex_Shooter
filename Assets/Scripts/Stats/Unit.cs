@@ -1,28 +1,27 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
-public class CharacterStats
+public class Unit : MonoBehaviour, IDamagable
 {
-    public Stat MaxHealth { get; }
-    public Stat Damage { get; }
-    public Stat Speed { get; }
+    public Stat MaxHealth { get; protected set; }
+    public Stat Damage { get; protected set; }
+    public Stat Speed { get; protected set; }
 
     public float CurrentHealth { get; protected set; }
 
-    protected Config _config;
-   
     public event Action<float> onTakeDamage;
     public event Action onDie;
 
-    public CharacterStats(Config config)
+    public virtual void SetConfig(Config config)
     {
-        _config = config; 
-        
         MaxHealth = new Stat(config.MaxHealth.GetValue(), config.MaxHealth.Modificator);
         Damage = new Stat(config.Damage.GetValue(), config.Damage.Modificator);
-        Speed = new Stat(config.Speed.GetValue(), config.Speed.Modificator  );
+        Speed = new Stat(config.Speed.GetValue(), config.Speed.Modificator);
 
-        CurrentHealth = _config.MaxHealth.GetValue();
+        CurrentHealth = config.MaxHealth.GetValue();
     }
 
     public virtual void TakeDamage(float damage)
@@ -50,29 +49,5 @@ public class CharacterStats
         Damage.Reset();
         Damage.AddModifier(weaponConfig.Damage);
         Debug.Log("Player Damage " + Damage.GetValue());
-    }
-}
-
-public class EnemyStats: CharacterStats
-{
-    public Stat RadiusAttack { get; }
-    public Stat AttackDealy { get; }
-
-    private EnemyConfig _enemyConfig;
-
-    public EnemyStats(Config config) : base(config) 
-    {
-        _enemyConfig = config as EnemyConfig;
-
-        RadiusAttack = new Stat(_enemyConfig.RadiusAttack.GetValue(), 
-            _enemyConfig.RadiusAttack.Modificator);
-        AttackDealy = new Stat(_enemyConfig.AttackDealy.GetValue(),
-            _enemyConfig.AttackDealy.Modificator);
-    }
-
-    public override void TakeDamage(float damage) 
-    {
-        base.TakeDamage(damage);
-        Debug.Log("Damage for Enemy");
     }
 }

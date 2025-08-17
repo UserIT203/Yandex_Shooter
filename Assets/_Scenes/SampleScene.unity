@@ -1112,6 +1112,8 @@ MonoBehaviour:
   _enemiesPrefab:
   - {fileID: 5361509144005544754, guid: ae29b265f8038ce459d401c184cf01c9, type: 3}
   - {fileID: 3252820503017754281, guid: 1ab887da3c7417841aeb6ab2e63e8605, type: 3}
+  _bosesPrefab:
+  - {fileID: 7924336351432370539, guid: 486a226d6163459438750e5db68b0e84, type: 3}
   _enemyIncreaseConfig: {fileID: 11400000, guid: ee01d0d4f1a4dd64f8d9d39af9f09311, type: 2}
   _spawnInterval: 1
   _player: {fileID: 1497633502}
@@ -3153,12 +3155,14 @@ MonoBehaviour:
   _waves:
   - Enemies:
     - EnemyType: 0
-      EnemyCount: 6
+      EnemyCount: 2
+    HasBoss: 1
   - Enemies:
     - EnemyType: 0
       EnemyCount: 5
     - EnemyType: 1
       EnemyCount: 5
+    HasBoss: 0
   _spawner: {fileID: 418934431}
 --- !u!114 &1282014482
 MonoBehaviour:
@@ -3251,7 +3255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56386d5ba5bb2f845b1ad8f2b4bf4eaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _platform: 1
+  _platform: 0
   _mobileShootingLayerMask:
     serializedVersion: 2
     m_Bits: 64
