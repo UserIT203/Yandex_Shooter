@@ -26,7 +26,13 @@ public class Boss : MonoBehaviour, IDamagable
 
     private void Update()
     {
+        transform.rotation = Quaternion.identity;
         _fsm.Update();
+    }
+
+    public void TakeDamage(float damage)
+    {
+        _enemyStats.TakeDamage(damage);
     }
 
     public void Initialized(Player player, IEnemyObserver observer, 
@@ -35,27 +41,44 @@ public class Boss : MonoBehaviour, IDamagable
         _enemyStats = new EnemyStats(_config);
         _observer = observer;
         _player = player;
+        InitializedFSM();
 
         _enemyStats.onDie += Die;
-
-        InitializedFSM();
     }
 
     private void InitializedFSM()
     {
         _fsm = new FSM();
         _fsm.AddFsm(new FSMStateFollow(_fsm, _agent, _player, this));
+        _fsm.AddFsm(new FSMMelleAttack(_fsm, this, _player, _agent));
+
+        _fsm.AddTransition<FSMStateFollow, FSMMelleAttack>(
+            new FuncPredicate(HasAttack));
+        _fsm.AddTransition<FSMMelleAttack, FSMStateFollow>(
+            new FuncPredicate(HasFollow));
+
         _fsm.SetState<FSMStateFollow>();
+    }
+
+    private bool HasAttack()
+    {
+        float distance = Vector3.Distance(_player.transform.position,
+            transform.position);
+
+        return distance <= _config.RadiusAttack.GetValue();
+    }
+
+    private bool HasFollow()
+    {
+        float distance = Vector3.Distance(_player.transform.position,
+            transform.position);
+
+        return distance > _config.RadiusAttack.GetValue();
     }
 
     private void Die()
     {
         _observer.OnBossDestroed();
         Destroy(gameObject);
-    }
-
-    public void TakeDamage(float damage)
-    {
-        _enemyStats.TakeDamage(damage);
     }
 }

@@ -37,6 +37,5 @@ public class FSMStateFollow : FSMState
         _agent.speed = _boss.Stats.Speed.GetValue();
 
         _agent.SetDestination(_target.transform.position);
-        _boss.transform.rotation = Quaternion.identity;
     }
 }

@@ -59,6 +59,5 @@ public class Player : MonoBehaviour, IDamagable
     public void TakeDamage(float damage)
     {
         _characterStats?.TakeDamage(damage);
-        Debug.Log("Player Bullet Damage");
     }
 }

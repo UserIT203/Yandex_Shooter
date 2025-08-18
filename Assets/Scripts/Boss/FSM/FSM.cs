@@ -16,19 +16,65 @@ public class FSM
     public void SetState<T>() where T : FSMState
     {
         var type = typeof(T);
+        ChangeState(type);
+    }
 
-        if (_currentState != null && _currentState.GetType() == type) return;
+    public void AddTransition<T, U>(IPredicate predicate) 
+        where T: FSMState
+        where U : FSMState
+    {
+        FSMState mainState = GetState(typeof(T));
+        FSMState targetState = GetState(typeof(U));
 
-        if(_states.TryGetValue(type, out var newState))
-        {
-            _currentState?.Exit();
-            _currentState = newState;
-            _currentState.Enter();
-        }
+        mainState.AddTransition(targetState, predicate);
     }
 
     public void Update()
     {
+        CheckTransition();
         _currentState?.Update();
+    }
+
+    private void ChangeState(Type type)
+    {
+        if (_currentState != null && _currentState.GetType() == type) return;
+
+        FSMState newState = GetState(type);
+
+        if (newState == null) return;
+
+        _currentState?.Exit();
+        _currentState = newState;
+        _currentState.Enter();
+    }
+
+    private FSMState GetState(Type type)
+    {
+        if(_states.TryGetValue(type, out var newState))
+            return newState;
+
+        return null;
+    }
+
+    private void CheckTransition()
+    {
+        var transition = GetTransition();
+
+        if(transition != null)
+        {
+            var state = transition.TargetState.GetType();
+            ChangeState(state);
+        }
+    }
+
+    private ITransition GetTransition()
+    {
+        foreach (var transition in _currentState?.Transitions) 
+        { 
+            if(transition.Predicate.Evaluate())
+                return transition;
+        }
+
+        return null;
     }
 }

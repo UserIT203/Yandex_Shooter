@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 1
   m_EditorClassIdentifier: Assembly-CSharp::BossConfig
   <Speed>k__BackingField:
-    _baseValue: 3
+    _baseValue: 2
     _modificators: []
   <MaxHealth>k__BackingField:
     _baseValue: 100
