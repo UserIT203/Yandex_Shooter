@@ -20,7 +20,7 @@ public class CharacterStats
         
         MaxHealth = new Stat(config.MaxHealth.GetValue(), config.MaxHealth.Modificator);
         Damage = new Stat(config.Damage.GetValue(), config.Damage.Modificator);
-        Speed = new Stat(config.Speed.GetValue(), config.Speed.Modificator  );
+        Speed = new Stat(config.Speed.GetValue(), config.Speed.Modificator);
 
         CurrentHealth = _config.MaxHealth.GetValue();
     }
@@ -73,6 +73,5 @@ public class EnemyStats: CharacterStats
     public override void TakeDamage(float damage) 
     {
         base.TakeDamage(damage);
-        Debug.Log("Damage for Enemy");
     }
 }

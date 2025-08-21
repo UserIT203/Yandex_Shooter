@@ -21,6 +21,7 @@ public class EnemyConfig: Config
 public class PlayerConfig : Config
 {
     [field: SerializeField] public Stat PickUpRadius { get; private set; }
+    [field: SerializeField] public UltimateBase Ultimate { get; private set; }
 }
 
 [CreateAssetMenu(fileName = "Config", menuName = "Configs/Boss")]

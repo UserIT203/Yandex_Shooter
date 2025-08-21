@@ -10,24 +10,28 @@ public class MobileShootingSystem : IShootingSystem
     private LayerMask _mask;
     private PlayerCombat _player;
     private Collider[] _enemiesInRange;
+    private Button _ulitimateButton;
     private Button _reloadButton;
 
     public event Action<Vector3> onShoot;
     public event Action onReload;
+    public event Action onUseUltimate;
 
-    public MobileShootingSystem(Player player, Button button, LayerMask mask)
+    public MobileShootingSystem(Player player, Button button, LayerMask mask, Button ulitimateButton)
     {
         _player = player.GetComponent<PlayerCombat>();
         _reloadButton = button;
         _mask = mask;
+        _ulitimateButton = ulitimateButton;
+
+        Reload();
+        HandleUlitimate();
     }
 
     public void HandleShooting()
     {
         if (CanShoot())
             Shoot();
-
-        Reload();
     }
 
     public bool CanShoot()
@@ -85,5 +89,10 @@ public class MobileShootingSystem : IShootingSystem
     public void Reload()
     {
         _reloadButton.onClick.AddListener(() => onReload?.Invoke());
+    }
+
+    public void HandleUlitimate()
+    {
+        _ulitimateButton.onClick.AddListener(() => onUseUltimate?.Invoke());
     }
 }

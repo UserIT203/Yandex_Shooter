@@ -44,4 +44,10 @@ public class Stat
     {
         _modificators.Add(modificator);
     }
+
+    public void RemodeModifier(float modificator) 
+    { 
+        if(modificator > 0)
+            _modificators.Remove(modificator);
+    }
 }

@@ -8,10 +8,13 @@ public class PlayerStats : CharacterStats
 
     public Stat ItemPickUpRadius { get; }
 
+    public  IUltimate Ultimate { get; }
+
     public PlayerStats(Config config) : base(config)
     {
         _playerConfig = config as PlayerConfig;
         ItemPickUpRadius = new Stat(_playerConfig.PickUpRadius.GetValue(), 
             _playerConfig.PickUpRadius.Modificator);
+        Ultimate = _playerConfig.Ultimate;
     }
 }

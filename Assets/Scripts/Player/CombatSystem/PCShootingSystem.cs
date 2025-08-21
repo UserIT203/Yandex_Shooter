@@ -16,6 +16,7 @@ public class PCShootingSystem : IShootingSystem
 
     public event Action<Vector3> onShoot;
     public event Action onReload;
+    public event Action onUseUltimate;
 
     public PCShootingSystem(Player player, LayerMask mask)
     {
@@ -29,6 +30,7 @@ public class PCShootingSystem : IShootingSystem
         if (CanShoot())
             Shoot();
 
+        HandleUlitimate();
         Reload();
     }
 
@@ -38,9 +40,7 @@ public class PCShootingSystem : IShootingSystem
     }
 
     public void Shoot()
-    {
-        Debug.Log("DesktopShoot");
-
+    { 
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, _player.ShootMask))
@@ -55,5 +55,11 @@ public class PCShootingSystem : IShootingSystem
     {
         if(Input.GetKeyDown(KeyCode.R)) 
             onReload?.Invoke();
+    }
+
+    public void HandleUlitimate()
+    {
+        if(Input.GetKeyDown(KeyCode.Q))
+            onUseUltimate?.Invoke();
     }
 }

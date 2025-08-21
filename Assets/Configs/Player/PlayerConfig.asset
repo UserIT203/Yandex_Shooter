@@ -24,3 +24,4 @@ MonoBehaviour:
   <PickUpRadius>k__BackingField:
     _baseValue: 1
     _modificators: []
+  <Ultimate>k__BackingField: {fileID: 11400000, guid: d326792ce7a5d674b8a59f28b004466e, type: 2}

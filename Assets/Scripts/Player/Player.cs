@@ -19,6 +19,8 @@ public class Player : MonoBehaviour, IDamagable
     {
         _characterStats = new PlayerStats(playerConfig);
         _characterStats.onDie += Die;
+
+        playerConfig.Ultimate.Initialized(this);
     }
 
     private void Update()

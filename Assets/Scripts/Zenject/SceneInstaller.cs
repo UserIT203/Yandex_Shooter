@@ -14,6 +14,7 @@ public class SceneInstaller : MonoInstaller
     [SerializeField] private Joystick _joystick;
     [SerializeField] private Button _reloadButton;
     [SerializeField] private Button _dashButton;
+    [SerializeField] private Button _ultimateButton;
     [Header("Desktop Settings")]
     [SerializeField] private LayerMask _desktopShootingLayerMask;
     [Header("Player Links")]
@@ -70,7 +71,7 @@ public class SceneInstaller : MonoInstaller
         Container.Bind<PlayerCombat>().FromInstance(_player.GetComponent<PlayerCombat>()).AsSingle();
 
         Container.Bind<IShootingSystem>().To<MobileShootingSystem>().AsSingle()
-            .WithArguments(_reloadButton);
+            .WithArguments(_reloadButton, _ultimateButton);
     }
 }
 

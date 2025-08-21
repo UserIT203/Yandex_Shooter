@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,8 @@ public class PlayerCombat : MonoBehaviour
     public LayerMask ShootMask => _shootMask;
     public Transform FirePoint => _firePoint;
 
+    public event Action onSetWeapon;
+
     [Inject]
     public void Construct(IShootingSystem shootingSystem, LayerMask mask)
     {
@@ -29,6 +32,7 @@ public class PlayerCombat : MonoBehaviour
         _shootingSystem = shootingSystem;
         _shootingSystem.onShoot += Shoot;
         _shootingSystem.onReload += Reload;
+        _shootingSystem.onUseUltimate += UseUlitimate;
     }
 
     private void Awake()
@@ -49,6 +53,7 @@ public class PlayerCombat : MonoBehaviour
     private void Update()
     {
         _shootingSystem.HandleShooting();
+        _player.Stats.Ultimate.Update();
     }
 
     private void Shoot(Vector3 direction)
@@ -73,10 +78,17 @@ public class PlayerCombat : MonoBehaviour
         _weapon.Reload();
     }
 
+    private void UseUlitimate()
+    {
+        _player.Stats.Ultimate.TryUse();
+    }
+
     public void SetWeapon(WeaponConfig weaponConfig)
     {
         _currentWeaponConfig = weaponConfig;
         _player.Stats.ApplyModifierFromWeapon(weaponConfig);
         _weapon.SetWeapon(weaponConfig);
+
+        onSetWeapon?.Invoke();
     }
 }
