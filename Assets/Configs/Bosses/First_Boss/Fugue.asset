@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 070df6819e8d77a4e8276b79d98464e5, type: 3}
+  m_Name: Fugue
+  m_EditorClassIdentifier: 
+  <UltimateName>k__BackingField: Fugue
+  <Cooldown>k__BackingField: 15
+  <UltimateDuration>k__BackingField: 5
+  _freezeTime: 5
+  _delayToSpawn: 1
+  _fuguePrefab: {fileID: 2470420933938139181, guid: 1e93fd380b3aeb24db6496e624770830, type: 3}

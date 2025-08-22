@@ -6,7 +6,6 @@ public class Rocket : MonoBehaviour
 {
     [Header("Основные параметры")]
     [SerializeField] private float _speed = 10f;                   // Скорость движения
-    [SerializeField] private float _curveHeight = 5f;              // Высота кривой
     [SerializeField] private float _trackingStrength = 3f;         // Сила наведения
     [SerializeField] private float _homingDelay = 1f;              // Задержка наведения
     [SerializeField] private bool _predictTargetPosition = true;   // Предсказывать позицию цели

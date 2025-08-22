@@ -20,8 +20,6 @@ public abstract class FSMState
 
     public void AddTransition(FSMState state, IPredicate condition) 
     {
-        Debug.Log(state);
-        Debug.Log(condition);
         Transitions.Add(new Transition(state, condition));
     }
 }

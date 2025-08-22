@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Rocket", menuName = "Plaeyr Ultimate/Rockets")]
+[CreateAssetMenu(fileName = "Rocket", menuName = "Player Ultimate/Rockets")]
 public class RocketUltimate : UltimateBase
 {
     private const float DelayToCreateRocket = 0.2f;

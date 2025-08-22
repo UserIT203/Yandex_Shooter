@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Melle
   m_EditorClassIdentifier: Assembly-CSharp::EnemyConfig
   <Speed>k__BackingField:
-    _baseValue: 1
+    _baseValue: 2.5
     _modificators: []
   <MaxHealth>k__BackingField:
     _baseValue: 25

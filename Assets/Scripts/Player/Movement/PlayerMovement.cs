@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController _characterController;
     private IInput _input;
     private Vector3 _currentVelocity;
+    private bool _canMove = true;
 
     [Inject]
     public void Construct(IInput input, Player player)
@@ -36,7 +37,9 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         _input.UpdateInput();
-        _characterController.Move(_currentVelocity * Time.deltaTime);
+        
+        if(_canMove) 
+            _characterController.Move(_currentVelocity * Time.deltaTime);
     }
 
     private void Moving(Vector3 direction)
@@ -65,5 +68,19 @@ public class PlayerMovement : MonoBehaviour
 
         _player.GetComponent<PlayerCapabilities>()
             .GetCapabilite(CapabilitiesType.Dash).Activate(direction);
+    }
+
+    private IEnumerator Frezee(float time)
+    {
+        _canMove = false;
+
+        yield return new WaitForSeconds(time);
+
+        _canMove = true;
+    }
+
+    public void FreezeMoving(float frezeeTime)
+    {
+        StartCoroutine(Frezee(frezeeTime));
     }
 }

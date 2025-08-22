@@ -10,6 +10,8 @@ public class PlayerStats : CharacterStats
 
     public  IUltimate Ultimate { get; }
 
+    private bool _isInvulnerable = false;
+
     public PlayerStats(Config config) : base(config)
     {
         _playerConfig = config as PlayerConfig;
@@ -17,4 +19,14 @@ public class PlayerStats : CharacterStats
             _playerConfig.PickUpRadius.Modificator);
         Ultimate = _playerConfig.Ultimate;
     }
+
+    public override void TakeDamage(float damage)
+    {
+        if (_isInvulnerable) return;
+
+        base.TakeDamage(damage);
+        Debug.Log("Take damage Player " + damage);
+    }
+
+    public void SetInvulnerableStatus(bool isInvulnerable) => _isInvulnerable = isInvulnerable;
 }

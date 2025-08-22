@@ -3290,7 +3290,7 @@ MonoBehaviour:
   _waves:
   - Enemies:
     - EnemyType: 0
-      EnemyCount: 2
+      EnemyCount: 5
     HasBoss: 1
   - Enemies:
     - EnemyType: 0

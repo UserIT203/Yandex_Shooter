@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,10 +12,37 @@ public abstract class UltimateBase : ScriptableObject, IUltimate
 
     [field: SerializeField] public float UltimateDuration { get; protected set; }
 
-    protected bool _isStarted = false;
+    public bool IsStarted { get; protected set; }
+
     protected Player _player;
+    protected Boss _boss;
 
     private float _timer;
+
+    public event Action onUltimateEnd;
+
+    public virtual void Initialized(Player player)
+    {
+        _player = player;
+        IsStarted = false;
+    }
+
+    public void TryUse()
+    {
+        if(CanUse())
+        {
+            Execute();
+        }
+    }
+
+    public bool CanUse() => _timer < 0 && IsStarted == false;
+
+    public void SetBoss(Boss boss) => _boss = boss;
+
+    public void Update()
+    {
+        _timer -= Time.deltaTime;
+    }
 
     protected virtual void Execute()
     {
@@ -23,35 +51,20 @@ public abstract class UltimateBase : ScriptableObject, IUltimate
         _player.StartCoroutine(ExecutionProcess());
     }
 
-    public virtual void Initialized(Player player)
+    protected virtual void CleanUp() 
     {
-        _player = player;
-        _isStarted = false;
+        onUltimateEnd?.Invoke();
     }
-
-    public void TryUse()
-    {
-        if(_timer < 0 && _isStarted == false)
-        {
-            Execute();
-        }
-    }
-
-    public void Update()
-    {
-        _timer -= Time.deltaTime;
-    }
-
-    protected virtual void CleanUp() { }
 
     private IEnumerator ExecutionProcess()
     {
         WaitForSeconds waitingTime = new WaitForSeconds(UltimateDuration);
-        _isStarted = true;
+        IsStarted = true;
 
         yield return waitingTime;
 
-        _isStarted = false;
+        IsStarted = false;
         CleanUp();
+        Debug.Log("END Ultimate: " + UltimateName);
     }
 }

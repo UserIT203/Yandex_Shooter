@@ -147,8 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
-  _curveHeight: 5
   _trackingStrength: 3
   _homingDelay: 0.3
-  _predictTargetPosition: 1
+  _predictTargetPosition: 0
   _lifeTime: 10

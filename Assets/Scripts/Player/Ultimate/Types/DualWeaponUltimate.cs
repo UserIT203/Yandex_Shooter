@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "DualWeapon", menuName = "Plaeyr Ultimate/DualWeapon")]
+[CreateAssetMenu(fileName = "DualWeapon", menuName = "Player Ultimate/DualWeapon")]
 public class DualWeaponUltimate : UltimateBase, IDisposable
 {
     private PlayerCombat _playerCombat;
@@ -37,9 +37,8 @@ public class DualWeaponUltimate : UltimateBase, IDisposable
 
     private void SetModificator()
     {
-        if(_isStarted == true)
+        if(IsStarted == true)
         {
-            Debug.Log(_modificatorBonus);
             _player.Stats.Damage.RemodeModifier(_modificatorBonus);
             _modificatorBonus = _player.Stats.Damage.GetValue();
             _player.Stats.Damage.AddModifier(_modificatorBonus);

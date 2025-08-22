@@ -27,6 +27,8 @@ public class Boss : MonoBehaviour, IDamagable
     private void Update()
     {
         transform.rotation = Quaternion.identity;
+
+        _config.Ultimate.Update();
         _fsm.Update();
     }
 
@@ -41,6 +43,9 @@ public class Boss : MonoBehaviour, IDamagable
         _enemyStats = new EnemyStats(_config);
         _observer = observer;
         _player = player;
+        _config.Ultimate.Initialized(player);
+        _config.Ultimate.SetBoss(this);
+
         InitializedFSM();
 
         _enemyStats.onDie += Die;
@@ -51,11 +56,24 @@ public class Boss : MonoBehaviour, IDamagable
         _fsm = new FSM();
         _fsm.AddFsm(new FSMStateFollow(_fsm, _agent, _player, this));
         _fsm.AddFsm(new FSMMelleAttack(_fsm, this, _player, _agent));
+        _fsm.AddFsm(new FSMStateUltimate(_fsm, _agent, _config.Ultimate));
 
+        #region FollowState
         _fsm.AddTransition<FSMStateFollow, FSMMelleAttack>(
             new FuncPredicate(HasAttack));
+        _fsm.AddTransition<FSMStateFollow, FSMStateUltimate>(
+            new FuncPredicate(_config.Ultimate.CanUse));
+        #endregion
+
+        #region AttackState
         _fsm.AddTransition<FSMMelleAttack, FSMStateFollow>(
             new FuncPredicate(HasFollow));
+        _fsm.AddTransition<FSMMelleAttack, FSMStateUltimate>(
+            new FuncPredicate(_config.Ultimate.CanUse));
+        #endregion
+
+        _fsm.AddTransition<FSMStateUltimate, FSMMelleAttack>(
+            new FuncPredicate(HasAttack));
 
         _fsm.SetState<FSMStateFollow>();
     }

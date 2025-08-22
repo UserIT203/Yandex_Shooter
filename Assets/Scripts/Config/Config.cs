@@ -27,5 +27,5 @@ public class PlayerConfig : Config
 [CreateAssetMenu(fileName = "Config", menuName = "Configs/Boss")]
 public class BossConfig : EnemyConfig
 {
-    [field: SerializeField] public string Ultimait { get; private set; }
+    [field: SerializeField] public UltimateBase Ultimate { get; private set; }
 }

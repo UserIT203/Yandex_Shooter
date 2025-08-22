@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerConfig
   m_EditorClassIdentifier: Assembly-CSharp::PlayerConfig
   <Speed>k__BackingField:
-    _baseValue: 3
+    _baseValue: 2.5
     _modificators: []
   <MaxHealth>k__BackingField:
     _baseValue: 100
