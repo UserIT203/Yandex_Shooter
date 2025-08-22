@@ -24,6 +24,9 @@ MonoBehaviour:
   <RadiusAttack>k__BackingField:
     _baseValue: 2.5
     _modificators: []
+  <RadiusFollow>k__BackingField:
+    _baseValue: 3.5
+    _modificators: []
   <AttackDealy>k__BackingField:
     _baseValue: 2.5
     _modificators: []

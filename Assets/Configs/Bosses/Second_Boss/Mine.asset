@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a33ae7e2bded0c4cb0f6b8691494815, type: 3}
+  m_Name: Mine
+  m_EditorClassIdentifier: 
+  <UltimateName>k__BackingField: Mine
+  <Cooldown>k__BackingField: 20
+  <UltimateDuration>k__BackingField: 5
+  _mineDamage: 5
+  _minePrefab: {fileID: 8424945283152127854, guid: d4f38f3e1ad8b8e41922d9cab684cf35, type: 3}
+  _mineSpawnArea: 2
+  _createMineDealy: 0.2
+  _maxMineCount: 12
+  _minDistance: 1

@@ -69,6 +69,8 @@ public class FSM
 
     private ITransition GetTransition()
     {
+        if(_currentState?.Transitions == null) return null;
+
         foreach (var transition in _currentState?.Transitions) 
         { 
             if(transition.Predicate.Evaluate())

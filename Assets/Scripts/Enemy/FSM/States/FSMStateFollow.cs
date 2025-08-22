@@ -7,10 +7,10 @@ public class FSMStateFollow : FSMState
 {
     private readonly NavMeshAgent _agent;
     private readonly Player _target;
-    private readonly Boss _boss;
+    private readonly EnemyUnit _boss;
 
     public FSMStateFollow(FSM fsm, NavMeshAgent agent, Player player, 
-        Boss boss) : base(fsm)
+        EnemyUnit boss) : base(fsm)
     {
         _agent = agent;
         _target = player;

@@ -18,6 +18,8 @@ public abstract class FSMState
     public virtual void Exit() { }
     public virtual void Update() { }
 
+    public virtual void LateUpdate() { }
+
     public void AddTransition(FSMState state, IPredicate condition) 
     {
         Transitions.Add(new Transition(state, condition));

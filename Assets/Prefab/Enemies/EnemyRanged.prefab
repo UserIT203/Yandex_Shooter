@@ -42,10 +42,8 @@ GameObject:
   - component: {fileID: 7750479335452890042}
   - component: {fileID: 3954389393064335064}
   - component: {fileID: 3994210744860503510}
-  - component: {fileID: 3252820503017754281}
-  - component: {fileID: 3286634308951976901}
-  - component: {fileID: 1486869572699824516}
-  - component: {fileID: 7642040029890776045}
+  - component: {fileID: 4726626517095430945}
+  - component: {fileID: -1427251091212163852}
   m_Layer: 6
   m_Name: EnemyRanged
   m_TagString: Enemy
@@ -113,33 +111,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.3498001, y: 0.29416698, z: 0.06734738}
   m_Center: {x: 0.0072740316, y: 0.17722866, z: 0.007065907}
---- !u!114 &3252820503017754281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4888442030912626600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d38c84ec27ad1f94283555632552d22c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _config: {fileID: 11400000, guid: 6c92c9ec6ae0b1d468c3f51d31156912, type: 2}
---- !u!114 &3286634308951976901
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4888442030912626600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0326425a40fd6db47809ece7586d1c8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _updatePathTimer: 0.5
---- !u!114 &1486869572699824516
+--- !u!114 &4726626517095430945
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,14 +128,10 @@ MonoBehaviour:
     Probability: 100
   - Item: {fileID: 11400000, guid: 51127cdca6bbbbd498789f9cea060092, type: 2}
     Probability: 100
-  - Item: {fileID: 11400000, guid: 9d1572b464dcf7f46b5e13973bfc8366, type: 2}
-    Probability: 100
-  - Item: {fileID: 11400000, guid: 9d1572b464dcf7f46b5e13973bfc8366, type: 2}
-    Probability: 100
   _maxCreateItem: 2
   _createItemRadius: 1
   _minDistanceBetweenObjects: 0.2
---- !u!114 &7642040029890776045
+--- !u!114 &-1427251091212163852
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,9 +140,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4888442030912626600}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b659b4edec028143ab04609087e358f, type: 3}
+  m_Script: {fileID: 11500000, guid: f089608046aa561489e0b50b50809b76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _config: {fileID: 11400000, guid: 6c92c9ec6ae0b1d468c3f51d31156912, type: 2}
   _firePoint: {fileID: 825107510536522985}
 --- !u!1 &8867299730583713019
 GameObject:

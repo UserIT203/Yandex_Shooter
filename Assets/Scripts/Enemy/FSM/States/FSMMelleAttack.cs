@@ -6,14 +6,15 @@ using UnityEngine.AI;
 
 public class FSMMelleAttack : FSMState
 {
-    private Boss _boss;
-    private Player _player;
     private NavMeshAgent _agent;
-    private float _attackTimer;
 
-    public FSMMelleAttack(FSM fsm, Boss boos, Player player, NavMeshAgent agent) : base(fsm)
+    protected EnemyUnit _unit;
+    protected Player _player;
+    protected float _attackTimer;
+
+    public FSMMelleAttack(FSM fsm, EnemyUnit boos, Player player, NavMeshAgent agent) : base(fsm)
     {
-        _boss = boos;
+        _unit = boos;
         _player = player;
         _agent = agent;
     }
@@ -40,8 +41,8 @@ public class FSMMelleAttack : FSMState
     {
         if(_attackTimer > 0) return;
 
-        _player.TakeDamage(_boss.Stats.Damage.GetValue());
-        _attackTimer = _boss.Stats.AttackDealy.GetValue();
+        _player.TakeDamage(_unit.Stats.Damage.GetValue());
+        _attackTimer = _unit.Stats.AttackDealy.GetValue();
         Debug.Log("Boss Attack Player");
     }
 }

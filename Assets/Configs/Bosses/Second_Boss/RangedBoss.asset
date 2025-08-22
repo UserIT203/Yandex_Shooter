@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Boss
+  m_Name: RangedBoss
   m_EditorClassIdentifier: Assembly-CSharp::BossConfig
   <Speed>k__BackingField:
     _baseValue: 2
     _modificators: []
   <MaxHealth>k__BackingField:
-    _baseValue: 200
+    _baseValue: 150
     _modificators: []
   <Damage>k__BackingField:
-    _baseValue: 4
+    _baseValue: 5
     _modificators: []
   <RadiusAttack>k__BackingField:
-    _baseValue: 0.7
+    _baseValue: 3
     _modificators: []
   <RadiusFollow>k__BackingField:
-    _baseValue: 1.2
+    _baseValue: 4
     _modificators: []
   <AttackDealy>k__BackingField:
-    _baseValue: 1
+    _baseValue: 0.5
     _modificators: []
-  <Ultimate>k__BackingField: {fileID: 11400000, guid: 0b013ea170aa5e94a866843fec99b70e, type: 2}
+  <Ultimate>k__BackingField: {fileID: 11400000, guid: 46eb1be10b42ee748a72513617d2aa65, type: 2}

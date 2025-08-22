@@ -13,7 +13,7 @@ public class WaveManager : MonoBehaviour, IEnemyObserver
     private int _currentEnemiesInWave;
     private bool _bossDie;
 
-    private void Awake()
+    private void Start()
     {
         _maxWave = _waves.Count;
         InitilizedWave();

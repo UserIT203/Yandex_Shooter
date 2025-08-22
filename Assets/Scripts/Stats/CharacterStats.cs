@@ -56,6 +56,7 @@ public class CharacterStats
 public class EnemyStats: CharacterStats
 {
     public Stat RadiusAttack { get; }
+    public Stat RadiusFollow { get; }
     public Stat AttackDealy { get; }
 
     private EnemyConfig _enemyConfig;
@@ -68,6 +69,8 @@ public class EnemyStats: CharacterStats
             _enemyConfig.RadiusAttack.Modificator);
         AttackDealy = new Stat(_enemyConfig.AttackDealy.GetValue(),
             _enemyConfig.AttackDealy.Modificator);
+        RadiusFollow = new Stat(_enemyConfig.RadiusFollow.GetValue(),
+            _enemyConfig.RadiusFollow.Modificator);
     }
 
     public override void TakeDamage(float damage) 

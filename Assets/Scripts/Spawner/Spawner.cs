@@ -29,12 +29,12 @@ public class Spawner : MonoBehaviour
     private IEnemyObserver _waveManager;
     private CustomPool<Bullet> _enemyBulletPool;
 
-    private void Start()
+    private void Awake()
     {
         _enemyBulletPool = new CustomPool<Bullet>(
-            _enemyBullet,
-            _bulletCount,
-            _bulletPoolContainer);
+           _enemyBullet,
+           _bulletCount,
+           _bulletPoolContainer);
     }
 
     public void StartSpawning(List<EnemyInSpawner> enemies, int enemiesCount,
@@ -98,10 +98,7 @@ public class Spawner : MonoBehaviour
         Enemy newEnemy = Instantiate(_enemiesPrefab[(int)enemyType.EnemyType],
             spawnPosition, Quaternion.identity);
 
-        if(enemyType.EnemyType == EnemyType.Walk)
-            newEnemy.Initialized(_player, _waveManager);
-        else if(enemyType.EnemyType == EnemyType.Range)
-            newEnemy.Initialized(_player, _waveManager, _enemyBulletPool);
+        newEnemy.Initialized(_player, _waveManager, _enemyBulletPool);
 
         for (int i = 0; i < _currentWave; i++)
         {
