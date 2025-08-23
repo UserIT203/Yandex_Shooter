@@ -15,9 +15,10 @@ MonoBehaviour:
   <UltimateName>k__BackingField: Mine
   <Cooldown>k__BackingField: 20
   <UltimateDuration>k__BackingField: 5
-  _mineDamage: 5
   _minePrefab: {fileID: 8424945283152127854, guid: d4f38f3e1ad8b8e41922d9cab684cf35, type: 3}
   _mineSpawnArea: 2
   _createMineDealy: 0.2
   _maxMineCount: 12
   _minDistance: 1
+  _mineDamage: 5
+  _mineActivateRadius: 1

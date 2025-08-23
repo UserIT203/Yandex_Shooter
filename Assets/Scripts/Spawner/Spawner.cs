@@ -130,6 +130,7 @@ public enum EnemyType
 {
     Walk = 0,
     Range = 1,
+    Explosion = 2
 }
 
 [System.Serializable]

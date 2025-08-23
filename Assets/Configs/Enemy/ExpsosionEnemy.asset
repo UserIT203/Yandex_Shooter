@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: ExpsosionEnemy
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyConfig
+  <Speed>k__BackingField:
+    _baseValue: 2.5
+    _modificators: []
+  <MaxHealth>k__BackingField:
+    _baseValue: 20
+    _modificators: []
+  <Damage>k__BackingField:
+    _baseValue: 10
+    _modificators: []
+  <RadiusAttack>k__BackingField:
+    _baseValue: 0.5
+    _modificators: []
+  <RadiusFollow>k__BackingField:
+    _baseValue: 1.5
+    _modificators: []
+  <AttackDealy>k__BackingField:
+    _baseValue: 0
+    _modificators: []

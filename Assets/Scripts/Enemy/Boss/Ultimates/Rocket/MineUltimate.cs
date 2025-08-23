@@ -7,16 +7,26 @@ using Zenject.SpaceFighter;
 public class MineUltimate : UltimateBase
 {
     [Header("Mine Ultimate Settings")]
-    [SerializeField] private float _mineDamage;
     [SerializeField] private Mine _minePrefab;
 
-    [Header("Mine Spawn Options")]
+    [Header("Mine Spawn Settings")]
     [SerializeField] private float _mineSpawnArea;
     [SerializeField] private float _createMineDealy;
     [SerializeField] private int _maxMineCount;
     [SerializeField] private float _minDistance;
 
-    private List<Vector3> _spawnPoints;
+    [Header("Mine Settings")]
+    [SerializeField] private float _mineDamage;
+    [SerializeField] private float _mineActivateRadius;
+
+    private List<Vector3> _spawnPoints = new List<Vector3>();
+
+    public override void Initialized(Player player)
+    {
+        base.Initialized(player);
+
+        _spawnPoints.Clear();
+    }
 
     protected override void Execute()
     {
@@ -40,7 +50,7 @@ public class MineUltimate : UltimateBase
         while (currentIndex < _maxMineCount)
         {
             Mine mine = Instantiate(_minePrefab, _boss.transform.position, Quaternion.identity);
-            mine.SetTarget(_spawnPoints[currentIndex]);
+            mine.SetTarget(_spawnPoints[currentIndex], _mineDamage, _mineActivateRadius);
 
             currentIndex++;
 

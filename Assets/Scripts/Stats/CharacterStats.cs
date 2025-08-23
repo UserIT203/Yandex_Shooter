@@ -11,7 +11,7 @@ public class CharacterStats
 
     protected Config _config;
    
-    public event Action<float> onTakeDamage;
+    public event Action<float, float> onChangeHealth;
     public event Action onDie;
 
     public CharacterStats(Config config)
@@ -29,7 +29,7 @@ public class CharacterStats
     {
         CurrentHealth -= damage;
 
-        onTakeDamage?.Invoke(damage);
+        onChangeHealth?.Invoke(CurrentHealth, MaxHealth.GetValue());
 
         if (CurrentHealth <= 0)
         {

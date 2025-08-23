@@ -1,20 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Mine : MonoBehaviour
 {
     [SerializeField] private float _height = 5f;      // Максимальная высота траектории
     [SerializeField] private float _duration = 2f;    // Время полёта
+    [SerializeField] private float _lifeTime = 10f;
+
+    private float _damage;
+    private float _triggerRadius;
+    private bool _isActive = false;
 
     private Vector3 _targetPosition;
     private Vector3 _startPoint;
     private float _elapsedTime = 0f;
 
-    public void SetTarget(Vector3 target)
+    private void Update()
+    {
+        CheackTriggerZone();
+    }
+
+    public void SetTarget(Vector3 target, float damage, float radius)
     {
         _startPoint = transform.position;
         _targetPosition = target;
+
+        _damage = damage;
+        _triggerRadius = radius;
+
+        StartCoroutine(LifeTime());
         StartCoroutine(MoveProjectile());
     }
 
@@ -39,6 +55,44 @@ public class Mine : MonoBehaviour
 
         transform.position = _targetPosition;
 
+        yield return new WaitForSeconds(1f);
+
+        _isActive = true;
+
         Debug.Log("Снаряд достиг цели!");
+    }
+
+    private void CheackTriggerZone()
+    {
+        if(_isActive == false) return;
+
+        Collider[] colliders = Physics.OverlapSphere(transform.position, _triggerRadius);
+
+        foreach (Collider collider in colliders)
+        {
+            if(collider.TryGetComponent<Player>(out var target))
+            {
+                Explosion(target);
+            }
+        }
+    }
+
+    private void Explosion(IDamagable target)
+    {
+        target.TakeDamage(_damage);
+        Destroy(gameObject);
+    }
+
+    private IEnumerator LifeTime()
+    {
+        yield return new WaitForSeconds(_lifeTime);
+
+        Destroy(gameObject);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, _triggerRadius);
     }
 }
