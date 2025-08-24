@@ -19,13 +19,11 @@ public class MineUltimate : UltimateBase
     [SerializeField] private float _mineDamage;
     [SerializeField] private float _mineActivateRadius;
 
-    private List<Vector3> _spawnPoints = new List<Vector3>();
+    private List<Vector3> _spawnPoints;
 
     public override void Initialized(Player player)
     {
         base.Initialized(player);
-
-        _spawnPoints.Clear();
     }
 
     protected override void Execute()

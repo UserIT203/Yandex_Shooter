@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: ExpsosionEnemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemyConfig
   <Speed>k__BackingField:
-    _baseValue: 2.5
+    _baseValue: 2
     _modificators: []
   <MaxHealth>k__BackingField:
     _baseValue: 20
     _modificators: []
   <Damage>k__BackingField:
-    _baseValue: 10
+    _baseValue: 5
     _modificators: []
   <RadiusAttack>k__BackingField:
     _baseValue: 0.5

@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3579,7 +3578,6 @@ MonoBehaviour:
   _capabiliteManager: {fileID: 1282014482}
   _maxXP: 10
   _increaseMaxXPValue: 50
-  _xpItem: {fileID: 11400000, guid: 51127cdca6bbbbd498789f9cea060092, type: 2}
   _playerXPUI: {fileID: 1896681017}
 --- !u!4 &1282014480
 Transform:
@@ -3664,7 +3662,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scriptableObjectInstallers: []
+  _scriptableObjectInstallers:
+  - {fileID: 11400000, guid: 7dbee1fd17b75014c93bfabc59b3dc54, type: 2}
   _monoInstallers:
   - {fileID: 1428977685}
   _installerPrefabs: []
@@ -3725,6 +3724,7 @@ MonoBehaviour:
     m_Bits: 1
   _player: {fileID: 1497633502}
   _playerConfig: {fileID: 11400000, guid: df63534a5d01cd2408674f7e2480a6a8, type: 2}
+  _gameManager: {fileID: 1282014479}
 --- !u!1 &1497633494
 GameObject:
   m_ObjectHideFlags: 0

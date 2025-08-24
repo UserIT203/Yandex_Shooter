@@ -1,5 +1,7 @@
+using DG.Tweening.Core.Easing;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -20,16 +22,13 @@ public class SceneInstaller : MonoInstaller
     [Header("Player Links")]
     [SerializeField] private Player _player;
     [SerializeField] private PlayerConfig _playerConfig;
+    [Header("Class Handler")]
+    [SerializeField] private GameManager _gameManager;
 
     public override void InstallBindings()
     {
         BindPlayerSettings();
-        //GlobalBinding();
-    }
-
-    private void GlobalBinding()
-    {
-        Container.BindInterfacesAndSelfTo<MobileInput>().AsSingle().NonLazy();
+        BindClassItemHandler();
     }
 
     private void BindPlayerSettings()
@@ -72,6 +71,11 @@ public class SceneInstaller : MonoInstaller
 
         Container.Bind<IShootingSystem>().To<MobileShootingSystem>().AsSingle()
             .WithArguments(_reloadButton, _ultimateButton);
+    }
+
+    private void BindClassItemHandler()
+    {
+        Container.Bind<IItemHandler>().FromInstance(_gameManager).WhenInjectedInto<XPItem>();
     }
 }
 

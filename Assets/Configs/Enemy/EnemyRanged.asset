@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: EnemyRanged
   m_EditorClassIdentifier: Assembly-CSharp::EnemyConfig
   <Speed>k__BackingField:
-    _baseValue: 2
+    _baseValue: 1.2
     _modificators: []
   <MaxHealth>k__BackingField:
-    _baseValue: 30
+    _baseValue: 20
     _modificators: []
   <Damage>k__BackingField:
-    _baseValue: 15
+    _baseValue: 5
     _modificators: []
   <RadiusAttack>k__BackingField:
     _baseValue: 2.5
