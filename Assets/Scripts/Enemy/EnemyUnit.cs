@@ -15,6 +15,7 @@ public abstract class EnemyUnit : MonoBehaviour, IDamagable
     protected IEnemyObserver _observer;
     protected CustomPool<Bullet> _bulletPool;
     protected LootBag _lootBag;
+    protected ItemUseContext _context;
     protected NavMeshAgent _agent;
 
     public EnemyStats Stats { get; private set; }
@@ -41,11 +42,12 @@ public abstract class EnemyUnit : MonoBehaviour, IDamagable
     }
 
     public virtual void Initialized(Player player, IEnemyObserver observer,
-        CustomPool<Bullet> bulletPool)
+        CustomPool<Bullet> bulletPool, ItemUseContext context)
     {
         _player = player;
         _observer = observer;
         _bulletPool = bulletPool;
+        _context = context;
 
         Stats = new EnemyStats(_config);
         Stats.onDie += Die;
@@ -55,7 +57,7 @@ public abstract class EnemyUnit : MonoBehaviour, IDamagable
 
     protected virtual void Die()
     {
-        _lootBag.CreateItems(_player);
+        _lootBag.CreateItems(_player, _context);
         Destroy(gameObject);
         
         Stats.onDie -= Die;

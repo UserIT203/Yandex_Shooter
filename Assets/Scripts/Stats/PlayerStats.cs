@@ -29,4 +29,14 @@ public class PlayerStats : CharacterStats
     }
 
     public void SetInvulnerableStatus(bool isInvulnerable) => _isInvulnerable = isInvulnerable;
+
+    public void Heal(float health)
+    {
+        if(CurrentHealth >= MaxHealth.GetValue()) return;
+
+        float oldHealth = CurrentHealth;
+        CurrentHealth = Mathf.Clamp(CurrentHealth + health, 0, MaxHealth.GetValue());
+        
+        onChangeHealth?.Invoke(CurrentHealth, MaxHealth.GetValue());
+    }
 }

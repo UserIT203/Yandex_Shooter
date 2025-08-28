@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using Zenject;
 
-public class Player : MonoBehaviour, IDamagable
+public class Player : MonoBehaviour, IDamagable, IItemHandler
 {
     [Header("Player Settings")]
     [SerializeField] private LayerMask _picUpItemMask;
@@ -61,5 +61,10 @@ public class Player : MonoBehaviour, IDamagable
     public void TakeDamage(float damage)
     {
         _characterStats?.TakeDamage(damage);
+    }
+
+    public void HandleActionWithValue(float value)
+    {
+        _characterStats.Heal(value);
     }
 }

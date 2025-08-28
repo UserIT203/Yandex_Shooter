@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour, IItemHandler
 
     private float _currentXP;
 
-    public void HandleAction(float value)
+    public void HandleActionWithValue(float value)
     {
         _currentXP += value;
 

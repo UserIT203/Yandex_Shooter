@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using Zenject;
 
 public class Spawner : MonoBehaviour
 {
+    [Inject] private ItemUseContext _itemUseContext;
+
     [Header("Main Settings")]
     [SerializeField] private List<Enemy> _enemiesPrefab;
     [SerializeField] private List<Boss> _bosesPrefab;
@@ -28,7 +30,7 @@ public class Spawner : MonoBehaviour
     private Coroutine _spawnCoroutine;
     private IEnemyObserver _waveManager;
     private CustomPool<Bullet> _enemyBulletPool;
-
+    
     private void Awake()
     {
         _enemyBulletPool = new CustomPool<Bullet>(
@@ -58,7 +60,7 @@ public class Spawner : MonoBehaviour
         Vector3 spawnPosition = GetSpawnPosition();
 
         Boss newBoss = Instantiate(_bosesPrefab[randomValue], spawnPosition, Quaternion.identity);
-        newBoss.Initialized(_player, _waveManager, _enemyBulletPool);
+        newBoss.Initialized(_player, _waveManager, _enemyBulletPool, _itemUseContext);
     }
 
     private void StartSpawningEnemy()
@@ -98,7 +100,7 @@ public class Spawner : MonoBehaviour
         Enemy newEnemy = Instantiate(_enemiesPrefab[(int)enemyType.EnemyType],
             spawnPosition, Quaternion.identity);
 
-        newEnemy.Initialized(_player, _waveManager, _enemyBulletPool);
+        newEnemy.Initialized(_player, _waveManager, _enemyBulletPool, _itemUseContext);
 
         for (int i = 0; i < _currentWave; i++)
         {

@@ -8,22 +8,21 @@ public class XPItem: Item
 {
     [SerializeField] private float _xpCount;
 
-    [Inject]
-    public void Construct(IItemHandler handler)
+    public override void Use(ItemUseContext context)
     {
-        Debug.Log("Handler name " + handler.GetType().Name);
-        _handler = handler;
-    }
-
-    public override void Use()
-    {
-        base.Use();
-        _handler?.HandleAction(_xpCount);
+        context.GetHandler(HandlerType)?.HandleActionWithValue(_xpCount);
+        base.Use(context);
     }
 }
 
 [CreateAssetMenu(fileName = "Heatlh Item", menuName = "Items/Health Item")]
 public class HealthItem : Item
 {
+    [SerializeField] private float _healthValue;
 
+    public override void Use(ItemUseContext context)
+    {
+        context.GetHandler(HandlerType)?.HandleActionWithValue(_healthValue);
+        base.Use(context);
+    }
 }

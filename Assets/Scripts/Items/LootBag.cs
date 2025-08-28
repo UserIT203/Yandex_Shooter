@@ -79,7 +79,7 @@ public class LootBag : MonoBehaviour
         return randomPosition;
     }
 
-    public void CreateItems(Player player)
+    public void CreateItems(Player player, ItemUseContext context)
     {
         _spawnedPositions.Clear();
 
@@ -90,7 +90,7 @@ public class LootBag : MonoBehaviour
             if (_droppedItems[i] == null) continue;
 
             GameObject obj = Instantiate(_droppedItems[i].Item.ItemPrefab, randomPosition, Quaternion.identity);
-            obj.AddComponent<ItemPickUp>().Create(player, _droppedItems[i].Item);
+            obj.AddComponent<ItemPickUp>().Create(player, _droppedItems[i].Item, context);
             _spawnedPositions.Add(randomPosition);
         }
     }

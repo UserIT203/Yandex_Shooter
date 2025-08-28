@@ -17,14 +17,14 @@ public class Boss : EnemyUnit
         _bossConfig.Ultimate.Update();
     }
 
-    public override void Initialized(Player player, IEnemyObserver observer, CustomPool<Bullet> bulletPool)
+    public override void Initialized(Player player, IEnemyObserver observer, CustomPool<Bullet> bulletPool, ItemUseContext context)
     {
         _bossConfig = _config as BossConfig;
 
         _bossConfig.Ultimate.Initialized(player);
         _bossConfig.Ultimate.SetBoss(this);
 
-        base.Initialized(player, observer, bulletPool);
+        base.Initialized(player, observer, bulletPool, context);
     }
 
     protected override void InitializedFSM()

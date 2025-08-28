@@ -11,6 +11,7 @@ public class ItemPickUp : MonoBehaviour
 
     private Transform _target;
     private Item _item;
+    private ItemUseContext _context;
 
     private bool _hasInteract = false;
 
@@ -22,10 +23,11 @@ public class ItemPickUp : MonoBehaviour
 
     public void Interact() => _hasInteract = true;
 
-    public void Create(Player player, Item item)
+    public void Create(Player player, Item item, ItemUseContext context)
     {
         _target = player.transform;
         _item = item;
+        _context = context;
     }
 
     private void AttractToPlayer()
@@ -48,7 +50,7 @@ public class ItemPickUp : MonoBehaviour
 
     private void UseItem()
     {
-        _item.Use();
+        _item.Use(_context);
         Destroy(gameObject);
     }
 }

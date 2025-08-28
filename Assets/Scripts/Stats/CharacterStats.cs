@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CharacterStats
 {
@@ -11,7 +12,7 @@ public class CharacterStats
 
     protected Config _config;
    
-    public event Action<float, float> onChangeHealth;
+    public UnityAction<float, float> onChangeHealth;
     public event Action onDie;
 
     public CharacterStats(Config config)

@@ -28,7 +28,7 @@ public class SceneInstaller : MonoInstaller
     public override void InstallBindings()
     {
         BindPlayerSettings();
-        BindClassItemHandler();
+        BindItemInstaller();
     }
 
     private void BindPlayerSettings()
@@ -73,9 +73,17 @@ public class SceneInstaller : MonoInstaller
             .WithArguments(_reloadButton, _ultimateButton);
     }
 
-    private void BindClassItemHandler()
+    private void BindItemInstaller()
     {
-        Container.Bind<IItemHandler>().FromInstance(_gameManager).WhenInjectedInto<XPItem>();
+        Container.Bind<GameManager>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<ItemUseContext>().FromMethod(CreateItemUseContext).AsSingle();
+    }
+
+    private ItemUseContext CreateItemUseContext(InjectContext ctx)
+    {
+        var player = ctx.Container.Resolve<Player>();
+        var gameManager = ctx.Container.Resolve<GameManager>();
+        return new ItemUseContext(player, gameManager);
     }
 }
 

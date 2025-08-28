@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Heatlh Item
+  m_EditorClassIdentifier: Assembly-CSharp::HealthItem
+  <Name>k__BackingField: Heal
+  <ItemPrefab>k__BackingField: {fileID: 8075072259797123916, guid: 66231adca57543d4c8eed9c75310744b, type: 3}
+  <HandlerType>k__BackingField: 0
+  _healthValue: 10

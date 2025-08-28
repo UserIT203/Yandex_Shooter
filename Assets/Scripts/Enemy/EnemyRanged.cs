@@ -6,11 +6,6 @@ public class EnemyRanged : Enemy
 {
     [SerializeField] private Transform _firePoint;
 
-    public override void Initialized(Player player, IEnemyObserver observer, CustomPool<Bullet> bulletPool)
-    {
-        base.Initialized(player, observer, bulletPool);
-    }
-
     protected override void InitializedFSM()
     {
         _fsm = new FSM();
