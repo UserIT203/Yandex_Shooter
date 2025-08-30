@@ -21,6 +21,7 @@ public class PlayerCombat : MonoBehaviour
 
     public LayerMask ShootMask => _shootMask;
     public Transform FirePoint => _firePoint;
+    public CustomPool<Bullet> BulletPool => _bulletPool;
 
     public event Action onSetWeapon;
 

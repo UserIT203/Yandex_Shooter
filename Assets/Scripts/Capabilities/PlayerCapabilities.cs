@@ -12,6 +12,12 @@ public class PlayerCapabilities : MonoBehaviour
 
     private Dictionary<CapabilitiesType, ICapabilitie> _capabilities = new Dictionary<CapabilitiesType, ICapabilitie>();
 
+    [Inject]
+    public void Construct(WaveManager waveManager)
+    {
+        waveManager.onStartWave += CreateTurret;
+    }
+
     private void Awake()
     {
         _capabilities.Add(_capabilitiUpgrades[0].CapabilitieType,
@@ -28,12 +34,26 @@ public class PlayerCapabilities : MonoBehaviour
            new DashCapabilitie(_capabilitiUpgrades[2].CapabilitieConfigs,
                _capabilitiUpgrades[2].DefaultConfig,
                GetComponent<Player>()));
+
+        _capabilities.Add(_capabilitiUpgrades[3].CapabilitieType,
+           new TurretCapability(_capabilitiUpgrades[3].CapabilitieConfigs,
+               _capabilitiUpgrades[3].DefaultConfig,
+               GetComponent<Player>()));
     }
 
     public ICapabilitie GetCapabilite(CapabilitiesType type)
     {
         return _capabilities[type];
     }
+
+    #region Turret
+
+    private void CreateTurret()
+    {
+        GetCapabilite(CapabilitiesType.Turret).Activate(Vector3.zero);
+    }
+
+    #endregion
 
     #region Sword
 
@@ -108,5 +128,6 @@ public enum CapabilitiesType
 {
     Weapon,
     SwordAround,
-    Dash
+    Dash,
+    Turret
 }

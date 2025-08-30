@@ -28,7 +28,7 @@ public class Spawner : MonoBehaviour
     private List<EnemyInSpawner> _enemies;
     private int _currentEnemyCount;
     private Coroutine _spawnCoroutine;
-    private IEnemyObserver _waveManager;
+    private IEnemyObserver _enemiesObserver;
     private CustomPool<Bullet> _enemyBulletPool;
     
     private void Awake()
@@ -47,7 +47,7 @@ public class Spawner : MonoBehaviour
         _enemyCount = enemiesCount;
         _currentWave = currentWave;
 
-        _waveManager = enemyObserver;
+        _enemiesObserver = enemyObserver;
         _enemies = enemies;
         _enemyCount = enemiesCount;
 
@@ -60,7 +60,7 @@ public class Spawner : MonoBehaviour
         Vector3 spawnPosition = GetSpawnPosition();
 
         Boss newBoss = Instantiate(_bosesPrefab[randomValue], spawnPosition, Quaternion.identity);
-        newBoss.Initialized(_player, _waveManager, _enemyBulletPool, _itemUseContext);
+        newBoss.Initialized(_player, _enemiesObserver, _enemyBulletPool, _itemUseContext);
     }
 
     private void StartSpawningEnemy()
@@ -100,7 +100,7 @@ public class Spawner : MonoBehaviour
         Enemy newEnemy = Instantiate(_enemiesPrefab[(int)enemyType.EnemyType],
             spawnPosition, Quaternion.identity);
 
-        newEnemy.Initialized(_player, _waveManager, _enemyBulletPool, _itemUseContext);
+        newEnemy.Initialized(_player, _enemiesObserver, _enemyBulletPool, _itemUseContext);
 
         for (int i = 0; i < _currentWave; i++)
         {

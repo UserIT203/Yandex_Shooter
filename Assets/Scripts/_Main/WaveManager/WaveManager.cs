@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -13,6 +14,8 @@ public class WaveManager : MonoBehaviour, IEnemyObserver
     private int _currentEnemiesInWave;
     private bool _bossDie;
 
+    public event Action onStartWave;
+
     private void Start()
     {
         _maxWave = _waves.Count;
@@ -21,7 +24,6 @@ public class WaveManager : MonoBehaviour, IEnemyObserver
 
     public void OnEnemyDestroed()
     {
-        Debug.Log("Enemy Die");
         _currentEnemiesInWave--;
 
         if (_currentEnemiesInWave <= 0 && _waves[_currentWave].HasBoss == true)
@@ -65,6 +67,8 @@ public class WaveManager : MonoBehaviour, IEnemyObserver
         _currentEnemiesInWave = _waves[_currentWave].EnemyCount;
         _spawner.StartSpawning(_waves[_currentWave].Enemies, _currentEnemiesInWave,
             this, _currentWave);
+
+        onStartWave?.Invoke();
     }
 }
 

@@ -35,6 +35,7 @@ public class SceneInstaller : MonoInstaller
     {
         Container.Bind<PlayerConfig>().FromInstance(_playerConfig);
         Container.Bind<Player>().FromInstance(_player).AsSingle();
+        Container.Bind<WaveManager>().FromComponentInHierarchy().AsSingle();
 
         switch (_platform)
         {

@@ -3608,8 +3608,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waves:
   - Enemies:
-    - EnemyType: 2
-      EnemyCount: 1
+    - EnemyType: 0
+      EnemyCount: 5
     HasBoss: 1
   - Enemies:
     - EnemyType: 0
@@ -3883,6 +3883,11 @@ MonoBehaviour:
     CapabilitieConfigs:
     - {fileID: 11400000, guid: e7c05a5c9e560924b884fc1dd2cecf9f, type: 2}
     - {fileID: 11400000, guid: eccf5039c11678940b9e4ec7f1dfe011, type: 2}
+  - CapabilitieType: 3
+    DefaultConfig: {fileID: 11400000, guid: e02ffa7ea8fd88544beae4f56dc1686c, type: 2}
+    CapabilitieConfigs:
+    - {fileID: 11400000, guid: e02ffa7ea8fd88544beae4f56dc1686c, type: 2}
+    - {fileID: 11400000, guid: 79f3c8ef88ef53a4ca5987ba3c7efd1d, type: 2}
   _swords:
   - {fileID: 1083357499}
   - {fileID: 206096244}

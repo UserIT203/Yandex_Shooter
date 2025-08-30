@@ -22,6 +22,9 @@ public abstract class EnemyUnit : MonoBehaviour, IDamagable
 
     private void Awake()
     {
+        Stats = new EnemyStats(_config);
+        Stats.onDie += Die;
+
         _lootBag = GetComponent<LootBag>();
         _agent = GetComponent<NavMeshAgent>();
     }
@@ -48,9 +51,6 @@ public abstract class EnemyUnit : MonoBehaviour, IDamagable
         _observer = observer;
         _bulletPool = bulletPool;
         _context = context;
-
-        Stats = new EnemyStats(_config);
-        Stats.onDie += Die;
 
         InitializedFSM();
     }

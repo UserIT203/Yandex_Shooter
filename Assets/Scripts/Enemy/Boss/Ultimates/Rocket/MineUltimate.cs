@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Zenject.SpaceFighter;
 
 [CreateAssetMenu(fileName = "Mine", menuName = "Boss Ultimate/Mine")]
 public class MineUltimate : UltimateBase
@@ -58,13 +57,22 @@ public class MineUltimate : UltimateBase
 
     private void GetSpawnPoints()
     {
-        _spawnPoints.Clear();
+        if (_spawnPoints == null)
+            _spawnPoints = new List<Vector3>();
+        else
+            _spawnPoints.Clear();
 
-        for (int i = 0; i < _maxMineCount; i++)
+        int attempts = 0;
+        int maxAttempts = _maxMineCount * 100;
+        int currentCount = 0;
+
+        while (currentCount < _maxMineCount && attempts < maxAttempts)
         {
+            attempts++;
             Vector3 spawnPosition = GetRandomPosition();
 
             bool validPosition = true;
+
             foreach (var pos in _spawnPoints)
             {
                 if (Vector3.Distance(spawnPosition, pos) < _minDistance)
@@ -74,10 +82,16 @@ public class MineUltimate : UltimateBase
                 }
             }
 
-            if (validPosition == true)
+            if (validPosition)
+            {
                 _spawnPoints.Add(spawnPosition);
-            else
-                i--;
+                currentCount++;
+            }
+        }
+
+        while (_spawnPoints.Count < _maxMineCount)
+        {
+            _spawnPoints.Add(GetRandomPosition());
         }
     }
 
