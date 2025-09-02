@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using Zenject;
 
@@ -11,6 +8,8 @@ public class Player : MonoBehaviour, IDamagable, IItemHandler
     [SerializeField] private LayerMask _picUpItemMask;
 
     private PlayerStats _characterStats;
+
+    public event Action<float> onTakeDamage;
 
     public PlayerStats Stats => _characterStats;
 
@@ -60,6 +59,7 @@ public class Player : MonoBehaviour, IDamagable, IItemHandler
 
     public void TakeDamage(float damage)
     {
+        onTakeDamage?.Invoke(damage);
         _characterStats?.TakeDamage(damage);
     }
 

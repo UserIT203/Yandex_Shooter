@@ -15,11 +15,19 @@ public class HUD : MonoBehaviour
     [Header("Animation Settings")]
     [SerializeField] private float _animationDuration;
 
+    private Player _player;
+    private IWeaponHUD _weaponHUD;
+
     [Inject]
-    public void Constract(Player player)
+    public void Constract(Player player, IWeaponHUD weaponHUD)
     {
+        _player = player;
+
         player.Stats.onChangeHealth += ChangeVisiblePlayerHealth;
         ChangeVisiblePlayerHealth(player.Stats.MaxHealth.GetValue(), player.Stats.MaxHealth.GetValue());
+        
+        _weaponHUD = weaponHUD;
+        player.GetComponent<PlayerCombat>().onSetWeapon += _weaponHUD.SetWeapon;
     }
 
     private void ChangeVisiblePlayerHealth(float currentHealth, float maxHealth)

@@ -14,7 +14,7 @@ public class WaveManager : MonoBehaviour, IEnemyObserver
     private int _currentEnemiesInWave;
     private bool _bossDie;
 
-    public event Action onStartWave;
+    public event Action<int> onStartWave;
 
     private void Start()
     {
@@ -68,7 +68,7 @@ public class WaveManager : MonoBehaviour, IEnemyObserver
         _spawner.StartSpawning(_waves[_currentWave].Enemies, _currentEnemiesInWave,
             this, _currentWave);
 
-        onStartWave?.Invoke();
+        onStartWave?.Invoke(_currentWave);
     }
 }
 

@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UIElements;
+using System;
 
 public interface IDamagable
 {
+    public event Action<float> onTakeDamage;
     public void TakeDamage(float damage);
 }

@@ -23,7 +23,7 @@ public class PlayerCombat : MonoBehaviour
     public Transform FirePoint => _firePoint;
     public CustomPool<Bullet> BulletPool => _bulletPool;
 
-    public event Action onSetWeapon;
+    public event Action<WeaponBase> onSetWeapon;
 
     [Inject]
     public void Construct(IShootingSystem shootingSystem, LayerMask mask)
@@ -90,6 +90,6 @@ public class PlayerCombat : MonoBehaviour
         _player.Stats.ApplyModifierFromWeapon(weaponConfig);
         _weapon.SetWeapon(weaponConfig);
 
-        onSetWeapon?.Invoke();
+        onSetWeapon?.Invoke(_weapon);
     }
 }

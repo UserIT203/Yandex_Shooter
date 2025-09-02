@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.IO.LowLevel.Unsafe;
@@ -17,6 +18,8 @@ public abstract class EnemyUnit : MonoBehaviour, IDamagable
     protected LootBag _lootBag;
     protected ItemUseContext _context;
     protected NavMeshAgent _agent;
+
+    public event Action<float> onTakeDamage;
 
     public EnemyStats Stats { get; private set; }
 
@@ -41,6 +44,7 @@ public abstract class EnemyUnit : MonoBehaviour, IDamagable
 
     public virtual void TakeDamage(float damage)
     {
+        onTakeDamage?.Invoke(damage);
         Stats.TakeDamage(damage);
     }
 

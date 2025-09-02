@@ -2,9 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public interface IUltimate
 {
+    public Image UltimateIcon { get; }
     public string UltimateName { get; }
     public float UltimateDuration { get; }
     public float Cooldown { get; }

@@ -13,6 +13,7 @@ public class WeaponBase
     public int CurrentBulletInMagazine => _currentBulletInMagazine;
 
     public event Action<int> onShoot;
+    public event Action<int, int> onBulletInMagazine;
 
     public WeaponBase(WeaponConfig config, MonoBehaviour coroutineRunner)
     {
@@ -44,6 +45,7 @@ public class WeaponBase
             Reload();
 
         onShoot?.Invoke(_weaponConfig.BulletShootingCount);
+        onBulletInMagazine?.Invoke(_currentBulletInMagazine, _weaponConfig.BulletCount);
 
         return true;
     }

@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public abstract class UltimateBase : ScriptableObject, IUltimate
 {
+    [field: SerializeField] public Image UltimateIcon { get; protected set; }
     [field: SerializeField] public string UltimateName { get; protected set; }
 
     [field: SerializeField] public float Cooldown { get; protected set; }

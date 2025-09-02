@@ -19,6 +19,7 @@ public class SceneInstaller : MonoInstaller
     [SerializeField] private Button _ultimateButton;
     [Header("Desktop Settings")]
     [SerializeField] private LayerMask _desktopShootingLayerMask;
+    [SerializeField] private DesktopWeaponHUD _desktopWeaponHUD;
     [Header("Player Links")]
     [SerializeField] private Player _player;
     [SerializeField] private PlayerConfig _playerConfig;
@@ -56,6 +57,7 @@ public class SceneInstaller : MonoInstaller
         Container.Bind<LayerMask>().FromInstance(_desktopShootingLayerMask).AsSingle();
         Container.Bind<IShootingSystem>().To<PCShootingSystem>().AsSingle();
         Container.Bind<PlayerCombat>().FromInstance(_player.GetComponent<PlayerCombat>()).AsSingle();
+        Container.Bind<IWeaponHUD>().FromInstance(_desktopWeaponHUD).AsSingle();
     }
 
     private void BindMobileInput()

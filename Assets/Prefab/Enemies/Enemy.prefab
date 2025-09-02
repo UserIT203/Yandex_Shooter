@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8075621531653832372}
   - component: {fileID: 1808749159029471872}
+  - component: {fileID: 7345479497490487399}
   m_Layer: 6
   m_Name: GFX
   m_TagString: Untagged
@@ -84,6 +85,56 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7345479497490487399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3496732889766352176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c24409ebc6778624c898a1e5e012ce74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hitMaterialTemplate: {fileID: 2100000, guid: 55d1f0f254a78a646b1d6cb01f218cdf, type: 2}
+  _flashDuration: 0.15
+  _flashColor: {r: 1, g: 0.995283, b: 0.995283, a: 0.79607844}
+  _intensityCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0041656494
+      value: 0.5
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.7111703
+      value: 0.83882517
+      inSlope: 0.29417434
+      outSlope: 0.29417434
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.24564235
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _canPlayFloatingText: 1
+  _floatingTextPrefab: {fileID: 957923214053988011, guid: f1a06c3450aafc141a21e886b5305caa, type: 3}
 --- !u!1 &5071789452328766044
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,11 +245,9 @@ MonoBehaviour:
     Probability: 100
   - Item: {fileID: 11400000, guid: 51127cdca6bbbbd498789f9cea060092, type: 2}
     Probability: 100
-  - Item: {fileID: 11400000, guid: 9d1572b464dcf7f46b5e13973bfc8366, type: 2}
-    Probability: 100
-  - Item: {fileID: 11400000, guid: 9d1572b464dcf7f46b5e13973bfc8366, type: 2}
-    Probability: 100
-  _maxCreateItem: 2
+  - Item: {fileID: 11400000, guid: e2a38337cd4a2a641a5817d71c47821c, type: 2}
+    Probability: 80
+  _maxCreateItem: 3
   _createItemRadius: 1
   _minDistanceBetweenObjects: 0.2
 --- !u!1001 &2707022581452766691

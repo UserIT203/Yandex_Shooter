@@ -7,20 +7,19 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     [Header("UI References")]
-    public Image _fillImage;
-    public Image _backgroundFillImage;
-    public Image _flashImage;
+    [SerializeField] private Image _fillImage;
+    [SerializeField] private Image _backgroundFillImage;
+    [SerializeField] private Image _flashImage;
 
     [Header("Animation Settings")]
-    public float _fillDuration = 0.4f;
-    public float _delayDuration = 0.6f;
-    public float _flashDuration = 0.2f;
+    [SerializeField] private float _fillDuration = 0.4f;
+    [SerializeField] private float _delayDuration = 0.6f;
+    [SerializeField] private float _flashDuration = 0.2f;
 
     [Header("Color Settings")]
-    public Gradient _healthGradient;
+    [SerializeField] private Gradient _healthGradient;
 
     private Tweener _fillTween, _delayTween, _flashTween;
-    private float _currentHealth, _maxHealth;
 
     private void OnEnable()
     {

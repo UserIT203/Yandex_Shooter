@@ -24,7 +24,7 @@ public class DualWeaponUltimate : UltimateBase, IDisposable
     protected override void Execute()
     {
         base.Execute();
-        SetModificator();
+        SetModificator(null);
     }
 
     protected override void CleanUp()
@@ -35,7 +35,7 @@ public class DualWeaponUltimate : UltimateBase, IDisposable
         Debug.Log("[END] Player Damage " + _player.Stats.Damage.GetValue());
     }
 
-    private void SetModificator()
+    private void SetModificator(WeaponBase weapon)
     {
         if(IsStarted == true)
         {

@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class PlayerXPUI : MonoBehaviour
 {
+    [SerializeField] private TMP_Text _levelText;
     [SerializeField] private Slider _slider;
     [SerializeField] private float _animationDuration = 0.2f;
 
