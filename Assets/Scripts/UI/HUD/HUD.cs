@@ -28,6 +28,7 @@ public class HUD : MonoBehaviour
         
         _weaponHUD = weaponHUD;
         player.GetComponent<PlayerCombat>().onSetWeapon += _weaponHUD.SetWeapon;
+        _weaponHUD.SetUltimate(player.Stats.Ultimate);
     }
 
     private void ChangeVisiblePlayerHealth(float currentHealth, float maxHealth)

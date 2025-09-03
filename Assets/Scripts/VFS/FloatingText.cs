@@ -17,6 +17,11 @@ public class FloatingText : MonoBehaviour
     private TextMesh _textMesh;
     private Sequence _animationSequence;
 
+    private void OnDisable()
+    {
+        _animationSequence?.Kill();
+    }
+
     private void Awake()
     {
         _textMesh = GetComponent<TextMesh>();
@@ -48,5 +53,10 @@ public class FloatingText : MonoBehaviour
         _animationSequence.OnComplete(() =>Destroy(gameObject));
 
         _animationSequence.Play();
+    }
+
+    private void OnDestroy()
+    {
+        _animationSequence?.Kill();
     }
 }

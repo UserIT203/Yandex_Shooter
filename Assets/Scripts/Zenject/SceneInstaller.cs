@@ -12,14 +12,14 @@ public class SceneInstaller : MonoInstaller
     [SerializeField] private Platform _platform;
     [Header("Mobile Settings")]
     [SerializeField] private LayerMask _mobileShootingLayerMask;
-    [SerializeField] private CanvasGroup _mobileInput;
+    [SerializeField] private WeaponHUD _mobileInput;
     [SerializeField] private Joystick _joystick;
     [SerializeField] private Button _reloadButton;
     [SerializeField] private Button _dashButton;
     [SerializeField] private Button _ultimateButton;
     [Header("Desktop Settings")]
     [SerializeField] private LayerMask _desktopShootingLayerMask;
-    [SerializeField] private DesktopWeaponHUD _desktopWeaponHUD;
+    [SerializeField] private WeaponHUD _desktopWeaponHUD;
     [Header("Player Links")]
     [SerializeField] private Player _player;
     [SerializeField] private PlayerConfig _playerConfig;
@@ -51,7 +51,9 @@ public class SceneInstaller : MonoInstaller
 
     private void BindDesktopInput()
     {
-        _mobileInput.Deactivate();
+        _mobileInput.gameObject.SetActive(false);
+        _desktopWeaponHUD.gameObject.SetActive(true);
+
         Container.Bind<IInput>().To<DesktopInput>().AsSingle();
 
         Container.Bind<LayerMask>().FromInstance(_desktopShootingLayerMask).AsSingle();
@@ -62,7 +64,8 @@ public class SceneInstaller : MonoInstaller
 
     private void BindMobileInput()
     {
-        _mobileInput.Activate();
+        _mobileInput.gameObject.SetActive(true);
+        _desktopWeaponHUD.gameObject.SetActive(false);
 
         Container.Bind<Joystick>().FromInstance(_joystick);
 
@@ -74,6 +77,8 @@ public class SceneInstaller : MonoInstaller
 
         Container.Bind<IShootingSystem>().To<MobileShootingSystem>().AsSingle()
             .WithArguments(_reloadButton, _ultimateButton);
+
+        Container.Bind<IWeaponHUD>().FromInstance(_mobileInput).AsSingle();
     }
 
     private void BindItemInstaller()

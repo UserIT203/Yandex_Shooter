@@ -11,7 +11,7 @@ public interface IWeaponHUD
     public Image IconUltimate { get; }
     public TMP_Text BulletLabel { get; }
 
-    public void SetUltimate(UltimateBase ultimate);
+    public void SetUltimate(IUltimate ultimate);
     public void SetWeapon(WeaponBase weapon);
-    public void ChangeBulletCount(int currentCount, int totalCount);
+    public void PlayChangeBulletAnimation(int currentCount, int totalCount);
 }

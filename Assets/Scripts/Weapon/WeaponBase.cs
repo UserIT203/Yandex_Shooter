@@ -65,6 +65,7 @@ public class WeaponBase
 
         _currentBulletInMagazine = _weaponConfig.BulletCount;
         _isReloading = false;
+        onBulletInMagazine?.Invoke(_currentBulletInMagazine, _currentBulletInMagazine);
     }
 }
 

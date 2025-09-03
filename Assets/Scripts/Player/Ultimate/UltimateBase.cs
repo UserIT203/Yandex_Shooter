@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public abstract class UltimateBase : ScriptableObject, IUltimate
 {
-    [field: SerializeField] public Image UltimateIcon { get; protected set; }
+    [field: SerializeField] public Sprite UltimateIcon { get; protected set; }
     [field: SerializeField] public string UltimateName { get; protected set; }
 
     [field: SerializeField] public float Cooldown { get; protected set; }
@@ -21,6 +21,7 @@ public abstract class UltimateBase : ScriptableObject, IUltimate
 
     private float _timer;
 
+    public event Action<float> onUltimateTimer;
     public event Action onUltimateEnd;
 
     public virtual void Initialized(Player player)
@@ -44,6 +45,7 @@ public abstract class UltimateBase : ScriptableObject, IUltimate
     public void Update()
     {
         _timer -= Time.deltaTime;
+        onUltimateTimer?.Invoke(_timer);
     }
 
     protected virtual void Execute()
