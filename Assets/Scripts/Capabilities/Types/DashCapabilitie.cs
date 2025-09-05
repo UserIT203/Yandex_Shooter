@@ -23,15 +23,12 @@ public class DashCapabilitie : CapabilitieBase
 
     public override void Activate(Vector3 direction)
     {
-        Debug.Log("Dash Status " + _canDash + "\nUnlock " + IsUnlock);
-
         if (_canDash == false || IsUnlock == false)
             return;
 
         _canDash = false;
 
-        Debug.Log("Coroutine");
-        this.Player.StartCoroutine(StartDash(direction));
+        Player.StartCoroutine(StartDash(direction));
     }
 
     protected override void SetUpgrade(CapabilitieConfig config)
@@ -42,11 +39,19 @@ public class DashCapabilitie : CapabilitieBase
 
     private IEnumerator StartDash(Vector3 direction)
     {
-        Debug.Log("Dash Active");
         _characterController.Move(direction * _dashForce);
 
-        yield return new WaitForSeconds(_delay);
+        float timer = 0f;
 
+        OnCapabilitieTimer(timer, _delay);
+
+        while (timer < _delay)
+        {
+            timer += Time.deltaTime;
+            OnCapabilitieTimer(timer, _delay);
+            yield return null;
+        }
+        
         _canDash = true;
     }
 }

@@ -6,6 +6,7 @@ using Zenject;
 public class Spawner : MonoBehaviour
 {
     [Inject] private ItemUseContext _itemUseContext;
+    [Inject] private BossUI _bossUI;
 
     [Header("Main Settings")]
     [SerializeField] private List<Enemy> _enemiesPrefab;
@@ -59,7 +60,10 @@ public class Spawner : MonoBehaviour
         int randomValue = Random.Range(0, _bosesPrefab.Count);
         Vector3 spawnPosition = GetSpawnPosition();
 
-        Boss newBoss = Instantiate(_bosesPrefab[randomValue], spawnPosition, Quaternion.identity);
+        Boss bossPrefab = _bosesPrefab[randomValue];
+        _bossUI.Initialized(bossPrefab);
+
+        Boss newBoss = Instantiate(bossPrefab, spawnPosition, Quaternion.identity);
         newBoss.Initialized(_player, _enemiesObserver, _enemyBulletPool, _itemUseContext);
     }
 

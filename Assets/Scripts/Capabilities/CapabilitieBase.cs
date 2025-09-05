@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class CapabilitieBase: ICapabilitie
 {
@@ -13,6 +15,10 @@ public abstract class CapabilitieBase: ICapabilitie
     public List<CapabilitieConfig> Upgrades { get; protected set; }
 
     public CapabilitieConfig DefaultConfig { get; protected set; }
+
+    public event Action onUpgrade;
+    public event Action onUnlock;
+    public event Action<float, float> onCapabilitieTimer;
 
     public CapabilitieBase(List<CapabilitieConfig> upgrades,
         CapabilitieConfig defaultConfig, Player player)
@@ -32,6 +38,8 @@ public abstract class CapabilitieBase: ICapabilitie
 
         IsUnlock = true;
         Level = 1;
+       
+        onUnlock?.Invoke();
     }
 
     public bool TryUpgrade()
@@ -41,16 +49,23 @@ public abstract class CapabilitieBase: ICapabilitie
         Level++;
 
         SetUpgrade(Upgrades[Level - 1]);
+        onUpgrade?.Invoke();
 
         return true;
     }
 
     public CapabilitieConfig GetCurrentUpgradeConfig()
     {
-        return Level == Upgrades.Count ? Upgrades[Level - 1] : Upgrades[Level];
+        int index = Mathf.Clamp(Level, 0, Upgrades.Count - 1);
+        return Upgrades[index];
     }
 
     protected abstract void SetUpgrade(CapabilitieConfig config);
+
+    protected virtual void OnCapabilitieTimer(float currentTime, float maxTime)
+    {
+        onCapabilitieTimer?.Invoke(currentTime, maxTime);
+    }
 
     public bool IsMaxLevel() => Level >= Upgrades.Count;
 }

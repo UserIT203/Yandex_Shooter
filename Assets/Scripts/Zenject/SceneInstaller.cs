@@ -30,6 +30,7 @@ public class SceneInstaller : MonoInstaller
     {
         BindPlayerSettings();
         BindItemInstaller();
+        BindUIElements();
     }
 
     private void BindPlayerSettings()
@@ -92,6 +93,11 @@ public class SceneInstaller : MonoInstaller
         var player = ctx.Container.Resolve<Player>();
         var gameManager = ctx.Container.Resolve<GameManager>();
         return new ItemUseContext(player, gameManager);
+    }
+
+    private void BindUIElements()
+    {
+        Container.Bind<BossUI>().FromComponentInHierarchy().AsSingle();
     }
 }
 

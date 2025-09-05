@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f0837f433af22b41b0b5bbb8cdaa9ef, type: 3}
   m_Name: Weapon_Level_1
   m_EditorClassIdentifier: 
+  <Icon>k__BackingField: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
   <Damage>k__BackingField: 0
   <Delay>k__BackingField: 0
   <Speed>k__BackingField: 0
+  <CanAddOne>k__BackingField: 0
   <WeaponConfig>k__BackingField: {fileID: 11400000, guid: 06b4588b8acffde4984448602d56e8de, type: 2}

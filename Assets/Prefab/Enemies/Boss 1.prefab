@@ -161,6 +161,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _config: {fileID: 11400000, guid: 536aace82c771f94fae5a939e4e129be, type: 2}
+  <BossIcon>k__BackingField: {fileID: -250967302, guid: 96ae66119a6d19e4b8985d1ebc2557a4, type: 3}
+  <BossName>k__BackingField: Red Roboto
   _firePoint: {fileID: 7587142405196122266}
 --- !u!1 &8613090865483513486
 GameObject:

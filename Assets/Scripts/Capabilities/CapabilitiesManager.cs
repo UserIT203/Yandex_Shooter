@@ -10,7 +10,6 @@ public class CapabilitiesManager: MonoBehaviour
     [SerializeField] private int _maxCapabilite;
 
     private PlayerCapabilities _player;
-    private Queue<int> _indexQueue = new Queue<int>();
     private ICapabilitie[] _currentUpgradesCapabilitie;
 
     [Inject] 

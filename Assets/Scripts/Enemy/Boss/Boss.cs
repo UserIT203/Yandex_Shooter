@@ -9,6 +9,9 @@ using UnityEngine.AI;
 
 public class Boss : EnemyUnit
 {
+    [field: SerializeField] public Sprite BossIcon { get; private set; }
+    [field: SerializeField] public string BossName { get; private set; }
+
     protected BossConfig _bossConfig;
 
     protected override void Update()
