@@ -31,6 +31,7 @@ public class SceneInstaller : MonoInstaller
         BindPlayerSettings();
         BindItemInstaller();
         BindUIElements();
+        BindMainElements();
     }
 
     private void BindPlayerSettings()
@@ -98,6 +99,11 @@ public class SceneInstaller : MonoInstaller
     private void BindUIElements()
     {
         Container.Bind<BossUI>().FromComponentInHierarchy().AsSingle();
+    }
+
+    private void BindMainElements()
+    {
+        Container.Bind<GameTimeManager>().FromComponentInHierarchy().AsSingle();
     }
 }
 

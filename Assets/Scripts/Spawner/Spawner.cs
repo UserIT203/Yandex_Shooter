@@ -5,6 +5,7 @@ using Zenject;
 
 public class Spawner : MonoBehaviour
 {
+    [Inject] private GameTimeManager _timeManager;
     [Inject] private ItemUseContext _itemUseContext;
     [Inject] private BossUI _bossUI;
 
@@ -31,7 +32,19 @@ public class Spawner : MonoBehaviour
     private Coroutine _spawnCoroutine;
     private IEnemyObserver _enemiesObserver;
     private CustomPool<Bullet> _enemyBulletPool;
-    
+
+    private void OnEnable()
+    {
+        _timeManager.OnGamePaused += Freeze;
+        _timeManager.OnGameResumed += Unfreeze;
+    }
+
+    private void OnDisable()
+    {
+        _timeManager.OnGamePaused -= Freeze;
+        _timeManager.OnGameResumed -= Unfreeze;
+    }
+
     private void Awake()
     {
         _enemyBulletPool = new CustomPool<Bullet>(
@@ -60,11 +73,10 @@ public class Spawner : MonoBehaviour
         int randomValue = Random.Range(0, _bosesPrefab.Count);
         Vector3 spawnPosition = GetSpawnPosition();
 
-        Boss bossPrefab = _bosesPrefab[randomValue];
-        _bossUI.Initialized(bossPrefab);
+        Boss newBoss = Instantiate(_bosesPrefab[randomValue], spawnPosition, Quaternion.identity);
+        newBoss.Initialized(_player, _enemiesObserver, _enemyBulletPool, _itemUseContext, _timeManager);
 
-        Boss newBoss = Instantiate(bossPrefab, spawnPosition, Quaternion.identity);
-        newBoss.Initialized(_player, _enemiesObserver, _enemyBulletPool, _itemUseContext);
+        _bossUI.Initialized(newBoss);
     }
 
     private void StartSpawningEnemy()
@@ -72,7 +84,7 @@ public class Spawner : MonoBehaviour
         if (_spawnCoroutine != null)
             StopCoroutine(_spawnCoroutine);
 
-        StartCoroutine(SpawnEnemies());
+        _spawnCoroutine = StartCoroutine(SpawnEnemies());
     }
 
     private IEnumerator SpawnEnemies()
@@ -88,6 +100,8 @@ public class Spawner : MonoBehaviour
 
             yield return waitingTime;
         }
+
+        _spawnCoroutine = null;
     }
 
     private void CreateEnemy()
@@ -104,7 +118,7 @@ public class Spawner : MonoBehaviour
         Enemy newEnemy = Instantiate(_enemiesPrefab[(int)enemyType.EnemyType],
             spawnPosition, Quaternion.identity);
 
-        newEnemy.Initialized(_player, _enemiesObserver, _enemyBulletPool, _itemUseContext);
+        newEnemy.Initialized(_player, _enemiesObserver, _enemyBulletPool, _itemUseContext, _timeManager);
 
         for (int i = 0; i < _currentWave; i++)
         {
@@ -122,6 +136,20 @@ public class Spawner : MonoBehaviour
             _spawnAreaSize.y / 2);
 
         return new Vector3(x, transform.position.y, z);
+    }
+
+    private void Freeze()
+    {
+        if (_spawnCoroutine != null)
+        {
+            StopCoroutine(_spawnCoroutine);
+            _spawnCoroutine = null;
+        }
+    }
+
+    private void Unfreeze()
+    {
+        if (_spawnCoroutine == null) _spawnCoroutine = StartCoroutine(SpawnEnemies());
     }
 
     private void OnDrawGizmosSelected()

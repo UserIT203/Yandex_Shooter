@@ -10,7 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8075621531653832372}
   - component: {fileID: 1808749159029471872}
+  - component: {fileID: 974966197197520083}
   - component: {fileID: 7345479497490487399}
+  - component: {fileID: 1063471946969524020}
   m_Layer: 6
   m_Name: GFX
   m_TagString: Untagged
@@ -74,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -999529924, guid: 3be4c362e5f164942a9221e578bc87b5, type: 3}
+  m_Sprite: {fileID: 343954278, guid: e5cb2d7a4d1964943bb032b2db77ac3a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,6 +87,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &974966197197520083
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3496732889766352176}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: ba92d529abdc96840b4e97629660fc18, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &7345479497490487399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,6 +158,18 @@ MonoBehaviour:
     m_RotationOrder: 4
   _canPlayFloatingText: 1
   _floatingTextPrefab: {fileID: 957923214053988011, guid: f1a06c3450aafc141a21e886b5305caa, type: 3}
+--- !u!114 &1063471946969524020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3496732889766352176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfa6fc36e938b30468701062bb713cf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5071789452328766044
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,6 +183,8 @@ GameObject:
   - component: {fileID: 4199645991180811259}
   - component: {fileID: 5361509144005544754}
   - component: {fileID: 8181809647385281606}
+  - component: {fileID: 2289503849005276059}
+  - component: {fileID: 3855822776156170470}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
@@ -250,6 +287,39 @@ MonoBehaviour:
   _maxCreateItem: 3
   _createItemRadius: 1
   _minDistanceBetweenObjects: 0.2
+--- !u!95 &2289503849005276059
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5071789452328766044}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: ba92d529abdc96840b4e97629660fc18, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3855822776156170470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5071789452328766044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfa6fc36e938b30468701062bb713cf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2707022581452766691
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -324,7 +394,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 407482318896806637, guid: 820bc1e850d75be44ac8216fa0c8b615, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.0774
+      value: 0.003
       objectReference: {fileID: 0}
     - target: {fileID: 407482318896806637, guid: 820bc1e850d75be44ac8216fa0c8b615, type: 3}
       propertyPath: m_AnchoredPosition.y

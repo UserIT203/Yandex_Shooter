@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class CapabilitieUI : MonoBehaviour
 {
+    [Inject] private GameTimeManager _timeManager;
+
     [SerializeField] private List<CapabilitieCard> _cards;
 
     private CanvasGroup _canvasGroup;
@@ -37,12 +40,12 @@ public class CapabilitieUI : MonoBehaviour
         }
 
         _canvasGroup.Activate();
-        Time.timeScale = 0f;
+        _timeManager.Pause();
     }
 
     private void ClosePanel()
     {
         _canvasGroup.Deactivate();
-        Time.timeScale = 1f;
+        _timeManager.Resume();
     } 
 }
