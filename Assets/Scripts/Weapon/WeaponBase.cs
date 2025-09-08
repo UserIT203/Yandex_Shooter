@@ -14,6 +14,7 @@ public class WeaponBase
 
     public event Action<int> onShoot;
     public event Action<int, int> onBulletInMagazine;
+    public event Action<bool> onReloading;
 
     public WeaponBase(WeaponConfig config, MonoBehaviour coroutineRunner)
     {
@@ -60,12 +61,14 @@ public class WeaponBase
     {
         Debug.Log("Перезарядка");
         _isReloading = true;
+        onReloading?.Invoke(true);
 
         yield return new WaitForSeconds(_weaponConfig.ReloadTime);
 
         _currentBulletInMagazine = _weaponConfig.BulletCount;
         _isReloading = false;
         onBulletInMagazine?.Invoke(_currentBulletInMagazine, _currentBulletInMagazine);
+        onReloading?.Invoke(false);
     }
 }
 

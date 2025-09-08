@@ -15,7 +15,7 @@ MonoBehaviour:
   <Damage>k__BackingField: 10
   BulletShootingCount: 1
   <BulletCount>k__BackingField: 10
-  <ReloadTime>k__BackingField: 0.5
+  <ReloadTime>k__BackingField: 1.5
   <FireRate>k__BackingField: 1
   <Range>k__BackingField: 10
   BulletType: {fileID: 5627958235047010979, guid: 7280d8c3ad03a3b4cae31e2e1313daf3, type: 3}

@@ -9,6 +9,7 @@ public interface IWeaponHUD
     public Image FillImageBullet { get; }
     public Image FillImageUltimate { get; }
     public Image IconUltimate { get; }
+    public Image ReloadIcon { get; }
     public TMP_Text BulletLabel { get; }
 
     public void SetUltimate(IUltimate ultimate);

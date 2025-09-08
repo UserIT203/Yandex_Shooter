@@ -1,6 +1,4 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,17 +11,24 @@ public class WeaponHUD : MonoBehaviour, IWeaponHUD
     [field: SerializeField] public Image FillImageBullet { get; protected set; }
     [field: SerializeField] public Image FillImageUltimate { get; protected set; }
     [field: SerializeField] public Image IconUltimate { get; protected set; }
+    [field: SerializeField] public Image ReloadIcon { get; protected set; }
     [field: SerializeField] public TMP_Text BulletLabel { get; protected set; }
-
 
     private WeaponBase _weapon;
     private IUltimate _ultimate;
     private float _ultimateTimer;
+    private Sequence _reloadSequence;
 
     private void OnDisable()
     {
         _weapon.onBulletInMagazine -= PlayChangeBulletAnimation;
         _ultimate.onUltimateTimer -= ChangeUltimateFillImage;
+        _weapon.onReloading -= ReloadImage;
+    }
+
+    private void Awake()
+    {
+        ReloadIcon.gameObject.SetActive(false);
     }
 
     public void PlayChangeBulletAnimation(int currentCount, int totalCount)
@@ -47,6 +52,7 @@ public class WeaponHUD : MonoBehaviour, IWeaponHUD
         {
             _weapon = weapon;
             _weapon.onBulletInMagazine += PlayChangeBulletAnimation;
+            _weapon.onReloading += ReloadImage;
         }
 
         PlayChangeBulletAnimation(weapon.CurrentBulletInMagazine, weapon.CurrentBulletInMagazine);
@@ -54,6 +60,7 @@ public class WeaponHUD : MonoBehaviour, IWeaponHUD
 
     private void ChangeBulletFillImage(int currentBullet, int totalBullet)
     {
+        Debug.Log(currentBullet + " | " + totalBullet);
         float value = (float)currentBullet / (float)totalBullet;
         FillImageBullet.DOFillAmount(value, 0.5f).SetEase(Ease.OutQuad);
     }
@@ -64,5 +71,29 @@ public class WeaponHUD : MonoBehaviour, IWeaponHUD
 
         float value = timer / _ultimateTimer;
         FillImageUltimate.DOFillAmount(value, 0.5f).SetEase(Ease.OutQuad);
+    }
+
+    private void ReloadImage(bool state)
+    {
+        if (state == true)
+        {
+            ReloadIcon.gameObject.SetActive(true);
+            PlayReloadAnimation();
+        }   
+        else
+        {
+            ReloadIcon.gameObject.SetActive(false);
+            _reloadSequence?.Kill();
+        }
+    }
+
+    private void PlayReloadAnimation()
+    {
+        _reloadSequence = DOTween.Sequence();
+
+        _reloadSequence.Append(
+            ReloadIcon.rectTransform.DORotate(
+                new Vector3(0, 0, 360), 1f, RotateMode.FastBeyond360)).
+                SetLoops(-1, LoopType.Restart);
     }
 }
