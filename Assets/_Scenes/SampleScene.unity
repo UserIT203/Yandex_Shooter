@@ -19947,6 +19947,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   _canPlayFloatingText: 0
   _floatingTextPrefab: {fileID: 0}
+  _bloodEffect: {fileID: 0}
 --- !u!95 &2075612308
 Animator:
   serializedVersion: 5

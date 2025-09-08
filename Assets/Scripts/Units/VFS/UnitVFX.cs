@@ -14,6 +14,9 @@ public class UnitVFX : MonoBehaviour
     [Header("Floating Text")]
     [SerializeField] private bool _canPlayFloatingText = true;
     [SerializeField] private FloatingText _floatingTextPrefab;
+
+    [Header("Blood Effect Settings")]
+    [SerializeField] private ParticleSystem _bloodEffect;
     
     private SpriteRenderer _spriteRenderer;
     private Material _originMaterial, _hitMaterial;
@@ -51,6 +54,8 @@ public class UnitVFX : MonoBehaviour
     {
         if(_flashCoroutine == null) _flashCoroutine = StartCoroutine(PlayFlashVFX());
         if (_canPlayFloatingText) CreateFloatingText(damage);
+        
+        PlayBloodEffect();
     }
 
     private void CreateFloatingText(float damage)
@@ -82,6 +87,13 @@ public class UnitVFX : MonoBehaviour
         _spriteRenderer.color = Color.white;
         _spriteRenderer.material = _originMaterial;
         _flashCoroutine = null;
+    }
+
+    private void PlayBloodEffect()
+    {
+        if (_bloodEffect == null) return;
+
+        _bloodEffect.Play();
     }
 
     private void OnDestroy()
