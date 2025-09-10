@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Heatlh Item
   m_EditorClassIdentifier: Assembly-CSharp::HealthItem
   <Name>k__BackingField: Heal
-  <ItemPrefab>k__BackingField: {fileID: 8075072259797123916, guid: 66231adca57543d4c8eed9c75310744b, type: 3}
+  <ItemPrefab>k__BackingField: {fileID: 1757808234127836448, guid: 6d8131761b735074987ea7aac7df80de, type: 3}
   <HandlerType>k__BackingField: 0
   _healthValue: 10

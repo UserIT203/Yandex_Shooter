@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: XPItem
   m_EditorClassIdentifier: 
   <Name>k__BackingField: XP Item
-  <ItemPrefab>k__BackingField: {fileID: 6384135836292499660, guid: 0dc1375e07a1b40479de14a37eadff5a, type: 3}
+  <ItemPrefab>k__BackingField: {fileID: 5943118992031388509, guid: cf935151c14081e449c079a57b3b8201, type: 3}
   <HandlerType>k__BackingField: 1
   _xpCount: 10

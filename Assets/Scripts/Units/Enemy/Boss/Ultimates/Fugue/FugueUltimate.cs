@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Timeline;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Fugue", menuName = "Boss Ultimate/Fugue")]

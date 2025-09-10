@@ -1,7 +1,3 @@
-using DG.Tweening.Core.Easing;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -28,6 +24,8 @@ public class SceneInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
+        LoadConfig();
+
         BindPlayerSettings();
         BindItemInstaller();
         BindUIElements();
@@ -104,6 +102,11 @@ public class SceneInstaller : MonoInstaller
     private void BindMainElements()
     {
         Container.Bind<GameTimeManager>().FromComponentInHierarchy().AsSingle();
+    }
+
+    private void LoadConfig()
+    {
+        //_playerConfig = Resources.Load<PlayerConfig>("PlayerConfig");
     }
 }
 
