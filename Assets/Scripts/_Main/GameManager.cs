@@ -1,10 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using Zenject;
 
 public class GameManager : MonoBehaviour, IItemHandler
 {
+    private const float GameStartTimeDelay = 2f;
+
+    [Inject] private GameTimeManager _timeManager;
+
     [SerializeField] private CapabilitiesManager _capabiliteManager;
     [Header("Main Settigns")]
     [SerializeField] private float _maxXP = 100;
@@ -13,6 +17,9 @@ public class GameManager : MonoBehaviour, IItemHandler
     [SerializeField] private PlayerXPUI _playerXPUI;
 
     private float _currentXP;
+
+    public event Action onOpenScene;
+    public event Action onGameStart;
 
     public void HandleActionWithValue(float value)
     {
@@ -24,6 +31,32 @@ public class GameManager : MonoBehaviour, IItemHandler
         { 
             FillXp();
         }
+    }
+
+    private void OnDisable()
+    {
+        SceneTransition.Instance.onSceneLoad -= StartOpenAnimations;
+    }
+
+    private void Start()
+    {
+        SceneTransition.Instance.onSceneLoad += StartOpenAnimations;
+    }
+
+    private void StartOpenAnimations()
+    {
+        StartCoroutine(OpenSceneAnimation());
+    }
+
+    private IEnumerator OpenSceneAnimation()
+    {
+        _timeManager.Pause();
+        onOpenScene?.Invoke();
+
+        yield return new WaitForSeconds(GameStartTimeDelay);
+
+        _timeManager.Resume();
+        onGameStart?.Invoke();
     }
 
     private void FillXp()

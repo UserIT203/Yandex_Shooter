@@ -9,16 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 8fdc8ff0641abb94ab13d26d17cfab39, type: 3}
   m_Name: Turret_2
-  m_EditorClassIdentifier: Assembly-CSharp::TurretConfig
-  <Icon>k__BackingField: {fileID: 21300000, guid: c8585b68a92b5d440992ddd7d1b1a3d6, type: 3}
-  <Damage>k__BackingField: 2
+  m_EditorClassIdentifier: 
+  <Icon>k__BackingField: {fileID: 21300000, guid: 5ff57b7e9b4bc8a418e5eee692e6522b, type: 3}
+  <Damage>k__BackingField: 5
   <Delay>k__BackingField: 1
   <Speed>k__BackingField: 0
   <CanAddOne>k__BackingField: 0
   <WeaponConfig>k__BackingField: {fileID: 0}
-  <AttackRadius>k__BackingField: 0.7
-  <SpawnRadius>k__BackingField: 1
+  <AttackRadius>k__BackingField: 3
+  <SpawnRadius>k__BackingField: 6
   <TurretCount>k__BackingField: 2
   <TurretPrefab>k__BackingField: {fileID: 6889625159196612508, guid: c21ebf23b96d8154b89df5bc4ecadcf1, type: 3}

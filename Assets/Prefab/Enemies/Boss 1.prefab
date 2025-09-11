@@ -5171,7 +5171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7064b00dcd93584aa8e1d7a6d91901f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _config: {fileID: 11400000, guid: 536aace82c771f94fae5a939e4e129be, type: 2}
+  _config: {fileID: 11400000, guid: 0609ef69c2fdfcc41b17856ae8ca46b4, type: 2}
   <BossIcon>k__BackingField: {fileID: 718703170, guid: a3e8b26facd3cb84686b3bef7b0038b6, type: 3}
   <BossName>k__BackingField: Red Roboto
   _firePoint: {fileID: 7587142405196122266}

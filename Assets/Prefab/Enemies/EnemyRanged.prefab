@@ -130,7 +130,9 @@ MonoBehaviour:
     Probability: 100
   - Item: {fileID: 11400000, guid: 51127cdca6bbbbd498789f9cea060092, type: 2}
     Probability: 100
-  _maxCreateItem: 2
+  - Item: {fileID: 11400000, guid: 8c054da82b76800438eaca1a7976e401, type: 2}
+    Probability: 80
+  _maxCreateItem: 3
   _createItemRadius: 1
   _minDistanceBetweenObjects: 0.2
 --- !u!114 &-1427251091212163852

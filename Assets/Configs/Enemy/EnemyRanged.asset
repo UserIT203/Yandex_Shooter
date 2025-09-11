@@ -9,24 +9,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 9d042f3a157ba824db01481ed613d19f, type: 3}
   m_Name: EnemyRanged
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyConfig
+  m_EditorClassIdentifier: 
   <Speed>k__BackingField:
-    _baseValue: 1.2
+    _baseValue: 1.5
     _modificators: []
   <MaxHealth>k__BackingField:
-    _baseValue: 20
+    _baseValue: 30
     _modificators: []
   <Damage>k__BackingField:
-    _baseValue: 5
+    _baseValue: 2
     _modificators: []
   <RadiusAttack>k__BackingField:
-    _baseValue: 2.5
+    _baseValue: 3
     _modificators: []
   <RadiusFollow>k__BackingField:
-    _baseValue: 3.5
+    _baseValue: 4.5
     _modificators: []
   <AttackDealy>k__BackingField:
-    _baseValue: 2.5
+    _baseValue: 1.5
     _modificators: []

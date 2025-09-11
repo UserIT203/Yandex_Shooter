@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 [RequireComponent(typeof(CanvasGroup))]
 [RequireComponent(typeof(Animator))]
@@ -11,6 +12,8 @@ public class SceneTransition : MonoBehaviour
     private CanvasGroup _canvasGroup;
     private AsyncOperation _sceneLoadingOperation;
     private bool _shouldPlayAnimationOpen = false;
+
+    public event Action onSceneLoad;
 
     #region Singleton
     private void Awake()
@@ -29,6 +32,11 @@ public class SceneTransition : MonoBehaviour
 
     #endregion
 
+    private void OnLevelWasLoaded(int level)
+    {
+        if (_shouldPlayAnimationOpen == true) _animator.SetTrigger("onClose");
+    }
+
     public static void SwitchScene(string sceneName)
     {
         Instance._animator.SetTrigger("onOpen");
@@ -41,8 +49,6 @@ public class SceneTransition : MonoBehaviour
     {
         _canvasGroup = GetComponent<CanvasGroup>();
         _animator = GetComponent<Animator>();
-
-        if (_shouldPlayAnimationOpen == true) _animator.SetTrigger("onClose"); 
     }
 
     public void OnAnimationOver()
@@ -51,4 +57,6 @@ public class SceneTransition : MonoBehaviour
         _shouldPlayAnimationOpen = true;
         _sceneLoadingOperation.allowSceneActivation = true;
     }
+
+    public void OnOpenNewScene() => onSceneLoad?.Invoke();
 }

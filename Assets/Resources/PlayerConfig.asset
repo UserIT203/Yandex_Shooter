@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64777ac0b7f4f814399ad94825704b13, type: 3}
+  m_Name: PlayerConfig
+  m_EditorClassIdentifier: 
+  <Speed>k__BackingField:
+    _baseValue: 2.5
+    _modificators: []
+  <MaxHealth>k__BackingField:
+    _baseValue: 100
+    _modificators: []
+  <Damage>k__BackingField:
+    _baseValue: 0
+    _modificators: []
+  <PickUpRadius>k__BackingField:
+    _baseValue: 2
+    _modificators: []
+  <Ultimate>k__BackingField: {fileID: 11400000, guid: d326792ce7a5d674b8a59f28b004466e, type: 2}

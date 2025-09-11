@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using Zenject;
 
 public class WaveManager : MonoBehaviour, IEnemyObserver
 {
@@ -13,13 +14,25 @@ public class WaveManager : MonoBehaviour, IEnemyObserver
     private int _maxWave;
     private int _currentEnemiesInWave;
     private bool _bossDie;
+    private GameManager _gameManager;
 
     public event Action<int> onStartWave;
+
+    [Inject]
+    public void Construct(GameManager gameManager)
+    {
+        _gameManager = gameManager;
+        _gameManager.onGameStart += InitilizedWave;
+    }
+
+    private void OnDisable()
+    {
+        _gameManager.onGameStart -= InitilizedWave;
+    }
 
     private void Start()
     {
         _maxWave = _waves.Count;
-        InitilizedWave();
     }
 
     public void OnEnemyDestroed()

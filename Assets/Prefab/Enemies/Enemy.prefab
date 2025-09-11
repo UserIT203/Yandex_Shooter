@@ -10045,7 +10045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d38c84ec27ad1f94283555632552d22c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _config: {fileID: 11400000, guid: ae956ea8bee2bc04dae4ef0a233a0e1e, type: 2}
+  _config: {fileID: 11400000, guid: bf119442c9aa28847a02be204e848c93, type: 2}
 --- !u!114 &8181809647385281606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10063,7 +10063,7 @@ MonoBehaviour:
     Probability: 100
   - Item: {fileID: 11400000, guid: 51127cdca6bbbbd498789f9cea060092, type: 2}
     Probability: 100
-  - Item: {fileID: 11400000, guid: e2a38337cd4a2a641a5817d71c47821c, type: 2}
+  - Item: {fileID: 11400000, guid: 8c054da82b76800438eaca1a7976e401, type: 2}
     Probability: 80
   _maxCreateItem: 3
   _createItemRadius: 1
