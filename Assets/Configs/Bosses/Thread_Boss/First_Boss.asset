@@ -30,4 +30,4 @@ MonoBehaviour:
   <AttackDealy>k__BackingField:
     _baseValue: 0.8
     _modificators: []
-  <Ultimate>k__BackingField: {fileID: 11400000, guid: b1a9b226bbdd6c149a04291ee756561c, type: 2}
+  <Ultimate>k__BackingField: {fileID: 11400000, guid: 46eb1be10b42ee748a72513617d2aa65, type: 2}

@@ -24,8 +24,6 @@ public class SceneInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
-        LoadConfig();
-
         BindPlayerSettings();
         BindItemInstaller();
         BindUIElements();
@@ -102,11 +100,6 @@ public class SceneInstaller : MonoInstaller
     private void BindMainElements()
     {
         Container.Bind<GameTimeManager>().FromComponentInHierarchy().AsSingle();
-    }
-
-    private void LoadConfig()
-    {
-        //_playerConfig = Resources.Load<PlayerConfig>("PlayerConfig");
     }
 }
 

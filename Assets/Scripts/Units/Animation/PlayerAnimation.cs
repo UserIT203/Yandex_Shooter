@@ -10,12 +10,6 @@ public class PlayerAnimation : UnitAnimation
     private CharacterController _controller;
     private SpriteRenderer _spriteRenderer;
 
-    [Inject]
-    public void Construct(GameManager gameManager)
-    {
-        gameManager.onOpenScene += OpenSceneAnimation;
-    }
-
     public override void DieAction()
     {
         throw new System.NotImplementedException();
@@ -31,10 +25,5 @@ public class PlayerAnimation : UnitAnimation
     protected override void SetUnitSpeed()
     {
         MoveAnimation(_controller.velocity.magnitude);
-    }
-
-    private void OpenSceneAnimation()
-    {
-        _spriteRenderer.DOFade(1f, 2f);
     }
 }

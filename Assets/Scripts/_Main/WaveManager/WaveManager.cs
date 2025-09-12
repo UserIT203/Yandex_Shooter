@@ -32,6 +32,9 @@ public class WaveManager : MonoBehaviour, IEnemyObserver
 
     private void Start()
     {
+        if (SceneTransition.Instance == null)
+            InitilizedWave();
+
         _maxWave = _waves.Count;
     }
 
