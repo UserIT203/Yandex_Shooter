@@ -6,29 +6,26 @@ public class GameTimeManager : MonoBehaviour
     public event Action OnGamePaused;
     public event Action OnGameResumed;
 
-    private bool isPaused = false;
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (isPaused)
-                Resume();
-            else
-                Pause();
-        }
-    }
+    private int _pauseCount = 0;
 
     public void Pause()
     {
-        isPaused = true;
-        OnGamePaused?.Invoke();
+        _pauseCount++;
+
+        if(_pauseCount == 1)
+        {
+            OnGamePaused?.Invoke();
+        }
     }
 
     public void Resume()
     {
-        isPaused = false;
-        OnGameResumed?.Invoke();
+        _pauseCount--;
+
+        if(_pauseCount <= 0)
+        {
+            OnGameResumed?.Invoke();
+        }
     }
 }
 

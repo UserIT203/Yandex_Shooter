@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3437840314870075629}
   - component: {fileID: 5630603799875813009}
   - component: {fileID: 6986449220591448071}
-  - component: {fileID: 5126168366880213205}
   m_Layer: 0
   m_Name: Stones
   m_TagString: Untagged
@@ -3687,7 +3686,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     type: 1
     collisionMode: 0
@@ -4898,18 +4897,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &5126168366880213205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 820204887120604044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bf1c88ba5015044a8eb9f12e9785054, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3162794247965989853
 GameObject:
   m_ObjectHideFlags: 0
@@ -9923,8 +9910,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.05
-      minScalar: 0.1
+      scalar: 0.1
+      minScalar: 0.2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -14982,7 +14969,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 6
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -34298,7 +34285,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6647319627817324532}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 2
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -34480,7 +34467,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0, b: 0.007633686, a: 0.48235294}
+      maxColor: {r: 0.6320754, g: 0.33690813, b: 0.33922312, a: 0.48235294}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -34544,8 +34531,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
-      minScalar: 3
+      scalar: 1
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -39165,6 +39152,7 @@ GameObject:
   - component: {fileID: 8144711623511720512}
   - component: {fileID: 7644242359180846091}
   - component: {fileID: 8403444468774289321}
+  - component: {fileID: 8919996196216440888}
   m_Layer: 0
   m_Name: Core
   m_TagString: Untagged
@@ -39197,7 +39185,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 1.5
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 3
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -39260,7 +39248,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
   randomSeed: 0
@@ -39270,7 +39258,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.8
+      scalar: 0.6
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -40838,8 +40826,8 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.4805705
-          value: 0
+          time: 0.39493817
+          value: 0.05405426
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -40847,7 +40835,7 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.8597107
+          time: 0.8413696
           value: -1
           inSlope: 0
           outSlope: 0
@@ -42903,14 +42891,14 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
     multiplyColliderForceByParticleSpeed: 0
-    multiplyColliderForceByCollisionAngle: 1
+    multiplyColliderForceByCollisionAngle: 0
     m_Planes: []
     m_Dampen:
       serializedVersion: 2
@@ -42968,7 +42956,7 @@ ParticleSystem:
     m_Bounce:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -43071,16 +43059,16 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    minKillSpeed: 0
-    maxKillSpeed: 10000
-    radiusScale: 1
+    minKillSpeed: 10
+    maxKillSpeed: 50
+    radiusScale: 0.1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
-    maxCollisionShapes: 256
+      m_Bits: 256
+    maxCollisionShapes: 50
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -44114,6 +44102,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &8919996196216440888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8229943077717579554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bf1c88ba5015044a8eb9f12e9785054, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8377847971825470468
 GameObject:
   m_ObjectHideFlags: 0
@@ -44142,7 +44142,7 @@ Transform:
   m_GameObject: {fileID: 8377847971825470468}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6471701, y: 0.00000017881393, z: -4.4398093}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.33709, y: 0.33709, z: 0.33709}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -44168,7 +44168,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 1.5
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 2
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -49034,7 +49034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f603f205694defe4580c832b20abd223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hitBox: {fileID: 5126168366880213205}
+  _hitBox: {fileID: 8919996196216440888}
 --- !u!1 &8706096421245848454
 GameObject:
   m_ObjectHideFlags: 0

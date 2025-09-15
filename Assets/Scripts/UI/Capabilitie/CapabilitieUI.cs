@@ -34,13 +34,13 @@ public class CapabilitieUI : MonoBehaviour
     {
         Debug.Log(capabilities.Length);
 
+        _canvasGroup.Activate();
+        _timeManager.Pause();
+
         for (int i = 0; i < capabilities.Length; i++) 
         {
             _cards[i].Initialize(capabilities[i]);
         }
-
-        _canvasGroup.Activate();
-        _timeManager.Pause();
     }
 
     private void ClosePanel()

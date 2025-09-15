@@ -7,7 +7,7 @@ public class ItemPickUp : MonoBehaviour
 {
     [Header("Settigs")]
     [SerializeField] private float _speed = 5;
-    [SerializeField] private float _stoppingDistance = 0.2f;
+    [SerializeField] private float _stoppingDistance = 0.5f;
 
     private Transform _target;
     private Item _item;

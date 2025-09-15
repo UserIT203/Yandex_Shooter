@@ -36,6 +36,10 @@ public class RedExplosionUltimate : UltimateBase
                 _redExplosionTemplate, _player.transform.position, Quaternion.identity);
 
             redExplosion.Initialized(_radiusExplosion, _damage, _player);
+            redExplosion.transform.position = new Vector3(
+                redExplosion.transform.position.x,
+                0f,
+                redExplosion.transform.position.z);
 
             yield return waitingTime;
         }

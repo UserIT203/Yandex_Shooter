@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class CutsceneManager : MonoBehaviour
 {
+    [Inject] private GameTimeManager _timeManager;
+
     [SerializeField] private string _openScene;
     [SerializeField] private List<CutsceneStruct> _cutscenes = new List<CutsceneStruct>();
 
@@ -59,6 +62,8 @@ public class CutsceneManager : MonoBehaviour
 
         if(_currentCutscene != null && _currentCutscene == _cutsceneDataBase[cutsceneKey]) return;
 
+        _timeManager.Pause();
+
         _currentCutscene = _cutsceneDataBase[cutsceneKey];
 
         foreach (var cutscene in _cutsceneDataBase)
@@ -77,6 +82,7 @@ public class CutsceneManager : MonoBehaviour
             _currentCutscene = null;
         }
 
+        _timeManager.Resume();
         Debug.Log("End Cutscene");
     }
 }

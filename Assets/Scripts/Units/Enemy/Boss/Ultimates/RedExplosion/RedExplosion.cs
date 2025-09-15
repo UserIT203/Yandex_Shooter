@@ -26,8 +26,6 @@ public class RedExplosion : MonoBehaviour
 
         if (distance <= _radius)
             _target.TakeDamage(_damage);
-
-        Destroy(gameObject);
     }
 
     public void Initialized(float radius, float damage, Player player)

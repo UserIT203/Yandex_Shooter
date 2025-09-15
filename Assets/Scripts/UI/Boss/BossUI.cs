@@ -37,7 +37,6 @@ public class BossUI : MonoBehaviour
 
     public void StopAnimation()
     {
-        Debug.Log("Boss Panel Close");
         _timeManager.Resume();
         onEndAnimation?.Invoke();
     }
