@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
-public class PlayerStats : CharacterStats
+public class PlayerStats : CharacterStats, ITickable
 {
+    private const float RebornInvulnerableTime = 2f;
+
     private PlayerConfig _playerConfig;
 
     public Stat ItemPickUpRadius { get; }
@@ -11,6 +14,8 @@ public class PlayerStats : CharacterStats
     public  IUltimate Ultimate { get; }
 
     private bool _isInvulnerable = false;
+    private bool _canRebornEffect = false;
+    private float _rebornEffectTimer = 0f;
 
     public PlayerStats(Config config) : base(config)
     {
@@ -38,5 +43,26 @@ public class PlayerStats : CharacterStats
         CurrentHealth = Mathf.Clamp(CurrentHealth + health, 0, MaxHealth.GetValue());
         
         onChangeHealth?.Invoke(CurrentHealth, MaxHealth.GetValue());
+    }
+
+    public void Reborn()
+    {
+        Heal(MaxHealth.GetValue());
+        _canRebornEffect = true;
+    }
+
+    public void Tick()
+    {
+        if (_canRebornEffect == false) return;
+
+        _rebornEffectTimer += Time.deltaTime;
+        _isInvulnerable = true;
+
+        if(_rebornEffectTimer >= RebornInvulnerableTime)
+        {
+            _isInvulnerable = false;
+            _canRebornEffect = false;
+            _rebornEffectTimer = 0f;
+        }
     }
 }

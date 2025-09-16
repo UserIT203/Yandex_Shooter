@@ -94,7 +94,6 @@ public abstract class EnemyUnit : MonoBehaviour, IDamagable
     protected virtual void Die()
     {
         _lootBag.CreateItems(_player, _context);
-        //Destroy(gameObject);
 
         _agent.isStopped = true;
         _isDead = true;

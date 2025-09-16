@@ -17,6 +17,6 @@ MonoBehaviour:
   <Cooldown>k__BackingField: 15
   <UltimateDuration>k__BackingField: 10
   _redExplosionTemplate: {fileID: 9184708818193286878, guid: 6fef403b83bb8a74784cbad6c50d043f, type: 3}
-  _createDelay: 1
-  _radiusExplosion: 1.45
+  _createDelay: 1.5
+  _radiusExplosion: 1.4
   _damage: 10

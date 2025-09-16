@@ -9,6 +9,7 @@ public class Player : MonoBehaviour, IDamagable, IItemHandler
 
     private PlayerStats _characterStats;
     private GameTimeManager _timeManager;
+    private CutsceneManager _cutsceneManager;
 
     public bool IsFreeze { get; private set; }
     public PlayerStats Stats => _characterStats;
@@ -16,14 +17,15 @@ public class Player : MonoBehaviour, IDamagable, IItemHandler
     public event Action<float> onTakeDamage;
 
     [Inject]
-    public void Construct(PlayerConfig playerConfig, GameTimeManager timeManager)
+    public void Construct(PlayerStats stat, GameTimeManager timeManager, CutsceneManager cutsceneManager)
     {
-        _characterStats = new PlayerStats(playerConfig);
+        _characterStats = stat;
         _characterStats.onDie += Die;
 
         _timeManager = timeManager;
+        _cutsceneManager = cutsceneManager;
 
-        playerConfig.Ultimate.Initialized(this);
+        _characterStats.Ultimate.Initialized(this);
     }
 
 
@@ -47,6 +49,7 @@ public class Player : MonoBehaviour, IDamagable, IItemHandler
     private void Die()
     {
         Debug.Log("Player is Die");
+        _cutsceneManager.StartCutscene("DeathCutscene");
     }
 
     private void CollectPickUpItems()
@@ -87,5 +90,11 @@ public class Player : MonoBehaviour, IDamagable, IItemHandler
     public void HandleActionWithValue(float value)
     {
         _characterStats.Heal(value);
+    }
+
+    public void Reborn()
+    {
+        _cutsceneManager.EndCutscene();
+        _characterStats.Reborn();
     }
 }

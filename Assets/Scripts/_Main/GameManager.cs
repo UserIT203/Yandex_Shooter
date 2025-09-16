@@ -40,6 +40,5 @@ public class GameManager : MonoBehaviour, IItemHandler
     public void GameStart()
     {
         onGameStart?.Invoke();
-        Debug.Log("Game Start");
     }
 }

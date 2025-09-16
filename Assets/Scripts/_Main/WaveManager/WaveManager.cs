@@ -16,6 +16,9 @@ public class WaveManager : MonoBehaviour, IEnemyObserver
     private bool _bossDie;
     private GameManager _gameManager;
 
+    public int EnemiesDestroy { get; private set; }
+    public int BossDestroy { get; private set; }
+
     public event Action<int> onStartWave;
 
     [Inject]
@@ -41,6 +44,7 @@ public class WaveManager : MonoBehaviour, IEnemyObserver
     public void OnEnemyDestroed()
     {
         _currentEnemiesInWave--;
+        EnemiesDestroy++;
 
         if (_currentEnemiesInWave <= 0 && _waves[_currentWave].HasBoss == true)
             _spawner.CreateBoss();
@@ -51,6 +55,7 @@ public class WaveManager : MonoBehaviour, IEnemyObserver
     public void OnBossDestroed()
     {
         _bossDie = true;
+        BossDestroy++;
         CheackWaveState();
     }
 
