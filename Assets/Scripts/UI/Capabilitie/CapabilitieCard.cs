@@ -19,22 +19,24 @@ public class CapabilitieCard : MonoBehaviour, IPointerEnterHandler, IPointerExit
     [SerializeField] private float _durationOnEnter = 0.25f;
     [SerializeField] private float _durationOnOpen = 1f;
 
+    [Header("Reward Settings")]
+    [SerializeField] private bool _isReward = false;
+    [SerializeField] private Image _rewardIcon;
+
     private RectTransform _rectTransform;
     private Button _button;
-    private CapabiliteUpgradeLevel _capability;
-    private PlayerCapabilities _playerCapabilities;
     private ICapabilitie _currentCapabilite;
 
     public event Action onUpgrade;
 
     private void OnEnable()
     {
-        _button.onClick.AddListener(OnUpgrade);
+        _button.onClick.AddListener(OnClickAction);
     }
 
     private void OnDisable()
     {
-        _button.onClick.RemoveListener(OnUpgrade);
+        _button.onClick.RemoveListener(OnClickAction);
     }
 
     private void Awake()
@@ -45,6 +47,7 @@ public class CapabilitieCard : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void Initialize(ICapabilitie capabilite)
     {
+        gameObject.SetActive(true);
         OpenAnimation(capabilite);
     }
 
@@ -52,6 +55,7 @@ public class CapabilitieCard : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         Vector3 rotation = new Vector3(0f, 360f, 0f);
 
+        _rewardIcon?.gameObject.SetActive(false);
         _icon.gameObject.SetActive(false);
         _descriptions.text = string.Empty;
         _button.interactable = false;
@@ -65,6 +69,7 @@ public class CapabilitieCard : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         _currentCapabilite = capabilite;
 
+        _rewardIcon?.gameObject.SetActive(true);
         _icon.gameObject.SetActive(true);
         _icon.sprite = capabilite.GetCurrentUpgradeConfig().Icon;
 
@@ -83,6 +88,17 @@ public class CapabilitieCard : MonoBehaviour, IPointerEnterHandler, IPointerExit
         }
 
         _button.interactable = true;
+    }
+
+    private void OnClickAction()
+    {
+        if (_isReward)
+        {
+            Debug.Log("Play Reward");
+            //Логика рекламы и return
+        }
+
+        OnUpgrade();
     }
 
     private void OnUpgrade()

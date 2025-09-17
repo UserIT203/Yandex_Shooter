@@ -96,9 +96,14 @@ public class UnitVFX : MonoBehaviour
         _bloodEffect.Play();
     }
 
+    protected virtual void DestroyAction()
+    {
+        if (_flashCoroutine != null) StopCoroutine(_flashCoroutine);
+        _flashCoroutine = null;
+    }
+
     private void OnDestroy()
     {
-        if(_flashCoroutine != null) StopCoroutine(_flashCoroutine);
-        _flashCoroutine = null;
+        DestroyAction();
     }
 }

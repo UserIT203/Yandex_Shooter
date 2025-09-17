@@ -5,7 +5,7 @@ using Zenject;
 
 public class PlayerStats : CharacterStats, ITickable
 {
-    private const float RebornInvulnerableTime = 2f;
+    private const float RebornInvulnerableTime = 5f;
 
     private PlayerConfig _playerConfig;
 
@@ -13,9 +13,12 @@ public class PlayerStats : CharacterStats, ITickable
 
     public  IUltimate Ultimate { get; }
 
+    public float RebornTime => RebornInvulnerableTime;
+
     private bool _isInvulnerable = false;
     private bool _canRebornEffect = false;
     private float _rebornEffectTimer = 0f;
+
 
     public PlayerStats(Config config) : base(config)
     {

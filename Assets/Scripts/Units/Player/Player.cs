@@ -15,6 +15,7 @@ public class Player : MonoBehaviour, IDamagable, IItemHandler
     public PlayerStats Stats => _characterStats;
 
     public event Action<float> onTakeDamage;
+    public event Action<float> onReborn;
 
     [Inject]
     public void Construct(PlayerStats stat, GameTimeManager timeManager, CutsceneManager cutsceneManager)
@@ -27,7 +28,6 @@ public class Player : MonoBehaviour, IDamagable, IItemHandler
 
         _characterStats.Ultimate.Initialized(this);
     }
-
 
     private void OnEnable()
     {
@@ -96,5 +96,6 @@ public class Player : MonoBehaviour, IDamagable, IItemHandler
     {
         _cutsceneManager.EndCutscene();
         _characterStats.Reborn();
+        onReborn?.Invoke(_characterStats.RebornTime);
     }
 }
