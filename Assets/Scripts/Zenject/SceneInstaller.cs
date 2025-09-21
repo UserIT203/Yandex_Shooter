@@ -32,7 +32,6 @@ public class SceneInstaller : MonoInstaller
 
     private void BindPlayerSettings()
     {
-        //Container.Bind<PlayerConfig>().FromInstance(_playerConfig);
         Container.BindInterfacesAndSelfTo<PlayerStats>().FromMethod(ctx => new PlayerStats(_playerConfig)).AsSingle();
 
         Container.Bind<Player>().FromInstance(_player).AsSingle();

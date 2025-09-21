@@ -7,15 +7,11 @@ public class MainMenu : MenuBaseUI
 {
     protected override void CloseMenuAnimation()
     {
-        _canvasGroup.DOFade(0f, 1f)
-            .SetEase(Ease.Linear)
-            .OnComplete(() => _canvasGroup.Deactivate());
+        OnCloseMenu();
     }
 
     protected override void OpenMenuAnimation()
     {
-        _canvasGroup.DOFade(1f, 1f)
-            .SetEase(Ease.Linear)
-            .OnComplete(() => _canvasGroup.Activate());
+        OnOpenMenu();
     }
 }

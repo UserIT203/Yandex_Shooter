@@ -7,20 +7,27 @@ using UnityEngine;
 
 public class TextAnimation : MonoBehaviour
 {
+    [SerializeField] private MenuBaseUI _menu;
+
     [Header("Animation Settings")]
     [SerializeField] private float _durationText = 0.5f;
 
     private TMP_Text _text;
-    private MenuBaseUI _menu;
 
     private void Awake()
     {
         _text = GetComponent<TMP_Text>();
+        ActionClose();
+        _menu.onOpenMenu += OpenAnimation;
+        _menu.onCloseMenu += ActionClose;
+
+        if (_menu != null) return;
 
         if (transform.parent.TryGetComponent<MenuBaseUI>(out var menu))
         {
             _menu = menu;
             _menu.onOpenMenu += OpenAnimation;
+            _menu.onCloseMenu += ActionClose;
         }
         else
         {
@@ -42,5 +49,10 @@ public class TextAnimation : MonoBehaviour
                    text.text.Length,
                    _durationText)
                .SetEase(Ease.Linear);
+    }
+
+    private void ActionClose()
+    {
+        _text.maxVisibleCharacters = 0;
     }
 }

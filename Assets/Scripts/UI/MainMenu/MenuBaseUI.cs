@@ -9,6 +9,7 @@ public abstract class MenuBaseUI : MonoBehaviour
     protected CanvasGroup _canvasGroup;
 
     public event Action onOpenMenu;
+    public event Action onCloseMenu;
 
     private void Awake()
     {
@@ -22,13 +23,18 @@ public abstract class MenuBaseUI : MonoBehaviour
 
     protected abstract void OpenMenuAnimation();
     protected abstract void CloseMenuAnimation();
+
+    protected void OnOpenMenu() => onOpenMenu?.Invoke();
+    protected void OnCloseMenu() => onCloseMenu?.Invoke();
+
     public virtual void OpenMenu()
     {
+        _canvasGroup.Activate();
         OpenMenuAnimation();
-        onOpenMenu?.Invoke();
     }
     public virtual void CloseMenu()
     {
+        _canvasGroup.Deactivate();
         CloseMenuAnimation();
     }
 }
