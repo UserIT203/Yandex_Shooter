@@ -5,6 +5,8 @@ using Zenject;
 
 public class ConcreteCharacterMenu : MenuBaseUI
 {
+    public const string LockCharacterText = "Equip";
+
     [Inject] private GeneralManager _generalManager;
 
     [Header("Links UI")]
@@ -17,6 +19,16 @@ public class ConcreteCharacterMenu : MenuBaseUI
     [SerializeField] private TMP_Text _costText;
 
     private Character _characterInfo;
+
+    private void OnEnable()
+    {
+        _buyButton.onClick.AddListener(OnClickBuyButton);
+    }
+
+    private void OnDisable()
+    {
+        _buyButton.onClick.RemoveListener(OnClickBuyButton);
+    }
 
     protected override void CloseMenuAnimation()
     {
@@ -35,7 +47,23 @@ public class ConcreteCharacterMenu : MenuBaseUI
         _characterView.sprite = _characterInfo.CharacterView;
         _ultimateIcon.sprite = _characterInfo.Config.Ultimate.UltimateIcon;
 
-        _costText.text = _characterInfo.Cost.ToString();
+        if( _characterInfo.IsBought == true)
+            _costText.text = LockCharacterText;
+        else
+            _costText.text = _characterInfo.Cost.ToString();
+    }
+
+    private void OnClickBuyButton()
+    {
+        if (_characterInfo.IsBought == true)
+        {
+            _generalManager.EquipCharacter(_characterInfo);
+        }
+        else
+        {
+            _generalManager.BuyCharacter(_characterInfo);
+            _costText.text = LockCharacterText;
+        }   
     }
 
     public void OpenConcreteCharacter(int characterIndex)

@@ -4,18 +4,38 @@ using UnityEngine;
 
 public class GeneralManager : MonoBehaviour
 {
+    [SerializeField] private PlayerConfig _defaultPlayerConfig;
     [SerializeField] private List<Character> _characters;
+
+    public PlayerConfig CurrentPlayerConfig { get; private set; }
 
     public List<Character> Characters => _characters;
 
     private void Awake()
     {
+        if (CurrentPlayerConfig == null)
+            CurrentPlayerConfig = _defaultPlayerConfig;
+
         DontDestroyOnLoad(this);
+    }
+
+    public void BuyCharacter(Character character)
+    {
+        Character boughtCharacter = _characters.Find(c => c.GetHashCode() == character.GetHashCode());
+        boughtCharacter.IsBought = true;
+
+        Debug.Log("Buy character " + boughtCharacter.Name);
+    }
+
+    public void EquipCharacter(Character character)
+    {
+        CurrentPlayerConfig = character.Config;
+        Debug.Log("Equip " + character.Name);
     }
 }
 
 [System.Serializable]
-public struct Character
+public class Character
 {
     public PlayerConfig Config;
     public string Name;

@@ -71,7 +71,7 @@ public class CharacterMenu : MenuBaseUI
     {
         for (int i = 0; i < _cards.Count; i++)
         {
-            _cards[i].Initialized(_generalManager.Characters[i], i);
+            _cards[i].Initialized(_generalManager, i);
         }
     }
 

@@ -3309,11 +3309,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aa7534a93b42f346abe724de756dee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _defaultPlayerConfig: {fileID: 11400000, guid: 5c0852827e184b14a8779c8186ec9500, type: 2}
   _characters:
   - Config: {fileID: 11400000, guid: 5c0852827e184b14a8779c8186ec9500, type: 2}
     Name: Doom
     CharacterView: {fileID: 0}
     Cost: 500
+    IsBought: 0
+  - Config: {fileID: 11400000, guid: c386bf598ce252f4caaff92ea9a962d9, type: 2}
+    Name: Person
+    CharacterView: {fileID: 0}
+    Cost: 100
     IsBought: 0
 --- !u!4 &1081359135
 Transform:

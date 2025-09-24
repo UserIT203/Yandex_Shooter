@@ -1,14 +1,10 @@
-using System.Collections;
 using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
 public class CharacterCard : MonoBehaviour
 {
-    [Inject] private GeneralManager _generalManager;
-
     [Header("Links")]
     [SerializeField] private TMP_Text _nameText;
     [SerializeField] private Image _view;
@@ -18,19 +14,20 @@ public class CharacterCard : MonoBehaviour
     private Character _characterInfo;
     private Button _button;
     private TMP_Text _buyButtonText;
+    private GeneralManager _generalManager;
 
     public event Action<int> onClickCard;
 
     private void OnEnable()
     {
         _button.onClick.AddListener(OpenConcreteMenu);
-        _buyButton.onClick.AddListener(BuyCharacter);
+        _buyButton.onClick.AddListener(OnClickBuyButton);
     }
 
     private void OnDisable()
     {
         _button.onClick.RemoveListener(OpenConcreteMenu);
-        _buyButton.onClick.RemoveListener(BuyCharacter);
+        _buyButton.onClick.RemoveListener(OnClickBuyButton);
     }
 
     private void Awake()
@@ -39,10 +36,11 @@ public class CharacterCard : MonoBehaviour
         _buyButtonText = _buyButton.transform.GetChild(0).GetComponent<TMP_Text>();
     }
 
-    public void Initialized(Character characterInfo, int characterIndex)
+    public void Initialized(GeneralManager generalManager, int characterIndex)
     {
+        _generalManager = generalManager;
         _characterIndex = characterIndex;
-        _characterInfo = characterInfo;
+        _characterInfo = generalManager.Characters[characterIndex];
         _nameText.text = _characterInfo.Name;
         _view.sprite = _characterInfo.CharacterView;
 
@@ -52,9 +50,17 @@ public class CharacterCard : MonoBehaviour
             _buyButtonText.text = _characterInfo.Cost.ToString();
     }
 
-    private void BuyCharacter()
+    private void OnClickBuyButton()
     {
-        Debug.Log("Buy " + _characterInfo.Name);
+        if (_characterInfo.IsBought == true)
+        {
+            _generalManager.EquipCharacter(_characterInfo);
+        }
+        else
+        {
+            _generalManager.BuyCharacter(_characterInfo);
+            _buyButtonText.text = "Equip";
+        }
     }
 
     private void OpenConcreteMenu()
