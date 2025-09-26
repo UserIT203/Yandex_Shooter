@@ -4,6 +4,8 @@ using Zenject;
 
 public class SceneInstaller : MonoInstaller
 {
+    [Inject] private GameData _gameData;
+
     [Header("Main Settigns")]
     [SerializeField] private Platform _platform;
     [Header("Mobile Settings")]
@@ -18,7 +20,6 @@ public class SceneInstaller : MonoInstaller
     [SerializeField] private WeaponHUD _desktopWeaponHUD;
     [Header("Player Links")]
     [SerializeField] private Player _player;
-    [SerializeField] private PlayerConfig _playerConfig;
     [Header("Class Handler")]
     [SerializeField] private GameManager _gameManager;
 
@@ -32,7 +33,7 @@ public class SceneInstaller : MonoInstaller
 
     private void BindPlayerSettings()
     {
-        Container.BindInterfacesAndSelfTo<PlayerStats>().FromMethod(ctx => new PlayerStats(_playerConfig)).AsSingle();
+        Container.BindInterfacesAndSelfTo<PlayerStats>().FromMethod(ctx => new PlayerStats(_gameData.Character)).AsSingle();
 
         Container.Bind<Player>().FromInstance(_player).AsSingle();
         Container.Bind<WaveManager>().FromComponentInHierarchy().AsSingle();

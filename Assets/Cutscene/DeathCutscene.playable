@@ -386,10 +386,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0.2833333333333333
-    m_ClipIn: 0
+    m_Start: 0.36666666666666664
+    m_ClipIn: 0.08333333333333331
     m_Asset: {fileID: -4558929485426676978}
-    m_Duration: 0.35
+    m_Duration: 0.26666666666666666
     m_TimeScale: 1
     m_ParentTrack: {fileID: -197261949552329078}
     m_EaseInDuration: 0
@@ -452,7 +452,7 @@ MonoBehaviour:
     m_PostExtrapolationMode: 1
     m_PreExtrapolationMode: 1
     m_PostExtrapolationTime: Infinity
-    m_PreExtrapolationTime: 0.2833333333333333
+    m_PreExtrapolationTime: 0.36666666666666664
     m_DisplayName: Die
   m_Markers:
     m_Objects: []

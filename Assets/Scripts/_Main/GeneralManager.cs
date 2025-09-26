@@ -6,15 +6,14 @@ public class GeneralManager : MonoBehaviour
 {
     [SerializeField] private PlayerConfig _defaultPlayerConfig;
     [SerializeField] private List<Character> _characters;
-
-    public PlayerConfig CurrentPlayerConfig { get; private set; }
+    [SerializeField] private GameData _gameData;
 
     public List<Character> Characters => _characters;
 
     private void Awake()
     {
-        if (CurrentPlayerConfig == null)
-            CurrentPlayerConfig = _defaultPlayerConfig;
+        if (_gameData.Character == null)
+            _gameData.Character = _defaultPlayerConfig;
 
         DontDestroyOnLoad(this);
     }
@@ -29,7 +28,7 @@ public class GeneralManager : MonoBehaviour
 
     public void EquipCharacter(Character character)
     {
-        CurrentPlayerConfig = character.Config;
+        _gameData.Character = character.Config;
         Debug.Log("Equip " + character.Name);
     }
 }

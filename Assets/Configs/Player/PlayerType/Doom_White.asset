@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64777ac0b7f4f814399ad94825704b13, type: 3}
+  m_Name: Doom_White
+  m_EditorClassIdentifier: 
+  <Speed>k__BackingField:
+    _baseValue: 2.5
+    _modificators: []
+  <MaxHealth>k__BackingField:
+    _baseValue: 100
+    _modificators: []
+  <Damage>k__BackingField:
+    _baseValue: 0
+    _modificators: []
+  <PickUpRadius>k__BackingField:
+    _baseValue: 2
+    _modificators: []
+  <GFX>k__BackingField: {fileID: -1933690364, guid: 3402bb3686fca5a40b03c4d38d808751, type: 3}
+  <Ultimate>k__BackingField: {fileID: 11400000, guid: fb1a5160998d9e3488bbd6a01b4f9200, type: 2}
+  <AnimationController>k__BackingField: {fileID: 22100000, guid: 1b8f1ab0ec37f00449c778efc28ecf04, type: 2}

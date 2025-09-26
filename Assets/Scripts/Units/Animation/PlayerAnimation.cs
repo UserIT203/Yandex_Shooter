@@ -7,8 +7,9 @@ using Zenject;
 [RequireComponent(typeof(SpriteRenderer))]
 public class PlayerAnimation : UnitAnimation
 {
+    [Inject] private GameData _gameData;
+
     private CharacterController _controller;
-    private SpriteRenderer _spriteRenderer;
 
     public override void DieAction()
     {
@@ -18,8 +19,9 @@ public class PlayerAnimation : UnitAnimation
     protected override void Initialized()
     {
         base.Initialized();
+
+        _animator.runtimeAnimatorController = _gameData.Character.AnimationController;
         _controller = transform.root.GetComponent<CharacterController>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     protected override void SetUnitSpeed()

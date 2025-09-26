@@ -16,6 +16,7 @@ public class Player : MonoBehaviour, IDamagable, IItemHandler
 
     public event Action<float> onTakeDamage;
     public event Action<float> onReborn;
+    public event Action<float> onUseDualWeaponUltimate;
 
     [Inject]
     public void Construct(PlayerStats stat, GameTimeManager timeManager, CutsceneManager cutsceneManager)
@@ -48,7 +49,6 @@ public class Player : MonoBehaviour, IDamagable, IItemHandler
 
     private void Die()
     {
-        Debug.Log("Player is Die");
         _cutsceneManager.StartCutscene("DeathCutscene");
     }
 
@@ -97,5 +97,11 @@ public class Player : MonoBehaviour, IDamagable, IItemHandler
         _cutsceneManager.EndCutscene();
         _characterStats.Reborn();
         onReborn?.Invoke(_characterStats.RebornTime);
+    }
+
+    public void UseDualWeapon(float time)
+    {
+        Debug.Log("Start Weapon");
+        onUseDualWeaponUltimate?.Invoke(time);
     }
 }

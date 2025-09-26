@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Doom_White
+  m_Controller: {fileID: 9100000, guid: 805b46465db520e43b57dca30caa1430, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 81cf5f697bb715d42825fb6eb69d0a38, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 80b8261d2494b8d48908d66ea4feb7d0, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 794092c8dfd8acd45851d8a90f58f2a2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3a6c4c4b760db774b9902ae8a6649665, type: 2}

@@ -11,6 +11,9 @@ public class Rocket : MonoBehaviour
     [SerializeField] private bool _predictTargetPosition = true;   // Предсказывать позицию цели
     [SerializeField] private float _lifeTime;
 
+    [Header("Effects")]
+    [SerializeField] private ParticleSystem _explosionEffect;
+
     private float _damage;
     private Transform _target;
     private Vector3 _startPosition;
@@ -69,6 +72,8 @@ public class Rocket : MonoBehaviour
             RotateTowardsMovement();
             return;
         }
+
+        transform.LookAt(_target);
 
         // Получаем текущую позицию цели (с предсказанием)
         Vector3 currentTargetPosition = _target.position;
@@ -141,7 +146,7 @@ public class Rocket : MonoBehaviour
     {
         if (_velocity != Vector3.zero)
         {
-            transform.rotation = Quaternion.LookRotation(_velocity.normalized);
+            //transform.rotation = Quaternion.LookRotation(_velocity.normalized);
         }
     }
 
@@ -175,5 +180,10 @@ public class Rocket : MonoBehaviour
         _coroutine = StartCoroutine(DestroyToTimeLife());
 
         InitializeProjectile();
-    }   
+    }
+
+    private void OnDestroy()
+    {
+        Instantiate(_explosionEffect, transform.position, Quaternion.identity);
+    }
 }

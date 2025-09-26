@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "DualWeapon", menuName = "Player Ultimate/DualWeapon")]
@@ -17,6 +15,7 @@ public class DualWeaponUltimate : UltimateBase, IDisposable
     public override void Initialized(Player player)
     {
         base.Initialized(player);
+
         _playerCombat = player.GetComponent<PlayerCombat>();
         _playerCombat.onSetWeapon += SetModificator;
     }
@@ -25,6 +24,7 @@ public class DualWeaponUltimate : UltimateBase, IDisposable
     {
         base.Execute();
         SetModificator(null);
+        _player.UseDualWeapon(UltimateDuration);
     }
 
     protected override void CleanUp()
@@ -32,7 +32,6 @@ public class DualWeaponUltimate : UltimateBase, IDisposable
         base.CleanUp();
         _player.Stats.Damage.RemodeModifier(_modificatorBonus);
         _modificatorBonus = 0;
-        Debug.Log("[END] Player Damage " + _player.Stats.Damage.GetValue());
     }
 
     private void SetModificator(WeaponBase weapon)
@@ -42,7 +41,6 @@ public class DualWeaponUltimate : UltimateBase, IDisposable
             _player.Stats.Damage.RemodeModifier(_modificatorBonus);
             _modificatorBonus = _player.Stats.Damage.GetValue();
             _player.Stats.Damage.AddModifier(_modificatorBonus);
-            Debug.Log("[Start] Player Damage " + _player.Stats.Damage.GetValue());
         }
     }
 }

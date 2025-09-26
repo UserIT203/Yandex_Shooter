@@ -54,6 +54,7 @@ public class CapabilitieCard : MonoBehaviour, IPointerEnterHandler, IPointerExit
     private void OpenAnimation(ICapabilitie capabilite)
     {
         Vector3 rotation = new Vector3(0f, 360f, 0f);
+        _rectTransform.localScale = Vector3.one;
 
         _rewardIcon?.gameObject.SetActive(false);
         _icon.gameObject.SetActive(false);

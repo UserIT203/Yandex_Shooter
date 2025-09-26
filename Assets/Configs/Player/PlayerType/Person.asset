@@ -21,8 +21,9 @@ MonoBehaviour:
   <Damage>k__BackingField:
     _baseValue: 0
     _modificators: []
-  <GFX>k__BackingField: {fileID: 0}
   <PickUpRadius>k__BackingField:
-    _baseValue: 0
+    _baseValue: 2
     _modificators: []
+  <GFX>k__BackingField: {fileID: -91922946, guid: 3402bb3686fca5a40b03c4d38d808751, type: 3}
   <Ultimate>k__BackingField: {fileID: 11400000, guid: 358c472531466c24e94a035fa100837d, type: 2}
+  <AnimationController>k__BackingField: {fileID: 22100000, guid: e5c3a436b4638af4883cf0d0f79c6b59, type: 2}

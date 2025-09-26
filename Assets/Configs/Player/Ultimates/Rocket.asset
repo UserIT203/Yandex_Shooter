@@ -19,7 +19,7 @@ MonoBehaviour:
   _radius: 5
   _damage: 30
   _maxTarget: 4
-  rocketPrefab: {fileID: 7802957544624857644, guid: b3ccf411a420de24a956f71f20d676c6, type: 3}
+  rocketPrefab: {fileID: 4534557925495175842, guid: b3ccf411a420de24a956f71f20d676c6, type: 3}
   _enemyLayerMask:
     serializedVersion: 2
     m_Bits: 64
