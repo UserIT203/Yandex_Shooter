@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f0837f433af22b41b0b5bbb8cdaa9ef, type: 3}
   m_Name: Sword_Level_2
   m_EditorClassIdentifier: 
-  <Icon>k__BackingField: {fileID: 21300000, guid: 84487d73ca4b791498332d8f6858417f, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 97f147a25f9cb6748944446dfc6164e2, type: 3}
   <Damage>k__BackingField: 5
   <Delay>k__BackingField: 0
   <Speed>k__BackingField: 55

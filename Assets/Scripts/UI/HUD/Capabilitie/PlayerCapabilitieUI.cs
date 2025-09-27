@@ -25,6 +25,7 @@ public class PlayerCapabilitieUI : MonoBehaviour
     {
         _capabilitie = capabilitie;
         _fillImage.fillAmount = 0f;
+        _capabilitieIcon.enabled = false;
 
         _capabilitie.onUnlock += Unlock;
         _capabilitie.onUpgrade += Upgrage;
@@ -35,7 +36,7 @@ public class PlayerCapabilitieUI : MonoBehaviour
 
     private void Unlock()
     {
-        Debug.Log(_capabilitie.GetType().Name + "Unlock");
+        _capabilitieIcon.enabled = true;
         _lockImage.gameObject.SetActive(false);
         UpdateInfo();
     }

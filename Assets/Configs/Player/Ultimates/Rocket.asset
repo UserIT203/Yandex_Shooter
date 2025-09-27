@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aa8e936cfb26ca42ab50f0217e3616c, type: 3}
   m_Name: Rocket
   m_EditorClassIdentifier: 
-  <UltimateIcon>k__BackingField: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  <UltimateIcon>k__BackingField: {fileID: 21300000, guid: 09f2bdce2c0aa9743816b5bb176a0011, type: 3}
   <UltimateName>k__BackingField: Rocket
   <Cooldown>k__BackingField: 1
   <UltimateDuration>k__BackingField: 1

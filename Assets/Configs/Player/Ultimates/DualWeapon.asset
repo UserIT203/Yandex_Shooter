@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b43e004cfdf2c124f9baf8c3093918da, type: 3}
   m_Name: DualWeapon
   m_EditorClassIdentifier: 
-  <UltimateIcon>k__BackingField: {fileID: 0}
+  <UltimateIcon>k__BackingField: {fileID: 21300000, guid: 40b4a393dc3d8d246b3982e4d977eae4, type: 3}
   <UltimateName>k__BackingField: Dual Weapon
   <Cooldown>k__BackingField: 20
   <UltimateDuration>k__BackingField: 10

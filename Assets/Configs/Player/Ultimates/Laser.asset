@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64a8376b249f4b34d9c20a7c8a2670af, type: 3}
   m_Name: Laser
   m_EditorClassIdentifier: 
+  <UltimateIcon>k__BackingField: {fileID: 21300000, guid: b0464fbb69d3f454e9451b2de1094ed7, type: 3}
   <UltimateName>k__BackingField: Laser
   <Cooldown>k__BackingField: 1
   <UltimateDuration>k__BackingField: 10

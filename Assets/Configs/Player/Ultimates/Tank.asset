@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9a0a7dbd9b02db40a99d50050be6ad5, type: 3}
   m_Name: Tank
   m_EditorClassIdentifier: 
+  <UltimateIcon>k__BackingField: {fileID: 21300000, guid: b2d828f2fe3da36499e4ec51bd0959db, type: 3}
   <UltimateName>k__BackingField: Tank
   <Cooldown>k__BackingField: 1
   <UltimateDuration>k__BackingField: 5
