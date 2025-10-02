@@ -5,11 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Heatlh Item", menuName = "Items/Health Item")]
 public class HealthItem : Item
 {
-    [SerializeField] private float _healthValue;
-
     public override void Use(ItemUseContext context)
     {
-        context.GetHandler(HandlerType)?.HandleActionWithValue(_healthValue);
+        context.GetHandler(HandlerType)?.HandleActionWithValue((float)Value);
         base.Use(context);
     }
 }

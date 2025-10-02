@@ -8,10 +8,10 @@ public class Turret : MonoBehaviour
     [SerializeField] private float _timeToLife;
     [SerializeField] private GameObject _rotationObject;
     [SerializeField] private LayerMask _enemiesLayer;
+    [SerializeField] private Transform _firePosition;
 
     private float _damage, _attackRadius, _attackDelay, _attackTime;
     private CustomPool<Bullet> _bulletPool;
-    private IDamagable _currentTarget;
 
     private void Start()
     {
@@ -66,7 +66,7 @@ public class Turret : MonoBehaviour
         if (direction == Vector3.zero) return;
 
         Bullet bullet = _bulletPool.Get();
-        bullet.transform.position = transform.position;
+        bullet.transform.position = _firePosition.position;
         bullet.Shoot(direction, _bulletPool, _damage);
 
         _attackTime = _attackDelay;
@@ -84,7 +84,7 @@ public class Turret : MonoBehaviour
         Vector3 direction = GetTargetDirection();
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        _rotationObject.transform.rotation = Quaternion.Euler(90, 0, angle);
+        _rotationObject.transform.rotation = Quaternion.Euler(90f, 0, angle);
     }
 
 

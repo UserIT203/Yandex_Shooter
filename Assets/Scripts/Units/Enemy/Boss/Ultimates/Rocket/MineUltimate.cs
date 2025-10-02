@@ -99,7 +99,8 @@ public class MineUltimate : UltimateBase
     {
         Vector2 randomCircle = Random.insideUnitCircle * _mineSpawnArea;
         Vector3 position = _player.transform.position + new Vector3(randomCircle.x, 0, randomCircle.y);
-        
+        position.y = 0.2f;
+
         return position;
     }
 }

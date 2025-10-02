@@ -5,6 +5,8 @@ using Zenject;
 
 public class GameManager : MonoBehaviour, IItemHandler
 {
+    [Inject] private GameData _gameData;
+
     [SerializeField] private CapabilitiesManager _capabiliteManager;
     [Header("Main Settigns")]
     [SerializeField] private float _maxXP = 100;
@@ -13,6 +15,7 @@ public class GameManager : MonoBehaviour, IItemHandler
     [SerializeField] private PlayerXPUI _playerXPUI;
 
     private float _currentXP;
+    private int _currentEarnedCoins;
 
     public event Action onGameStart;
 
@@ -26,6 +29,12 @@ public class GameManager : MonoBehaviour, IItemHandler
         { 
             FillXp();
         }
+    }
+
+    public void HandleActionWithValue(int value)
+    {
+        _currentEarnedCoins += value;
+        _gameData.AddCoins(value);
     }
 
     private void FillXp()

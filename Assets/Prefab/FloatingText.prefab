@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7c32a4d3f213f04581610560f024236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeToLife: 2.5
+  _timeToLife: 1
   _offset: {x: 0, y: 0.1, z: 0}
   _moveDistance: 1
   _moveEase: 6

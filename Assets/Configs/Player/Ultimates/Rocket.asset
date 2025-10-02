@@ -16,6 +16,7 @@ MonoBehaviour:
   <UltimateName>k__BackingField: Rocket
   <Cooldown>k__BackingField: 1
   <UltimateDuration>k__BackingField: 1
+  _description: Shoot rocket from player
   _radius: 5
   _damage: 30
   _maxTarget: 4

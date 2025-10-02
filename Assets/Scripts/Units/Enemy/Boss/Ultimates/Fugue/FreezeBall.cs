@@ -6,6 +6,8 @@ using UnityEngine;
 public class FreezeBall : MonoBehaviour
 {
     [SerializeField] private float _speed;
+    [SerializeField] private float _explosionRadius;
+    [SerializeField] private ParticleSystem _hitEffect;
 
     private Player _player;
     private IBulletObserver _observer;
@@ -26,15 +28,16 @@ public class FreezeBall : MonoBehaviour
                 _speed * Time.deltaTime
             );
 
-        if (Vector3.Distance(transform.position, _player.transform.position) < 0.3f)
+        if (Vector3.Distance(transform.position, _player.transform.position) < _explosionRadius)
             HitPlayer();
     }
 
     private void HitPlayer()
     {
-        Debug.Log("Target Close");
         _player.GetComponent<PlayerMovement>().FreezeMoving(_freezeTime);
         _observer.HandleHit();
+
+        Instantiate(_hitEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

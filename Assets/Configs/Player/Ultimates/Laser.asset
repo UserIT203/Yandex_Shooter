@@ -16,6 +16,7 @@ MonoBehaviour:
   <UltimateName>k__BackingField: Laser
   <Cooldown>k__BackingField: 1
   <UltimateDuration>k__BackingField: 10
+  _description: Laser damage
   _damage: 10
   _laserPrefab: {fileID: 2112355456495904315, guid: 71d8e693d7bcf0b44937888e6b8bbee0, type: 3}
   _mask:

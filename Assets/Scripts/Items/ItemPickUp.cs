@@ -5,13 +5,13 @@ using DG.Tweening;
 
 public class ItemPickUp : MonoBehaviour
 {
-    [Header("Settigs")]
-    [SerializeField] private float _speed = 5;
-    [SerializeField] private float _stoppingDistance = 0.5f;
+    private readonly float _speed = 5;
+    private readonly float _stoppingDistance = 0.5f;
 
     private Transform _target;
     private Item _item;
     private ItemUseContext _context;
+    private FloatingText _floatingText;
 
     private bool _hasInteract = false;
 
@@ -23,11 +23,12 @@ public class ItemPickUp : MonoBehaviour
 
     public void Interact() => _hasInteract = true;
 
-    public void Create(Player player, Item item, ItemUseContext context)
+    public void Create(Player player, Item item, ItemUseContext context, FloatingText floatingText)
     {
         _target = player.transform;
         _item = item;
         _context = context;
+        _floatingText = floatingText;
     }
 
     private void AttractToPlayer()
@@ -48,9 +49,16 @@ public class ItemPickUp : MonoBehaviour
         }
     }
 
+    private void CreateFloatingText()
+    {
+        FloatingText floatingText = Instantiate(_floatingText, transform.position, Quaternion.identity);
+        floatingText.SetSettings(_item.Value, _item.FloatingTextColor);
+    }
+
     private void UseItem()
     {
         _item.Use(_context);
+        CreateFloatingText();
         Destroy(gameObject);
     }
 }

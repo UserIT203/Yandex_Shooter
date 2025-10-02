@@ -14,6 +14,10 @@ public abstract class UltimateBase : ScriptableObject, IUltimate
 
     [field: SerializeField] public float UltimateDuration { get; protected set; }
 
+    [TextArea(5, 10)]
+    [SerializeField] private string _description; 
+
+    public string Description => _description;
     public bool IsStarted { get; protected set; }
 
     protected Player _player;
@@ -46,6 +50,11 @@ public abstract class UltimateBase : ScriptableObject, IUltimate
     {
         _timer -= Time.deltaTime;
         onUltimateTimer?.Invoke(_timer);
+    }
+
+    public void StopActions()
+    {
+        CleanUp();
     }
 
     protected virtual void Execute()

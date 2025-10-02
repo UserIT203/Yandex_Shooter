@@ -8,6 +8,7 @@ public class LootBag : MonoBehaviour
 {
     [SerializeField] private List<ItemInLootBag> _items;
     [SerializeField] private int _maxCreateItem;
+    [SerializeField] private FloatingText _floatingTextPrefab;
     
     [Header("Spawner Settings")]
     [SerializeField] private float _createItemRadius;
@@ -90,7 +91,8 @@ public class LootBag : MonoBehaviour
             if (_droppedItems[i] == null) continue;
 
             GameObject obj = Instantiate(_droppedItems[i].Item.ItemPrefab, randomPosition, Quaternion.identity);
-            obj.AddComponent<ItemPickUp>().Create(player, _droppedItems[i].Item, context);
+            obj.AddComponent<ItemPickUp>().Create(player, _droppedItems[i].Item, 
+                context, _floatingTextPrefab);
             _spawnedPositions.Add(randomPosition);
         }
     }

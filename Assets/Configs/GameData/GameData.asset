@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2dfd3382bac886488884fdd6fe2f02b, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: 
-  <Character>k__BackingField: {fileID: 11400000, guid: b97ebf28f3050234eb37c0b698beae7f, type: 2}
+  <Character>k__BackingField: {fileID: 11400000, guid: c386bf598ce252f4caaff92ea9a962d9, type: 2}
+  <Coins>k__BackingField: 2000

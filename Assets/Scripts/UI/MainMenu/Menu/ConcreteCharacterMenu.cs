@@ -17,16 +17,19 @@ public class ConcreteCharacterMenu : MenuBaseUI
     [SerializeField] private TMP_Text _ultimateDescription;
     [SerializeField] private Button _buyButton;
     [SerializeField] private TMP_Text _costText;
+    [SerializeField] private TMP_Text _coinsCountText;
 
     private Character _characterInfo;
 
     private void OnEnable()
     {
+        _generalManager.onBuy += SetCoinsText;
         _buyButton.onClick.AddListener(OnClickBuyButton);
     }
 
     private void OnDisable()
     {
+        _generalManager.onBuy -= SetCoinsText;
         _buyButton.onClick.RemoveListener(OnClickBuyButton);
     }
 
@@ -46,25 +49,34 @@ public class ConcreteCharacterMenu : MenuBaseUI
         _characterGameView.sprite = _characterInfo.Config.GFX;
         _characterView.sprite = _characterInfo.CharacterView;
         _ultimateIcon.sprite = _characterInfo.Config.Ultimate.UltimateIcon;
+        _ultimateDescription.text = _characterInfo.Config.Ultimate.Description;
+        SetCoinsText();
 
-        if( _characterInfo.IsBought == true)
+        if ( _characterInfo.IsBought == true)
             _costText.text = LockCharacterText;
         else
             _costText.text = _characterInfo.Cost.ToString();
     }
 
+    private void SetCoinsText()
+    {
+        _coinsCountText.text = _generalManager.CoinsCount.ToString();
+    }
+
     private void OnClickBuyButton()
     {
         if (_characterInfo.IsBought == true)
-        {
             _generalManager.EquipCharacter(_characterInfo);
-        }
         else
-        {
-            _generalManager.BuyCharacter(_characterInfo);
-            _costText.text = LockCharacterText;
-        }   
+            BuyCharacter();
     }
+
+    private void BuyCharacter()
+    {
+        if(_generalManager.TryBuyCharacter(_characterInfo) == true)
+            _costText.text = LockCharacterText;
+    }
+
 
     public void OpenConcreteCharacter(int characterIndex)
     {   

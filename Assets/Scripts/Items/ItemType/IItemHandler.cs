@@ -5,4 +5,5 @@ using UnityEngine;
 public interface IItemHandler 
 {
     void HandleActionWithValue(float value);
+    void HandleActionWithValue(int value);
 }

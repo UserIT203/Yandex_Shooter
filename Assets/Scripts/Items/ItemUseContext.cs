@@ -1,9 +1,3 @@
-using DG.Tweening.Core.Easing;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Zenject;
-
 public class ItemUseContext
 {
     private IItemHandler _player;
@@ -29,5 +23,5 @@ public class ItemUseContext
 public enum HandlerType
 {
     Player,
-    GameManager
+    GameManager,
 }

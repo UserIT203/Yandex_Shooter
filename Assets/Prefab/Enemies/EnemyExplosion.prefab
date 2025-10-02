@@ -135,6 +135,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   _canPlayFloatingText: 1
   _floatingTextPrefab: {fileID: 957923214053988011, guid: f1a06c3450aafc141a21e886b5305caa, type: 3}
+  _bloodEffect: {fileID: 0}
 --- !u!1 &6291884160526593177
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,6 +234,7 @@ MonoBehaviour:
   - Item: {fileID: 11400000, guid: e2a38337cd4a2a641a5817d71c47821c, type: 2}
     Probability: 100
   _maxCreateItem: 2
+  _floatingTextPrefab: {fileID: 957923214053988011, guid: f1a06c3450aafc141a21e886b5305caa, type: 3}
   _createItemRadius: 1
   _minDistanceBetweenObjects: 0.2
 --- !u!114 &2425709932148825548

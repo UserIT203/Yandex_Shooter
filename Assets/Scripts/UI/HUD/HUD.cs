@@ -9,7 +9,6 @@ using DG.Tweening;
 public class HUD : MonoBehaviour
 {
     [Header("UI Links")]
-    [SerializeField] private TMP_Text _healthText;
     [SerializeField] private Slider _healthSlider;
 
     [Header("Animation Settings")]
@@ -33,9 +32,6 @@ public class HUD : MonoBehaviour
 
     private void ChangeVisiblePlayerHealth(float currentHealth, float maxHealth)
     {
-        string healthText = string.Format("{0} | {1}", currentHealth, maxHealth);
-        _healthText.text = healthText;
-
         _healthSlider.DOKill();
         float currentValue = currentHealth / maxHealth;
         _healthSlider.DOValue(currentValue, _animationDuration)

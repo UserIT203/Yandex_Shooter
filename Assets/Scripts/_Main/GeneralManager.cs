@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,14 @@ public class GeneralManager : MonoBehaviour
     [SerializeField] private List<Character> _characters;
     [SerializeField] private GameData _gameData;
 
+    public PlayerConfig CurrentCharacte { get { return _gameData.Character; } }
+    public int CoinsCount
+    {
+        get { return _gameData.Coins; }
+    }
     public List<Character> Characters => _characters;
+
+    public event Action onBuy;
 
     private void Awake()
     {
@@ -18,18 +26,24 @@ public class GeneralManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    public void BuyCharacter(Character character)
+    public bool TryBuyCharacter(Character character)
     {
+        if(_gameData.TryRemoveCoins(character.Cost) == false)
+        {
+            //PopUp Menu
+            return false;
+        }
+
         Character boughtCharacter = _characters.Find(c => c.GetHashCode() == character.GetHashCode());
         boughtCharacter.IsBought = true;
+        onBuy?.Invoke();
 
-        Debug.Log("Buy character " + boughtCharacter.Name);
+        return true;
     }
 
     public void EquipCharacter(Character character)
     {
         _gameData.Character = character.Config;
-        Debug.Log("Equip " + character.Name);
     }
 }
 

@@ -9,25 +9,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: c5fba5b6f12eec741b8a633bac60d986, type: 3}
   m_Name: Boss
-  m_EditorClassIdentifier: Assembly-CSharp::BossConfig
+  m_EditorClassIdentifier: 
   <Speed>k__BackingField:
-    _baseValue: 2
+    _baseValue: 2.4
     _modificators: []
   <MaxHealth>k__BackingField:
-    _baseValue: 200
+    _baseValue: 500
     _modificators: []
   <Damage>k__BackingField:
-    _baseValue: 4
+    _baseValue: 5
     _modificators: []
   <RadiusAttack>k__BackingField:
-    _baseValue: 0.7
+    _baseValue: 1
     _modificators: []
   <RadiusFollow>k__BackingField:
-    _baseValue: 1.2
+    _baseValue: 1.3
     _modificators: []
   <AttackDealy>k__BackingField:
-    _baseValue: 1
+    _baseValue: 1.5
     _modificators: []
   <Ultimate>k__BackingField: {fileID: 11400000, guid: 0b013ea170aa5e94a866843fec99b70e, type: 2}

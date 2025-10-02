@@ -92,6 +92,10 @@ public class Player : MonoBehaviour, IDamagable, IItemHandler
         _characterStats.Heal(value);
     }
 
+    public void HandleActionWithValue(int value)
+    {
+        throw new NotImplementedException();
+    }
     public void Reborn()
     {
         _cutsceneManager.EndCutscene();

@@ -10,18 +10,23 @@ public class PlayerVFX : UnitVFX
     [Header("Ultimate Dual Weapon Effect")]
     [SerializeField] private ParticleSystem _dualWeaponParticle;
 
+    [Header("Frozeen Effect")]
+    [SerializeField] private ParticleSystem _frozeenParticle;
+
     private Coroutine _dualWeaponCoroutine = null;
 
     private void OnDisable()
     {
         transform.root.GetComponent<Player>().onReborn -= PlayShieldAnimation;
         transform.root.GetComponent<Player>().onUseDualWeaponUltimate -= StartDualWeaponEffect;
+        transform.root.GetComponent<PlayerMovement>().onFreeze -= PlayFrozeenParticle;
     }
 
     private void Awake()
     {
         transform.root.GetComponent<Player>().onReborn += PlayShieldAnimation;
         transform.root.GetComponent<Player>().onUseDualWeaponUltimate += StartDualWeaponEffect;
+        transform.root.GetComponent<PlayerMovement>().onFreeze += PlayFrozeenParticle;
     }
 
     private void PlayShieldAnimation(float time)
@@ -54,5 +59,13 @@ public class PlayerVFX : UnitVFX
 
         if(_dualWeaponCoroutine == null )
             _dualWeaponCoroutine = StartCoroutine(PlayDualWeaponEffect(time));
+    }
+
+    private void PlayFrozeenParticle(bool state)
+    {
+        if(state == true)
+            _frozeenParticle.Play();
+        else
+            _frozeenParticle.Stop();
     }
 }

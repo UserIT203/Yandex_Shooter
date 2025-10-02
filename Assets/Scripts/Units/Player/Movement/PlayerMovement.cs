@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _currentVelocity;
     private bool _canMove = true;
 
+    public event Action<bool> onFreeze;
+
     [Inject]
     public void Construct(IInput input, Player player)
     {
@@ -75,10 +77,12 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator Frezee(float time)
     {
         _canMove = false;
+        onFreeze?.Invoke(true);
 
         yield return new WaitForSeconds(time);
 
         _canMove = true;
+        onFreeze?.Invoke(false);
     }
 
     public void FreezeMoving(float frezeeTime)

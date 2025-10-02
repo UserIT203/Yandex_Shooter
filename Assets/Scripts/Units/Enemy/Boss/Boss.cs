@@ -58,6 +58,7 @@ public class Boss : EnemyUnit
     protected override void Die()
     {
         _observer.OnBossDestroed();
+        _bossConfig.Ultimate.StopActions();
         base.Die();
     }
 

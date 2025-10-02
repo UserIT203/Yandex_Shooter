@@ -15,4 +15,5 @@ MonoBehaviour:
   <Name>k__BackingField: Heal Item
   <ItemPrefab>k__BackingField: {fileID: 1757808234127836448, guid: 6d8131761b735074987ea7aac7df80de, type: 3}
   <HandlerType>k__BackingField: 0
-  _healthValue: 10
+  <FloatingTextColor>k__BackingField: {r: 0.38124967, g: 1, b: 0, a: 1}
+  <Value>k__BackingField: 10

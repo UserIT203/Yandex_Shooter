@@ -16,5 +16,6 @@ MonoBehaviour:
   <UltimateName>k__BackingField: Tank
   <Cooldown>k__BackingField: 1
   <UltimateDuration>k__BackingField: 5
+  _description: Player increasable
   _targetScaleValue: 3
   _animationDuration: 1

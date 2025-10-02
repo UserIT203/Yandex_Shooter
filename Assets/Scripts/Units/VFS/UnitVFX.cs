@@ -12,6 +12,7 @@ public class UnitVFX : MonoBehaviour
     [SerializeField] private AnimationCurve _intensityCurve = null;
 
     [Header("Floating Text")]
+    [SerializeField] private Color _colorFloatingText;
     [SerializeField] private bool _canPlayFloatingText = true;
     [SerializeField] private FloatingText _floatingTextPrefab;
 
@@ -63,7 +64,7 @@ public class UnitVFX : MonoBehaviour
         FloatingText floatingText = Instantiate(_floatingTextPrefab, transform.position, Quaternion.identity);
         floatingText.transform.SetParent(transform.root, true);
 
-        floatingText.SetText(damage);
+        floatingText.SetSettings(damage, _colorFloatingText);
     }
 
     private IEnumerator PlayFlashVFX()

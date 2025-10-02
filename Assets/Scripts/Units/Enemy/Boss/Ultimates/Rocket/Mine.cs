@@ -8,14 +8,22 @@ public class Mine : MonoBehaviour
     [SerializeField] private float _height = 5f;      // Максимальная высота траектории
     [SerializeField] private float _duration = 2f;    // Время полёта
     [SerializeField] private float _lifeTime = 10f;
+    [SerializeField] private ParticleSystem _circel;
+    [SerializeField] private ParticleSystem _explosionParticle;
 
     private float _damage;
     private float _triggerRadius;
     private bool _isActive = false;
 
+    private ParticleSystem _mineParticle;
     private Vector3 _targetPosition;
     private Vector3 _startPoint;
     private float _elapsedTime = 0f;
+
+    private void Awake()
+    {
+        _mineParticle = GetComponent<ParticleSystem>();
+    }
 
     private void Update()
     {
@@ -29,6 +37,7 @@ public class Mine : MonoBehaviour
 
         _damage = damage;
         _triggerRadius = radius;
+        _mineParticle.Play();
 
         StartCoroutine(LifeTime());
         StartCoroutine(MoveProjectile());
@@ -59,6 +68,7 @@ public class Mine : MonoBehaviour
 
         _isActive = true;
 
+        _circel.Play();
         Debug.Log("Снаряд достиг цели!");
     }
 
@@ -80,6 +90,7 @@ public class Mine : MonoBehaviour
     private void Explosion(IDamagable target)
     {
         target.TakeDamage(_damage);
+        Instantiate(_explosionParticle, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

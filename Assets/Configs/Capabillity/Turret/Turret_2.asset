@@ -19,6 +19,6 @@ MonoBehaviour:
   <CanAddOne>k__BackingField: 0
   <WeaponConfig>k__BackingField: {fileID: 0}
   <AttackRadius>k__BackingField: 3
-  <SpawnRadius>k__BackingField: 6
+  <SpawnRadius>k__BackingField: 2
   <TurretCount>k__BackingField: 2
-  <TurretPrefab>k__BackingField: {fileID: 6889625159196612508, guid: c21ebf23b96d8154b89df5bc4ecadcf1, type: 3}
+  <TurretPrefab>k__BackingField: {fileID: 7854750380038800468, guid: 7484f96f30881264d9121fc9c9693469, type: 3}

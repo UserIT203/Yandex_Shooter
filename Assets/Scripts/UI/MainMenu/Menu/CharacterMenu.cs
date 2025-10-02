@@ -2,6 +2,7 @@ using DG.Tweening;
 using ModestTree;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +18,7 @@ public class CharacterMenu : MenuBaseUI
     [SerializeField] private ConcreteCharacterMenu _concreteCharacterMenu;
     [SerializeField] private RectTransform _upLabelRectTransform;
     [SerializeField] private Transform _content;
+    [SerializeField] private TMP_Text _coinsCountText;
 
     [Header("Characters")]
     [SerializeField] private CharacterCard _characterCardTemplate;
@@ -31,7 +33,9 @@ public class CharacterMenu : MenuBaseUI
     protected override void Initialized()
     {
         base.Initialized();
-        
+
+        _generalManager.onBuy += SetCoinsCountText;
+        SetCoinsCountText();
         CreateCharacterCard();
 
         Debug.Log(_generalManager);
@@ -55,13 +59,20 @@ public class CharacterMenu : MenuBaseUI
             .OnComplete(OnOpenMenu);
     }
 
+    private void SetCoinsCountText()
+    {
+        _coinsCountText.text = _generalManager.CoinsCount.ToString();    
+    }
+
     private void CreateCharacterCard()
     {
         for (int i = 0; i < _generalManager.Characters.Count; i++)
         {
             CharacterCard card = Instantiate(_characterCardTemplate);
-            card.onClickCard += OpenConcreteCharacterMenu;
             card.transform.SetParent(_content);
+
+            card.onClickCard += OpenConcreteCharacterMenu;
+            card.onEquipCharacter += UpdateInfoInCard;
 
             _cards.Add(card);
         }

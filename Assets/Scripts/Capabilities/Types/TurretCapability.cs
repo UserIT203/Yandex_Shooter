@@ -53,7 +53,8 @@ public class TurretCapability : CapabilitieBase
     private Vector3 GetRandomPosition()
     {
         Vector2 randomCircle = Random.insideUnitCircle * _spawnRadius;
-        Vector3 position = Player.transform.position + new Vector3(randomCircle.x, 0, randomCircle.y);
+        Vector3 position = Player.transform.position + new Vector3(randomCircle.x, 0f, randomCircle.y);
+        position.y = 0f;
 
         return position;
     }

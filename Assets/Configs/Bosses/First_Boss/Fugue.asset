@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 070df6819e8d77a4e8276b79d98464e5, type: 3}
   m_Name: Fugue
   m_EditorClassIdentifier: 
+  <UltimateIcon>k__BackingField: {fileID: 0}
   <UltimateName>k__BackingField: Fugue
   <Cooldown>k__BackingField: 15
   <UltimateDuration>k__BackingField: 5
+  _description: 
   _freezeTime: 5
   _delayToSpawn: 1
-  _fuguePrefab: {fileID: 2470420933938139181, guid: 1e93fd380b3aeb24db6496e624770830, type: 3}
+  _fuguePrefab: {fileID: 1927742831664350434, guid: 13c9bc93dad94664a8aaf7fb67ea40a1, type: 3}

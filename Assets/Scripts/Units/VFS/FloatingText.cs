@@ -27,9 +27,10 @@ public class FloatingText : MonoBehaviour
         _textMesh = GetComponent<TextMesh>();
     }
 
-    public void SetText(float text)
+    public void SetSettings(float text, Color color)
     {
         _textMesh.text = text.ToString();
+        _textMesh.color = color;
         transform.position += _offset;
 
         PlayAnimation();
