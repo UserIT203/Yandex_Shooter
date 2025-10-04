@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GeneralManager : MonoBehaviour
 {
+    [SerializeField] private PopUpMenu _popUpMenu;
     [SerializeField] private PlayerConfig _defaultPlayerConfig;
     [SerializeField] private List<Character> _characters;
     [SerializeField] private GameData _gameData;
@@ -30,7 +31,7 @@ public class GeneralManager : MonoBehaviour
     {
         if(_gameData.TryRemoveCoins(character.Cost) == false)
         {
-            //PopUp Menu
+            _popUpMenu.OpenPanel("No money");
             return false;
         }
 

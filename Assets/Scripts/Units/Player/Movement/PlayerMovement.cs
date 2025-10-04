@@ -70,6 +70,8 @@ public class PlayerMovement : MonoBehaviour
     {
         Debug.Log("Player Dash");
 
+        if(_canMove == false) return;
+
         _player.GetComponent<PlayerCapabilities>()
             .GetCapabilite(CapabilitiesType.Dash).Activate(direction);
     }

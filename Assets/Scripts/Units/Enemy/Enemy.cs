@@ -28,7 +28,7 @@ public class Enemy : EnemyUnit
 
     protected override void Die()
     {
-        _observer.OnEnemyDestroed();
+        _observer?.OnEnemyDestroed();
         base.Die();
     }
 }

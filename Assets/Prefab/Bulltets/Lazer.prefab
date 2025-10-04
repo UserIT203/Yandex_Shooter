@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _orbitRadius: 1
   _orbitHeight: 0.1
-  _orbitSpeed: 25
+  _orbitSpeed: 30
   _smoothFollowSpeed: 10
   _damageInterval: 0.2
 --- !u!1001 &3774308861519987159

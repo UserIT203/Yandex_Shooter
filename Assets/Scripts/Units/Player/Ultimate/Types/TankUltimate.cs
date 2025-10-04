@@ -6,11 +6,16 @@ using DG.Tweening;
 [CreateAssetMenu(fileName = "Tank", menuName = "Player Ultimate/Tank")]
 public class TankUltimate : UltimateBase
 {
-    [Header("Tank Settings")]
+    [Header("Tank Animation Settings")]
     [SerializeField] private float _targetScaleValue;
     [SerializeField] private float _animationDuration;
 
-    private Transform _playerGFX;
+    [Header("Tank Ultimate Settings")]
+    [SerializeField] private LayerMask _enemiesLayerMask;
+    [SerializeField] private float _damage;
+    [SerializeField] private float _radius;
+
+    private PlayerVFX _playerGFX;
 
     public override void Initialized(Player player)
     {
@@ -21,22 +26,42 @@ public class TankUltimate : UltimateBase
     {
         base.Execute();
         _player.Stats.SetInvulnerableStatus(true);
-        _playerGFX = _player.transform.GetChild(0);
+        _playerGFX = _player.transform.GetChild(0).GetComponent<PlayerVFX>();
 
-        Vector3 originScale = _playerGFX.localScale;
-
-        Sequence scaleSequence = DOTween.Sequence();
-        scaleSequence
-            .Append(_playerGFX.DOScale(_targetScaleValue, _animationDuration)
-                .SetEase(Ease.OutBack))
-            .AppendInterval(UltimateDuration)
-            .Append(_playerGFX.DOScale(originScale, _animationDuration)
-                .SetEase(Ease.OutBack));
+        Attack();
+        PlayAnimation();
     }
 
     protected override void CleanUp()
     {
         base.CleanUp();
         _player.Stats.SetInvulnerableStatus(false);
+    }
+
+    private void PlayAnimation()
+    {
+        Vector3 originScale = _playerGFX.transform.localScale;
+
+        Sequence scaleSequence = DOTween.Sequence();
+        scaleSequence
+            .Append(_playerGFX.transform.DOScale(_targetScaleValue, _animationDuration)
+                .SetEase(Ease.OutBack))
+            .AppendInterval(UltimateDuration)
+            .Append(_playerGFX.transform.DOScale(originScale, _animationDuration)
+                .SetEase(Ease.OutBack));
+    }
+
+    private void Attack()
+    {
+        _playerGFX.PlaySwordUltimateEffect();
+
+        Collider[] colliders = Physics.OverlapSphere(_player.transform.position
+            , _radius, _enemiesLayerMask);
+
+        foreach (Collider collider in colliders)
+        {
+            if(collider.TryGetComponent<EnemyUnit>(out var enemy))
+                enemy.TakeDamage(_damage);                
+        } 
     }
 }

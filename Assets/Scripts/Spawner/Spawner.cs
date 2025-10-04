@@ -68,17 +68,6 @@ public class Spawner : MonoBehaviour
         StartSpawningEnemy();   
     }
 
-    public void CreateBoss()
-    {
-        int randomValue = Random.Range(0, _bosesPrefab.Count);
-        Vector3 spawnPosition = GetSpawnPosition();
-
-        Boss newBoss = Instantiate(_bosesPrefab[randomValue], spawnPosition, Quaternion.identity);
-        newBoss.Initialized(_player, _enemiesObserver, _enemyBulletPool, _itemUseContext, _timeManager);
-
-        _bossUI.Initialized(newBoss);
-    }
-
     private void StartSpawningEnemy()
     {
         if (_spawnCoroutine != null)
@@ -152,26 +141,31 @@ public class Spawner : MonoBehaviour
         if (_spawnCoroutine == null) _spawnCoroutine = StartCoroutine(SpawnEnemies());
     }
 
+    public void CreateBoss()
+    {
+        int randomValue = Random.Range(0, _bosesPrefab.Count);
+        Vector3 spawnPosition = GetSpawnPosition();
+
+        Boss newBoss = Instantiate(_bosesPrefab[randomValue], spawnPosition, Quaternion.identity);
+        newBoss.Initialized(_player, _enemiesObserver, _enemyBulletPool, _itemUseContext, _timeManager, this);
+
+        _bossUI.Initialized(newBoss);
+    }
+
+    public void CreateEnemiesFromBoss(List<EnemyInSpawner> enemies)
+    {
+        _enemies = enemies;
+        _currentEnemyCount = 0;
+        _enemyCount = enemies[0].EnemyCount;
+        _canSpawn = true;
+        _enemiesObserver = null;
+        StartSpawningEnemy();
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position, new Vector3(_spawnAreaSize.x, 
             0.1f, _spawnAreaSize.y));
     }
-}
-
-public enum EnemyType
-{
-    Walk = 0,
-    Range = 1,
-    Explosion = 2
-}
-
-[System.Serializable]
-public class EnemyInSpawner
-{
-    public EnemyType EnemyType;
-    public int EnemyCount;
-
-    public void SpawnEnemy() => EnemyCount -= 1;
 }

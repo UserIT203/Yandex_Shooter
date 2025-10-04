@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class PlayerVFX : UnitVFX
 {
-    [Header("Shield Effect")]
+    [Header("Effect Particle")]
     [SerializeField] private ParticleSystem _shieldParticle;
-
-    [Header("Ultimate Dual Weapon Effect")]
     [SerializeField] private ParticleSystem _dualWeaponParticle;
-
-    [Header("Frozeen Effect")]
     [SerializeField] private ParticleSystem _frozeenParticle;
+    [SerializeField] private ParticleSystem _swordUltimate;
 
     private Coroutine _dualWeaponCoroutine = null;
 
@@ -53,6 +50,14 @@ public class PlayerVFX : UnitVFX
         _dualWeaponCoroutine = null;
     }
 
+    private void PlayFrozeenParticle(bool state)
+    {
+        if (state == true)
+            _frozeenParticle.Play();
+        else
+            _frozeenParticle.Stop();
+    }
+
     public void StartDualWeaponEffect(float time)
     {
         Debug.Log("Start Weapon Effect");
@@ -61,11 +66,5 @@ public class PlayerVFX : UnitVFX
             _dualWeaponCoroutine = StartCoroutine(PlayDualWeaponEffect(time));
     }
 
-    private void PlayFrozeenParticle(bool state)
-    {
-        if(state == true)
-            _frozeenParticle.Play();
-        else
-            _frozeenParticle.Stop();
-    }
+    public void PlaySwordUltimateEffect() => _swordUltimate.Play();
 }

@@ -21,7 +21,6 @@ public class ButtonAnimation : MonoBehaviour
     private void Awake()
     {
         _rectTransform = GetComponent<RectTransform>();
-        _startPositionY = _rectTransform.localPosition;
 
         if(transform.parent.TryGetComponent(out _menu))
         {
@@ -32,6 +31,8 @@ public class ButtonAnimation : MonoBehaviour
 
     private void OpenAnimation()
     {
+        _startPositionY = _rectTransform.localPosition;
+
         _rectTransform.DOLocalMove(_startPositionY, _durationOpenAnimation)
             .From(_startPositionY + _offsetPosition)
             .SetEase(Ease.Linear);

@@ -10368,6 +10368,9 @@ MonoBehaviour:
   _config: {fileID: 11400000, guid: 79181819f1669a143a72a74affae6d79, type: 2}
   <BossIcon>k__BackingField: {fileID: 913899961, guid: 82c4f806e4040c146ab8f9d9fbe56679, type: 3}
   <BossName>k__BackingField: "\u0424\u0440\u0430\u043D\u043A\u0438"
+  _spawnEnemies:
+  - EnemyType: 1
+    EnemyCount: 5
 --- !u!1 &7688746503742913603
 GameObject:
   m_ObjectHideFlags: 0

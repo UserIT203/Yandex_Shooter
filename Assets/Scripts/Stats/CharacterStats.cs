@@ -62,6 +62,8 @@ public class EnemyStats: CharacterStats
 
     private EnemyConfig _enemyConfig;
 
+    public event Action onHalfHealth;
+
     public EnemyStats(Config config) : base(config) 
     {
         _enemyConfig = config as EnemyConfig;
@@ -77,5 +79,7 @@ public class EnemyStats: CharacterStats
     public override void TakeDamage(float damage) 
     {
         base.TakeDamage(damage);
+
+        if (MaxHealth.GetValue() / 2 >= CurrentHealth) onHalfHealth?.Invoke();
     }
 }

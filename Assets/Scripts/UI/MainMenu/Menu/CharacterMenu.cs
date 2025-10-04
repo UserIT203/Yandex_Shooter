@@ -1,11 +1,7 @@
 using DG.Tweening;
-using ModestTree;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
 
 public class CharacterMenu : MenuBaseUI
@@ -37,9 +33,6 @@ public class CharacterMenu : MenuBaseUI
         _generalManager.onBuy += SetCoinsCountText;
         SetCoinsCountText();
         CreateCharacterCard();
-
-        Debug.Log(_generalManager);
-        _startPositionY = _upLabelRectTransform.localPosition.y;
     }
 
     protected override void CloseMenuAnimation()
@@ -52,6 +45,8 @@ public class CharacterMenu : MenuBaseUI
     {
         _canvasGroup.Activate();
         UpdateInfoInCard();
+
+        _startPositionY = _upLabelRectTransform.localPosition.y;
 
         _upLabelRectTransform.DOLocalMoveY(_startPositionY, _duration)
             .From(_startPositionY + _offsetPositionY)

@@ -46,7 +46,7 @@ public class WaveManager : MonoBehaviour, IEnemyObserver
         _currentEnemiesInWave--;
         EnemiesDestroy++;
 
-        if (_currentEnemiesInWave <= 0 && _waves[_currentWave].HasBoss == true)
+        if (_currentEnemiesInWave == 0 && _waves[_currentWave].HasBoss == true)
             _spawner.CreateBoss();
 
         CheackWaveState();
@@ -62,8 +62,6 @@ public class WaveManager : MonoBehaviour, IEnemyObserver
     private void CheackWaveState()
     {
         if (_currentEnemiesInWave > 0 || _bossDie == false) return;
-
-        Debug.Log("Волна кончилась");
 
         if (_currentEnemiesInWave <= 0)
             EndWave();
@@ -91,6 +89,22 @@ public class WaveManager : MonoBehaviour, IEnemyObserver
 
         onStartWave?.Invoke(_currentWave);
     }
+}
+
+public enum EnemyType
+{
+    Walk = 0,
+    Range = 1,
+    Explosion = 2
+}
+
+[System.Serializable]
+public struct EnemyInSpawner
+{
+    public EnemyType EnemyType;
+    public int EnemyCount;
+
+    public void SpawnEnemy() => EnemyCount -= 1;
 }
 
 [System.Serializable]

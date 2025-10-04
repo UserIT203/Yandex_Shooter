@@ -77,7 +77,8 @@ public abstract class EnemyUnit : MonoBehaviour, IDamagable
     }
 
     public virtual void Initialized(Player player, IEnemyObserver observer,
-        CustomPool<Bullet> bulletPool, ItemUseContext context, GameTimeManager timeManager)
+        CustomPool<Bullet> bulletPool, ItemUseContext context, GameTimeManager timeManager
+        , Spawner spawner = null)
     {
         _player = player;
         _observer = observer;

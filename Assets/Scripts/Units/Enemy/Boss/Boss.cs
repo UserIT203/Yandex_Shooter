@@ -1,13 +1,17 @@
 using UnityEngine;
 using System;
-
+using System.Collections.Generic;
 
 public class Boss : EnemyUnit
 {
     [field: SerializeField] public Sprite BossIcon { get; private set; }
     [field: SerializeField] public string BossName { get; private set; }
 
+    [SerializeField] protected List<EnemyInSpawner> _spawnEnemies;
+
     protected BossConfig _bossConfig;
+    protected Spawner _spawner;
+    protected bool _canSpawnEnemies = false;
 
     public event Action<bool> onUltimate;
 
@@ -17,15 +21,16 @@ public class Boss : EnemyUnit
         _bossConfig.Ultimate.Update();
     }
 
-    public override void Initialized(Player player, IEnemyObserver observer, CustomPool<Bullet> bulletPool, ItemUseContext context, GameTimeManager timeManager)
+    public override void Initialized(Player player, IEnemyObserver observer, CustomPool<Bullet> bulletPool, ItemUseContext context, GameTimeManager timeManager, Spawner spawner)
     {
         _bossConfig = _config as BossConfig;
-
         _bossConfig.Ultimate.Initialized(player);
         _bossConfig.Ultimate.SetBoss(this);
 
-
         base.Initialized(player, observer, bulletPool, context, timeManager);
+
+        _spawner = spawner;
+        Stats.onHalfHealth += SpawnEnemies;
     }
 
     protected override void InitializedFSM()
@@ -60,6 +65,16 @@ public class Boss : EnemyUnit
         _observer.OnBossDestroed();
         _bossConfig.Ultimate.StopActions();
         base.Die();
+    }
+
+    private void SpawnEnemies()
+    {
+        Debug.LogWarning("Boss as half HP");
+        if(_canSpawnEnemies == false)
+        {
+            _spawner.CreateEnemiesFromBoss(_spawnEnemies);
+            _canSpawnEnemies = true;
+        }
     }
 
     public void OnUltimate(bool state) => onUltimate?.Invoke(state);
