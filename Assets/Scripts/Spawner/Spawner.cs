@@ -149,6 +149,7 @@ public class Spawner : MonoBehaviour
         Boss newBoss = Instantiate(_bosesPrefab[randomValue], spawnPosition, Quaternion.identity);
         newBoss.Initialized(_player, _enemiesObserver, _enemyBulletPool, _itemUseContext, _timeManager, this);
 
+        AudioManager.PlaySound("BossSpawn");
         _bossUI.Initialized(newBoss);
     }
 

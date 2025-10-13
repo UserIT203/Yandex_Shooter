@@ -72,6 +72,7 @@ public abstract class EnemyUnit : MonoBehaviour, IDamagable
 
     public virtual void TakeDamage(float damage)
     {
+        AudioManager.PlaySound("EnemyHit");
         onTakeDamage?.Invoke(damage);
         Stats.TakeDamage(damage);
     }

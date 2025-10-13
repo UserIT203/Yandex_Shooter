@@ -5,11 +5,11 @@ using UnityEngine.UIElements;
 
 public class Turret : MonoBehaviour
 {
-    [SerializeField] private float _timeToLife;
     [SerializeField] private GameObject _rotationObject;
     [SerializeField] private LayerMask _enemiesLayer;
     [SerializeField] private Transform _firePosition;
 
+    private float _timeToLife;
     private float _damage, _attackRadius, _attackDelay, _attackTime;
     private CustomPool<Bullet> _bulletPool;
 
@@ -25,12 +25,14 @@ public class Turret : MonoBehaviour
         Attack();
     }
 
-    public void Initialized(float damage, float radius, float _attaclDelay, CustomPool<Bullet> bulletPool)
+    public void Initialized(float damage, float radius, 
+        float _attaclDelay, CustomPool<Bullet> bulletPool, float timeToLife)
     {
         _damage = damage;
         _attackRadius = radius;
         _bulletPool = bulletPool;
         _attackDelay = _attaclDelay;
+        _timeToLife = timeToLife;
     }
 
     private Vector3 GetTargetDirection()

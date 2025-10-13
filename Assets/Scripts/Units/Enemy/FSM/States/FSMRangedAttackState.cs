@@ -30,6 +30,7 @@ public class FSMRangedAttackState : FSMMelleAttack
 
     private void Shoot(Vector3 direction)
     {
+        AudioManager.PlaySound("EnemyShoot");
         Bullet bullet = _bulletPool.Get();
         bullet.transform.position = _firePoint.position;
         bullet.Shoot(direction, _bulletPool, _unit.Stats.Damage.GetValue());

@@ -32,6 +32,9 @@ public class CharacterCard : MonoBehaviour
     {
         _button.onClick.AddListener(OpenConcreteMenu);
         _buyButton.onClick.AddListener(OnClickBuyButton);
+
+        _button.onClick.AddListener(() => AudioManager.PlaySound("ButtonClick"));
+        _buyButton.onClick.AddListener(() => AudioManager.PlaySound("ButtonClick"));
     }
 
     private void OnDisable()

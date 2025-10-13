@@ -57,6 +57,7 @@ public class ItemPickUp : MonoBehaviour
 
     private void UseItem()
     {
+        AudioManager.PlaySound(_item.SoundName);
         _item.Use(_context);
         CreateFloatingText();
         Destroy(gameObject);

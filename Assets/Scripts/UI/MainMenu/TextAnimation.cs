@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using Zenject;
 
 public class TextAnimation : MonoBehaviour
 {

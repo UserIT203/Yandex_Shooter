@@ -69,7 +69,6 @@ public class Mine : MonoBehaviour
         _isActive = true;
 
         _circel.Play();
-        Debug.Log("Снаряд достиг цели!");
     }
 
     private void CheackTriggerZone()
@@ -89,6 +88,7 @@ public class Mine : MonoBehaviour
 
     private void Explosion(IDamagable target)
     {
+        AudioManager.PlaySound("Explosion");
         target.TakeDamage(_damage);
         Instantiate(_explosionParticle, transform.position, Quaternion.identity);
         Destroy(gameObject);

@@ -17,4 +17,4 @@ MonoBehaviour:
   <Delay>k__BackingField: 0
   <Speed>k__BackingField: 0
   <CanAddOne>k__BackingField: 0
-  <WeaponConfig>k__BackingField: {fileID: 11400000, guid: 10b8ccc31bf699f45a62da40171d8e98, type: 2}
+  <WeaponConfig>k__BackingField: {fileID: 11400000, guid: dd3f9e3f610b3514d9839b797a4333fe, type: 2}

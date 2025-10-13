@@ -52,8 +52,6 @@ public class HealthBar : MonoBehaviour
     {
         if (image == null) return;
 
-        Debug.Log(targetFill);
-
         _fillTween?.Kill();
         _fillTween = image.DOFillAmount(targetFill, duration)
             .SetEase(Ease.OutCubic);

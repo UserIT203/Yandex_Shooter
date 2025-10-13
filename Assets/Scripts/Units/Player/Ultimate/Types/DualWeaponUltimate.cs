@@ -30,8 +30,12 @@ public class DualWeaponUltimate : UltimateBase, IDisposable
     protected override void CleanUp()
     {
         base.CleanUp();
-        _player.Stats.Damage.RemodeModifier(_modificatorBonus);
-        _modificatorBonus = 0;
+
+        if(_player.Stats.Damage.Modificator.Count > 1)
+        {
+            _player.Stats.Damage.RemodeModifier(_modificatorBonus);
+            _modificatorBonus = 0;
+        }
     }
 
     private void SetModificator(WeaponBase weapon)

@@ -83,6 +83,7 @@ public class Player : MonoBehaviour, IDamagable, IItemHandler
 
     public void TakeDamage(float damage)
     {
+        AudioManager.PlaySound("PlayerHit");
         onTakeDamage?.Invoke(damage);
         _characterStats?.TakeDamage(damage);
     }
@@ -98,6 +99,7 @@ public class Player : MonoBehaviour, IDamagable, IItemHandler
     }
     public void Reborn()
     {
+        AudioManager.PlaySound("PlayerReborn");
         _cutsceneManager.EndCutscene();
         _characterStats.Reborn();
         onReborn?.Invoke(_characterStats.RebornTime);

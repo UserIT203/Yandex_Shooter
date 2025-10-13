@@ -41,7 +41,7 @@ public class FSMMelleAttack : FSMState
         _player.TakeDamage(_unit.Stats.Damage.GetValue());
         _attackTimer = _unit.Stats.AttackDealy.GetValue();
 
+        AudioManager.PlaySound("EnemyPunch");
         _unit.OnAttack();
-        Debug.Log("Boss Attack Player");
     }
 }

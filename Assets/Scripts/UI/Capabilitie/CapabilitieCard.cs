@@ -104,6 +104,8 @@ public class CapabilitieCard : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     private void OnUpgrade()
     {
+        AudioManager.PlaySound("SelectCapabilitie");
+
         if (_currentCapabilite.IsUnlock == false)
             _currentCapabilite.Unlock();
         else

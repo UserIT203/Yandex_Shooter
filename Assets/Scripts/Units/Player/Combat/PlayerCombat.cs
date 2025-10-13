@@ -48,7 +48,7 @@ public class PlayerCombat : MonoBehaviour
         _weapon.onShoot += CreateBullet;
 
         _bulletPool = new CustomPool<Bullet>(_currentWeaponConfig.BulletType,
-            _currentWeaponConfig.BulletCount, _bulletPoolContainer);
+           40, _bulletPoolContainer);
     }
 
     private void Update()
@@ -74,6 +74,7 @@ public class PlayerCombat : MonoBehaviour
         Bullet bullet = _bulletPool.Get();
         bullet.transform.position = _firePoint.transform.position;
         bullet.Shoot(_shootDirection, _bulletPool, _player.Stats.Damage.GetValue());
+        AudioManager.PlaySound("Shoot");
     }
 
     private void Reload()
@@ -83,6 +84,7 @@ public class PlayerCombat : MonoBehaviour
 
     private void UseUlitimate()
     {
+        AudioManager.PlaySound("PlayerUltimate");
         _player.Stats.Ultimate.TryUse();
     }
 

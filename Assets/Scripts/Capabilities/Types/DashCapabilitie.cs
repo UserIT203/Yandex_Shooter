@@ -26,6 +26,7 @@ public class DashCapabilitie : CapabilitieBase
         if (_canDash == false || IsUnlock == false)
             return;
 
+        AudioManager.PlaySound("Dash");
         _canDash = false;
 
         Player.StartCoroutine(StartDash(direction));

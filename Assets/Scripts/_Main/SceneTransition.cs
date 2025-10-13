@@ -12,6 +12,7 @@ public class SceneTransition : MonoBehaviour
     private CanvasGroup _canvasGroup;
     private AsyncOperation _sceneLoadingOperation;
     private bool _shouldPlayAnimationOpen = false;
+    private bool _hasLoadScene = false;
 
     public event Action onSceneLoad;
 
@@ -39,11 +40,19 @@ public class SceneTransition : MonoBehaviour
 
     public static void SwitchScene(string sceneName)
     {
+        if (Instance._hasLoadScene == true) return;
+
         Instance._animator.SetTrigger("onOpen");
         Instance._sceneLoadingOperation = SceneManager.LoadSceneAsync(sceneName);
         Instance._sceneLoadingOperation.allowSceneActivation = false;
+        Instance._hasLoadScene = true;
     }
 
+    public static void RestartScene()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SwitchScene(currentSceneName);
+    }
 
     private void Start()
     {
@@ -56,6 +65,7 @@ public class SceneTransition : MonoBehaviour
         Debug.Log("Scene load");
         _shouldPlayAnimationOpen = true;
         _sceneLoadingOperation.allowSceneActivation = true;
+        _hasLoadScene = false;
     }
 
     public void OnOpenNewScene() => onSceneLoad?.Invoke();

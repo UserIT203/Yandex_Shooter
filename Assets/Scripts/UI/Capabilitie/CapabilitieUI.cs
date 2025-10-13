@@ -33,6 +33,7 @@ public class CapabilitieUI : MonoBehaviour
 
     public void Show(ICapabilitie[] capabilities)
     {
+        AudioManager.PlaySound("LevelUp");
         _canvasGroup.Activate();
         _timeManager.Pause();
 

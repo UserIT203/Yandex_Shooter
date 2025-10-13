@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Icon>k__BackingField: {fileID: 21300000, guid: bc4cfa23f57aa31459f243e3577d8de2, type: 3}
   <Damage>k__BackingField: 0
-  <Delay>k__BackingField: 2
-  <Speed>k__BackingField: 4
+  <Delay>k__BackingField: 8
+  <Speed>k__BackingField: 2
   <CanAddOne>k__BackingField: 0
   <WeaponConfig>k__BackingField: {fileID: 0}

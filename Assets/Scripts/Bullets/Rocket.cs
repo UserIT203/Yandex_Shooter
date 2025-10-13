@@ -157,7 +157,7 @@ public class Rocket : MonoBehaviour
 
     private void OnTargetReached()
     {
-        Debug.Log("Снаряд достиг цели!");
+        AudioManager.PlaySound("Explosion");
         if (_target.TryGetComponent<IDamagable>(out var unit))
             unit.TakeDamage(_damage);
 

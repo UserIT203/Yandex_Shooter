@@ -44,6 +44,7 @@ public class GeneralManager : MonoBehaviour
 
     public void EquipCharacter(Character character)
     {
+        AudioManager.PlaySound("EquipCharacter");
         _gameData.Character = character.Config;
     }
 }

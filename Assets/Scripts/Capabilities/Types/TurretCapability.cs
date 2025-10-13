@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TurretCapability : CapabilitieBase
 {
-    private float _damage, _attackDelay, _attackRadius, _spawnRadius;
+    private float _damage, _attackDelay, _attackRadius, _spawnRadius, _timeToLife;
     private int _turretCount;
 
     private CustomPool<Bullet> _bulletPool;
@@ -27,7 +27,7 @@ public class TurretCapability : CapabilitieBase
                 GetRandomPosition(), 
                 Quaternion.identity);
 
-            turret.Initialized(_damage, _attackRadius, _attackDelay, _bulletPool);
+            turret.Initialized(_damage, _attackRadius, _attackDelay, _bulletPool, _timeToLife);
         }
     }
 
@@ -39,6 +39,7 @@ public class TurretCapability : CapabilitieBase
         _attackDelay = turretConfig.Delay;
         _attackRadius = turretConfig.AttackRadius;
         _spawnRadius = turretConfig.SpawnRadius;
+        _timeToLife = turretConfig.LifeTime;
 
         _turretCount = turretConfig.TurretCount;
         _turretPrefab = turretConfig.TurretPrefab;

@@ -7,14 +7,6 @@ using Zenject;
 public class DeathUI : MonoBehaviour
 {
     [Inject] private Player _player;
-    [Inject] private WaveManager _waveManager;
-    [Inject] private GameTimeManager _timeManager;
-
-    [Header("Result Panel Links")]
-    [SerializeField] private CanvasGroup _resultPanel;
-    [SerializeField] private TMP_Text _enemiesCountText;   
-    [SerializeField] private TMP_Text _bossCountText;   
-    [SerializeField] private TMP_Text _totalTimeText;
 
     [Header("Resume Panel Links")]
     [SerializeField] private CanvasGroup _resumePanel;
@@ -22,42 +14,32 @@ public class DeathUI : MonoBehaviour
     [SerializeField] private Button _applyButton;
     [SerializeField] private Button _refuseButton;
 
-    private float _totalTime;
-    private bool _isPauseGame = false;
+    [SerializeField] private ResultPanelUI _resultPanel;
 
     private void OnEnable()
     {
-        _refuseButton.onClick.AddListener(OpenResultAnimation);
         _applyButton.onClick.AddListener(OnRebornPlayer);
+        _refuseButton.onClick.AddListener(OnClickRefuseButton);
+
+        _applyButton.onClick.AddListener(() => AudioManager.PlaySound("ButtonClick"));
+        _refuseButton.onClick.AddListener(() => AudioManager.PlaySound("ButtonClick"));
     }
 
     private void OnDisable()
     {
-        _refuseButton.onClick.RemoveListener(OpenResultAnimation);
         _applyButton.onClick.RemoveListener(OnRebornPlayer);
+        _refuseButton.onClick.RemoveListener(OnClickRefuseButton);
+
+        _applyButton.onClick.RemoveListener(() => AudioManager.PlaySound("ButtonClick"));
+        _refuseButton.onClick.RemoveListener(() => AudioManager.PlaySound("ButtonClick"));
     }
 
     private void Awake()
     {
-        _timeManager.OnGamePaused += () => _isPauseGame = true;
-        _timeManager.OnGameResumed += () => _isPauseGame = false;
-
         _resumePanel.Deactivate();
-        _resultPanel.Deactivate();
     }
 
-    private void Update()
-    {
-        if (_isPauseGame) return;
-
-        _totalTime += Time.deltaTime;
-    }
-
-    public void OpenDeathPanel()
-    {
-        Debug.Log("Open Reslt Panel");
-        OpenResumePanel();
-    }
+    private void OnClickRefuseButton() => _resultPanel.OpenMenu();
 
     private void OpenResumePanel()
     {
@@ -68,28 +50,6 @@ public class DeathUI : MonoBehaviour
         _resumePanel.Activate();
 
         PlayAnimationText(_description);
-    }
-
-    private void OpenResultAnimation()
-    {
-        Time.timeScale = 1f;
-
-        _resultPanel.DOFade(1f, 1f)
-            .SetEase(Ease.Linear, 1f)
-            .OnComplete(FillInfoInResult);
-    }
-
-    private void FillInfoInResult()
-    {
-        _resultPanel.Activate();
-
-        _bossCountText.text = _waveManager.BossDestroy.ToString();
-        _enemiesCountText.text = _waveManager.EnemiesDestroy.ToString();
-        _totalTimeText.text = string.Format("{0:f2}", _totalTime);
-
-        PlayAnimationText(_bossCountText);
-        PlayAnimationText(_totalTimeText);
-        PlayAnimationText(_enemiesCountText);
     }
 
     private void PlayAnimationText(TMP_Text text)
@@ -105,9 +65,12 @@ public class DeathUI : MonoBehaviour
 
     private void OnRebornPlayer()
     {
-        _resultPanel.Deactivate();
         _resumePanel.Deactivate();
-
         _player.Reborn();
+    }
+
+    public void OpenDeathPanel()
+    {
+        OpenResumePanel();
     }
 }

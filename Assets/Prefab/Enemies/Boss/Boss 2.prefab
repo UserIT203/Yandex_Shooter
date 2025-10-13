@@ -10400,6 +10400,9 @@ MonoBehaviour:
   _config: {fileID: 11400000, guid: d01a9a4d9bb431a4695a543cf72e1073, type: 2}
   <BossIcon>k__BackingField: {fileID: 1369315935, guid: b5ceffec7a8ed864e8f0d0b7eac7054d, type: 3}
   <BossName>k__BackingField: "\u0421\u043B\u0438\u0437\u044C"
+  _spawnEnemies:
+  - EnemyType: 4
+    EnemyCount: 10
   _firePoint: {fileID: 784687004679097850}
 --- !u!1 &8868182091202717884
 GameObject:

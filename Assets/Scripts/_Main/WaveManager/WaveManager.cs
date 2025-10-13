@@ -13,13 +13,15 @@ public class WaveManager : MonoBehaviour, IEnemyObserver
     private int _currentWave;
     private int _maxWave;
     private int _currentEnemiesInWave;
-    private bool _bossDie;
+    private bool _bossDie = true;
     private GameManager _gameManager;
 
     public int EnemiesDestroy { get; private set; }
     public int BossDestroy { get; private set; }
+    public int CurrentWave => _currentWave;
 
     public event Action<int> onStartWave;
+    public event Action onWavesEnd;
 
     [Inject]
     public void Construct(GameManager gameManager)
@@ -71,6 +73,7 @@ public class WaveManager : MonoBehaviour, IEnemyObserver
     {
         if (_currentWave == _maxWave - 1)
         {
+            WinLevel();
             return;
         }
 
@@ -89,13 +92,21 @@ public class WaveManager : MonoBehaviour, IEnemyObserver
 
         onStartWave?.Invoke(_currentWave);
     }
+
+    private void WinLevel()
+    {
+        AudioManager.PlaySound("WinSound");
+        onWavesEnd?.Invoke();
+    }
 }
 
 public enum EnemyType
 {
     Walk = 0,
     Range = 1,
-    Explosion = 2
+    BossEnemyRanged = 2,
+    BossEnemyMelle_1 = 3,
+    BossEnemyMelle_2 = 4
 }
 
 [System.Serializable]

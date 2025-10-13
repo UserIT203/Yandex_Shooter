@@ -5,8 +5,6 @@ using Zenject;
 
 public class GameManager : MonoBehaviour, IItemHandler
 {
-    [Inject] private GameData _gameData;
-
     [SerializeField] private CapabilitiesManager _capabiliteManager;
     [Header("Main Settigns")]
     [SerializeField] private float _maxXP = 100;
@@ -15,9 +13,31 @@ public class GameManager : MonoBehaviour, IItemHandler
     [SerializeField] private PlayerXPUI _playerXPUI;
 
     private float _currentXP;
-    private int _currentEarnedCoins;
+    private float _currentTime;
+    private GameData _gameData;
+    private GameTimeManager _timeManager;
+    private bool _isGamePaused;
+
+    public float TotalTimeInGame => _currentTime;
 
     public event Action onGameStart;
+
+    [Inject]
+    public void Construct(GameData gameData, GameTimeManager timeManager)
+    {
+        _gameData = gameData;
+        _timeManager = timeManager;
+
+        _timeManager.OnGamePaused += () => _isGamePaused = true;
+        _timeManager.OnGameResumed += () => _isGamePaused = false;
+    }
+
+    private void Update()
+    {
+        if (_isGamePaused == true) return;
+
+        _currentTime += Time.deltaTime;
+    }
 
     public void HandleActionWithValue(float value)
     {
@@ -33,7 +53,6 @@ public class GameManager : MonoBehaviour, IItemHandler
 
     public void HandleActionWithValue(int value)
     {
-        _currentEarnedCoins += value;
         _gameData.AddCoins(value);
     }
 

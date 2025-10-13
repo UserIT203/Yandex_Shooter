@@ -95,6 +95,8 @@ public class PlayerCapabilities : MonoBehaviour
 
         foreach (Sword sword in _swords)
         {
+            sword.UpdateOptions(config.Damage, config.Speed);
+
             if(sword.gameObject.activeSelf == false)
             {
                 sword.UnlockSword();

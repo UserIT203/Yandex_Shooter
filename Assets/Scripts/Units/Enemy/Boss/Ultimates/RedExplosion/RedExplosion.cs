@@ -8,7 +8,6 @@ public class RedExplosion : MonoBehaviour
     private float _damage;
     private Player _target;
 
-
     private void OnEnable()
     {
         _hitBox.onCollision += DoDamagePlayer;
@@ -21,8 +20,8 @@ public class RedExplosion : MonoBehaviour
 
     private void DoDamagePlayer()
     { 
-
         float distance = Vector3.Distance(transform.position, _target.transform.position);
+        AudioManager.PlaySound("Explosion");
 
         if (distance <= _radius)
             _target.TakeDamage(_damage);
@@ -33,5 +32,7 @@ public class RedExplosion : MonoBehaviour
         _radius = radius;
         _damage = damage;
         _target = player;
+
+        AudioManager.PlaySound("MagicBullet");
     }
 }

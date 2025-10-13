@@ -292,6 +292,18 @@ MonoBehaviour:
           m_StringArgument: MainMenu
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1421214549}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonClick
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &9440838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -635,7 +647,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 37.4
+  m_fontSize: 35.4
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -912,7 +924,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.141, y: 0.09}
   m_AnchorMax: {x: 0.8557558, y: 0.545}
-  m_AnchoredPosition: {x: 1.0000153, y: 0.5}
+  m_AnchoredPosition: {x: 1, y: 0.5}
   m_SizeDelta: {x: 0.71881104, y: -1.3203964}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &187615163
@@ -1108,6 +1120,18 @@ MonoBehaviour:
           m_StringArgument: Level_1
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1421214549}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonClick
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &201770604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1259,7 +1283,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34.2
+  m_fontSize: 35.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1403,6 +1427,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: SettingMenu
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1421214549}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonClick
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &219712515
@@ -1913,7 +1949,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 313793502}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1421214549}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonClick
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &313793502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2257,7 +2305,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.05149999, y: 0.24900001}
   m_AnchorMax: {x: 0.13800001, y: 0.6118519}
-  m_AnchoredPosition: {x: -0.9998779, y: 1}
+  m_AnchoredPosition: {x: -1, y: 1}
   m_SizeDelta: {x: -0.03112793, y: 0.033203125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &675278453
@@ -2397,7 +2445,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 41.75
+  m_fontSize: 40.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2715,7 +2763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 1}
+  m_Color: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3325,6 +3373,8 @@ MonoBehaviour:
   _buyButton: {fileID: 313793501}
   _costText: {fileID: 146107082}
   _coinsCountText: {fileID: 1763845820}
+  _eqipCharacter: {fileID: 21300000, guid: 47783dc49ca0d1544924eb1e514f5122, type: 3}
+  _uneqipCharacter: {fileID: 21300000, guid: e0a4db69851276e46be7366d78b16687, type: 3}
 --- !u!225 &1042627764
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3334,8 +3384,8 @@ CanvasGroup:
   m_GameObject: {fileID: 1042627760}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!1 &1070168155
 GameObject:
@@ -3420,7 +3470,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1070168158}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1421214549}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonClick
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1070168158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3583,6 +3645,7 @@ GameObject:
   - component: {fileID: 1114974239}
   - component: {fileID: 1114974241}
   - component: {fileID: 1114974240}
+  - component: {fileID: 1114974242}
   m_Layer: 5
   m_Name: Loadbar
   m_TagString: Untagged
@@ -3604,10 +3667,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 234277892}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 771, y: -376}
-  m_SizeDelta: {x: 224.0842, y: 224.0842}
+  m_AnchorMin: {x: 0.8425625, y: 0.050777778}
+  m_AnchorMax: {x: 0.9605622, y: 0.2572963}
+  m_AnchoredPosition: {x: -3, y: -2.5}
+  m_SizeDelta: {x: -1.9157715, y: 1.084198}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1114974240
 MonoBehaviour:
@@ -3629,7 +3692,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 085185b08a40a924985bc0e4176edea6, type: 3}
+  m_Sprite: {fileID: 241398738, guid: 53a839c249b244546a06d88fb065f989, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3647,6 +3710,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1114974238}
   m_CullTransparentMesh: 1
+--- !u!95 &1114974242
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114974238}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 65640752d6ab7f24fba0e757fccfbfe7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1184788587
 GameObject:
   m_ObjectHideFlags: 0
@@ -3740,6 +3824,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: CharacterMenu
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1421214549}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonClick
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1184788590
@@ -3890,10 +3986,10 @@ RectTransform:
   - {fileID: 225352124}
   m_Father: {fileID: 1956577956}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.36947918, y: 0.025592592}
-  m_AnchorMax: {x: 0.44400004, y: 0.15900001}
-  m_AnchoredPosition: {x: 0.5, y: 2}
-  m_SizeDelta: {x: -7, y: -6}
+  m_AnchorMin: {x: 0.36947918, y: 0.033}
+  m_AnchorMax: {x: 0.44300002, y: 0.15900001}
+  m_AnchoredPosition: {x: 1.5, y: -0.5}
+  m_SizeDelta: {x: -5, y: -1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1344602933
 MonoBehaviour:
@@ -3939,6 +4035,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1421214549}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonClick
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 744312194}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: OpenMenu
@@ -4088,7 +4196,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36.75
+  m_fontSize: 38.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4152,6 +4260,213 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _menu: {fileID: 1040497744}
   _durationText: 0.5
+--- !u!1 &1421214548
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1421214550}
+  - component: {fileID: 1421214549}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1421214549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421214548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f00315a6280bd40bbee947ea173e6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audios:
+  - <Name>k__BackingField: ButtonClick
+    <Volume>k__BackingField: 0.667
+    <IsLoop>k__BackingField: 0
+    <Pitch>k__BackingField: 1
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: 48015e8b4ed45e741a376f2c458ef650, type: 3}
+    <Source>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: MainMenu
+    <Volume>k__BackingField: 0.667
+    <IsLoop>k__BackingField: 1
+    <Pitch>k__BackingField: 1
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: 17888137dacbe754fa4fcfbf0d504559, type: 3}
+    <Source>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: Level_1
+    <Volume>k__BackingField: 0.2
+    <IsLoop>k__BackingField: 1
+    <Pitch>k__BackingField: 1
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: f2d0770e1545bc44c81e4f881576f87e, type: 3}
+    <Source>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: Shoot
+    <Volume>k__BackingField: 0.5
+    <IsLoop>k__BackingField: 0
+    <Pitch>k__BackingField: 1
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: 1228bca1f86ec924eb347680e8028397, type: 3}
+    <Source>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: Footstep
+    <Volume>k__BackingField: 0.6
+    <IsLoop>k__BackingField: 1
+    <Pitch>k__BackingField: 1
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: 3aa2dac2361110841b28eed662daade5, type: 3}
+    <Source>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: PlayerHit
+    <Volume>k__BackingField: 0.6
+    <IsLoop>k__BackingField: 0
+    <Pitch>k__BackingField: 1
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: b199c0e9e6418a145a73facc3e3adf69, type: 3}
+    - {fileID: 8300000, guid: eabca5881cef39a41856698ee9ec3f97, type: 3}
+    <Source>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: SelectCapabilitie
+    <Volume>k__BackingField: 0.6
+    <IsLoop>k__BackingField: 0
+    <Pitch>k__BackingField: 1
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: 36cba13fba3a1ef43a8a3239d8683dd7, type: 3}
+    <Source>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: EquipCharacter
+    <Volume>k__BackingField: 0.6
+    <IsLoop>k__BackingField: 0
+    <Pitch>k__BackingField: 1
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: 62910121fc8ca4e41b91e444a5b38f3f, type: 3}
+    <Source>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: CollectXP
+    <Volume>k__BackingField: 0.6
+    <IsLoop>k__BackingField: 0
+    <Pitch>k__BackingField: 1
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: d57ed612dcf0dad43a57c72fdb0ee315, type: 3}
+    <Source>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: CollectHealth
+    <Volume>k__BackingField: 0.6
+    <IsLoop>k__BackingField: 0
+    <Pitch>k__BackingField: 1
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: 09996fcce0c3f4342ab85b8d9fb53733, type: 3}
+    <Source>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: EnemyHit
+    <Volume>k__BackingField: 0.6
+    <IsLoop>k__BackingField: 0
+    <Pitch>k__BackingField: 1.2
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: c4b1160098c1016499acc8674b7bfee1, type: 3}
+    <Source>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: EnemyShoot
+    <Volume>k__BackingField: 0.6
+    <IsLoop>k__BackingField: 0
+    <Pitch>k__BackingField: 1
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: f31ef2905cd49c24e980a4eafca3cf86, type: 3}
+    <Source>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: EnemyPunch
+    <Volume>k__BackingField: 0.6
+    <IsLoop>k__BackingField: 0
+    <Pitch>k__BackingField: 1
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: c9431be00ab5a9c4687d4e8dccdfa0eb, type: 3}
+    <Source>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: BossSpawn
+    <Volume>k__BackingField: 1
+    <IsLoop>k__BackingField: 0
+    <Pitch>k__BackingField: 1
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: 78ae52e982e310249b6a06f31642030e, type: 3}
+    <Source>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: PlayerFreez
+    <Volume>k__BackingField: 1
+    <IsLoop>k__BackingField: 0
+    <Pitch>k__BackingField: 1
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: a0951f4ca052e6b4dbec5ff8e364ebd6, type: 3}
+    <Source>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: WinSound
+    <Volume>k__BackingField: 1
+    <IsLoop>k__BackingField: 0
+    <Pitch>k__BackingField: 1
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: 029cb3c709a093d47a36f43cb384b180, type: 3}
+    <Source>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: PlayerReborn
+    <Volume>k__BackingField: 1
+    <IsLoop>k__BackingField: 0
+    <Pitch>k__BackingField: 1
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: 8764a17cd0063ff4ca13e35f86a7a620, type: 3}
+    <Source>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: LevelUp
+    <Volume>k__BackingField: 1
+    <IsLoop>k__BackingField: 0
+    <Pitch>k__BackingField: 1
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: 2edd796f7d7a01346884b69121ba4f24, type: 3}
+    <Source>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: PlayerUltimate
+    <Volume>k__BackingField: 1
+    <IsLoop>k__BackingField: 0
+    <Pitch>k__BackingField: 1
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: 0890aedf3c4361d44a552d358e056398, type: 3}
+    <Source>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: BossDie
+    <Volume>k__BackingField: 1
+    <IsLoop>k__BackingField: 0
+    <Pitch>k__BackingField: 1
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: d9bcc410f5ccc9a4c90a757aa67225de, type: 3}
+    <Source>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: Explosion
+    <Volume>k__BackingField: 1
+    <IsLoop>k__BackingField: 0
+    <Pitch>k__BackingField: 1
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: 3d2e19db0b22ff146aa453e4da6a9f6d, type: 3}
+    <Source>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: Dash
+    <Volume>k__BackingField: 1
+    <IsLoop>k__BackingField: 0
+    <Pitch>k__BackingField: 1
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: 1b33f1001dfc88b4492a8e26c0e0301c, type: 3}
+    <Source>k__BackingField: {fileID: 0}
+  - <Name>k__BackingField: MagicBullet
+    <Volume>k__BackingField: 1
+    <IsLoop>k__BackingField: 0
+    <Pitch>k__BackingField: 1
+    <Clips>k__BackingField:
+    - {fileID: 8300000, guid: 93ab39335be30ba41b2da5871bcca4d7, type: 3}
+    <Source>k__BackingField: {fileID: 0}
+--- !u!4 &1421214550
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421214548}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 798.976, y: 605.4683, z: 9.078917}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1481806904
 GameObject:
   m_ObjectHideFlags: 0
@@ -4187,7 +4502,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.12521593, y: 0.17068963}
   m_AnchorMax: {x: 0.3121761, y: 0.8353104}
-  m_AnchoredPosition: {x: 0.67285156, y: -0.4403}
+  m_AnchoredPosition: {x: 0.67285156, y: -0.44030762}
   m_SizeDelta: {x: -1.1325989, y: 2.8805008}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1481806906
@@ -4251,7 +4566,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 61.5
+  m_fontSize: 63.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4337,7 +4652,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.031607967, y: 0.17068963}
   m_AnchorMax: {x: 0.106000006, y: 0.8353104}
-  m_AnchoredPosition: {x: 0, y: -0.49999237}
+  m_AnchoredPosition: {x: 0, y: -0.5}
   m_SizeDelta: {x: -2, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1525845698
@@ -4394,6 +4709,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: MainMenu
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1421214549}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonClick
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1525845699
@@ -4683,7 +5010,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.69973046}
   m_AnchorMax: {x: 0.12149019, y: 1}
-  m_AnchoredPosition: {x: -0.030029297, y: 0.101997375}
+  m_AnchoredPosition: {x: -0.030029297, y: 0.101989746}
   m_SizeDelta: {x: -1, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1716817564
@@ -4729,7 +5056,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1716817565}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1421214549}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonClick
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1716817565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4878,7 +5217,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.21478286, y: 0.11853042}
   m_AnchorMax: {x: 0.7915304, y: 0.48262614}
-  m_AnchoredPosition: {x: -1.4999847, y: 0.5}
+  m_AnchoredPosition: {x: -1.4999695, y: 0.5}
   m_SizeDelta: {x: -2.5145874, y: -0.0605011}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1743220986
@@ -4928,7 +5267,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 43.75
+  m_fontSize: 45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5091,7 +5430,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34.55
+  m_fontSize: 35.45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5878,3 +6217,4 @@ SceneRoots:
   - {fileID: 744312193}
   - {fileID: 234277892}
   - {fileID: 45238169}
+  - {fileID: 1421214550}

@@ -20,7 +20,7 @@ public class GameTimeManager : MonoBehaviour
 
     public void Resume()
     {
-        _pauseCount--;
+        _pauseCount = (int)Mathf.Max(0, _pauseCount - 1);
 
         if(_pauseCount <= 0)
         {

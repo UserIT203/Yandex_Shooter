@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Turret_2
   m_EditorClassIdentifier: 
   <Icon>k__BackingField: {fileID: 21300000, guid: f845b4d47782b994baa55df278b29ec1, type: 3}
-  <Damage>k__BackingField: 5
-  <Delay>k__BackingField: 1
+  <Damage>k__BackingField: 7
+  <Delay>k__BackingField: 0.8
   <Speed>k__BackingField: 0
   <CanAddOne>k__BackingField: 0
   <WeaponConfig>k__BackingField: {fileID: 0}
   <AttackRadius>k__BackingField: 3
   <SpawnRadius>k__BackingField: 2
+  <LifeTime>k__BackingField: 25
   <TurretCount>k__BackingField: 2
   <TurretPrefab>k__BackingField: {fileID: 7854750380038800468, guid: 7484f96f30881264d9121fc9c9693469, type: 3}

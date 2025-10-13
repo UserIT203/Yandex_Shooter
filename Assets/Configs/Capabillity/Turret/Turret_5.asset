@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fdc8ff0641abb94ab13d26d17cfab39, type: 3}
+  m_Name: Turret_5
+  m_EditorClassIdentifier: 
+  <Icon>k__BackingField: {fileID: 21300000, guid: a809ab01a059a9240ad4c8dd54eda8b4, type: 3}
+  <Damage>k__BackingField: 15
+  <Delay>k__BackingField: 0.5
+  <Speed>k__BackingField: 0
+  <CanAddOne>k__BackingField: 0
+  <WeaponConfig>k__BackingField: {fileID: 0}
+  <AttackRadius>k__BackingField: 3
+  <SpawnRadius>k__BackingField: 2
+  <LifeTime>k__BackingField: 40
+  <TurretCount>k__BackingField: 4
+  <TurretPrefab>k__BackingField: {fileID: 7854750380038800468, guid: 7484f96f30881264d9121fc9c9693469, type: 3}

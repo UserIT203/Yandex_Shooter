@@ -41,9 +41,12 @@ public class PlayerMovement : MonoBehaviour
         if (_player?.IsFreeze == true) return;
 
         _input.UpdateInput();
-        
-        if(_canMove) 
+
+        if (_canMove)
+        {
             _characterController.Move(_currentVelocity * Time.deltaTime);
+            PlayFootstepSound();
+        }
     }
 
     private void Moving(Vector3 direction)
@@ -78,6 +81,8 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator Frezee(float time)
     {
+        AudioManager.PlaySound("PlayerFreez");
+
         _canMove = false;
         onFreeze?.Invoke(true);
 
@@ -85,6 +90,14 @@ public class PlayerMovement : MonoBehaviour
 
         _canMove = true;
         onFreeze?.Invoke(false);
+    }
+
+    private void PlayFootstepSound()
+    {
+        if (_characterController.velocity.magnitude > 0.01f)
+            AudioManager.PlaySound("Footstep");
+        else
+            AudioManager.StopSound("Footstep");
     }
 
     public void FreezeMoving(float frezeeTime)

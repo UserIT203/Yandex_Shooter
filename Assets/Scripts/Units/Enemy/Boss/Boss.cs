@@ -62,6 +62,7 @@ public class Boss : EnemyUnit
 
     protected override void Die()
     {
+        AudioManager.PlaySound("BossDie");
         _observer.OnBossDestroed();
         _bossConfig.Ultimate.StopActions();
         base.Die();
