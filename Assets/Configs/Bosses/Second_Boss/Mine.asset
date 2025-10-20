@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <UltimateIcon>k__BackingField: {fileID: 0}
   <UltimateName>k__BackingField: Mine
-  <Cooldown>k__BackingField: 20
-  <UltimateDuration>k__BackingField: 5
+  <Cooldown>k__BackingField: 15
+  <UltimateDuration>k__BackingField: 4
   _description: 
   _minePrefab: {fileID: 7622371124157711333, guid: dc6847db28caa0c458c0fa8e86c91bdb, type: 3}
   _mineSpawnArea: 2
   _createMineDealy: 0.2
-  _maxMineCount: 5
+  _maxMineCount: 10
   _minDistance: 1
   _mineDamage: 5
   _mineActivateRadius: 1

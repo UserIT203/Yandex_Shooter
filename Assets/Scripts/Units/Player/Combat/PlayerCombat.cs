@@ -84,7 +84,6 @@ public class PlayerCombat : MonoBehaviour
 
     private void UseUlitimate()
     {
-        AudioManager.PlaySound("PlayerUltimate");
         _player.Stats.Ultimate.TryUse();
     }
 

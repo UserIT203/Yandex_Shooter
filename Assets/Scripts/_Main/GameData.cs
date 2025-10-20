@@ -8,6 +8,7 @@ public class GameData : ScriptableObject
 {
     [field: SerializeField] public PlayerConfig Character { get; set; }
     [field: SerializeField] public int Coins { get; private set; }
+    [field: SerializeField] public bool ShowTutorial { get; private set; }
 
     public void AddCoins(int count)
     {
@@ -21,5 +22,10 @@ public class GameData : ScriptableObject
         
         Coins -= count;
         return true;
+    }
+
+    public void ChangeTutorialState()
+    {
+        ShowTutorial = false;
     }
 }

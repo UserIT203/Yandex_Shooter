@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6fd67849a07e2da4283237f43ed4c973, type: 3}
-  m_Name: XPItem
+  m_Name: XPItem_Boss
   m_EditorClassIdentifier: 
   <Name>k__BackingField: XP Item
   <SoundName>k__BackingField: CollectXP
   <ItemPrefab>k__BackingField: {fileID: 5943118992031388509, guid: cf935151c14081e449c079a57b3b8201, type: 3}
   <HandlerType>k__BackingField: 1
   <FloatingTextColor>k__BackingField: {r: 0.11173906, g: 0.2368613, b: 0.8773585, a: 1}
-  <Value>k__BackingField: 5
+  <Value>k__BackingField: 50

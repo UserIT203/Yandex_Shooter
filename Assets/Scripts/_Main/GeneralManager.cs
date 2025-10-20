@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class GeneralManager : MonoBehaviour
 {
+    public static GeneralManager Instance;
+
     [SerializeField] private PopUpMenu _popUpMenu;
     [SerializeField] private PlayerConfig _defaultPlayerConfig;
     [SerializeField] private List<Character> _characters;
@@ -24,6 +26,16 @@ public class GeneralManager : MonoBehaviour
         if (_gameData.Character == null)
             _gameData.Character = _defaultPlayerConfig;
 
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+            
         DontDestroyOnLoad(this);
     }
 

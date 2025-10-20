@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Boss
   m_EditorClassIdentifier: 
   <Speed>k__BackingField:
-    _baseValue: 2.4
+    _baseValue: 2.5
     _modificators: []
   <MaxHealth>k__BackingField:
-    _baseValue: 500
+    _baseValue: 1000
     _modificators: []
   <Damage>k__BackingField:
-    _baseValue: 5
+    _baseValue: 8
     _modificators: []
   <RadiusAttack>k__BackingField:
     _baseValue: 1

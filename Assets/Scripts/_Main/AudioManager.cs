@@ -5,30 +5,57 @@ using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager Instance;
+    public static AudioManager Instance = null;
 
     [SerializeField] private List<Audio> _audios;
 
+    private AudioListener _audioListener;
     private Audio _currentThemeAudio;
 
     private Dictionary<string, Audio> _audioDict = new Dictionary<string, Audio>();
 
+    public bool IsPlaySound { get; private set; }
+
     private void OnLevelWasLoaded(int level)
     {
+        Debug.Log(SceneManager.GetActiveScene().name);
         SetThemeAudio(SceneManager.GetActiveScene().name);
         StopSound("Footstep");
     }
 
     private void Awake()
     {
-        if(Instance == null)
+        _audioListener = GetComponent<AudioListener>();
+        IsPlaySound = true;
+    }
+
+    private void Start()
+    {
+        if (Instance == null)
+        {
             Instance = this;
+        }
         else
-            Destroy(Instance);
-        
+        {
+            Destroy(gameObject);
+            return;
+        }
+            
         DontDestroyOnLoad(Instance);
-        
+
         Initialized();
+    }
+
+    public static void StopAllSounds()
+    {
+        Instance._audioListener.enabled = false;
+        Instance.IsPlaySound = false;
+    }
+
+    public static void PlayAllSounds()
+    {
+        Instance._audioListener.enabled = true;
+        Instance.IsPlaySound = true;
     }
 
     public static void PlaySound(string soundName)

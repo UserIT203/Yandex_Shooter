@@ -128,8 +128,6 @@ MonoBehaviour:
   _items:
   - Item: {fileID: 11400000, guid: 51127cdca6bbbbd498789f9cea060092, type: 2}
     Probability: 100
-  - Item: {fileID: 11400000, guid: 51127cdca6bbbbd498789f9cea060092, type: 2}
-    Probability: 100
   - Item: {fileID: 11400000, guid: 8c054da82b76800438eaca1a7976e401, type: 2}
     Probability: 35
   - Item: {fileID: 11400000, guid: 4c259796899027445aaf6460b3313116, type: 2}

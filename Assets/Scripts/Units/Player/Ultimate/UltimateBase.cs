@@ -38,6 +38,7 @@ public abstract class UltimateBase : ScriptableObject, IUltimate
     {
         if(CanUse())
         {
+            AudioManager.PlaySound("PlayerUltimate");
             Execute();
         }
     }

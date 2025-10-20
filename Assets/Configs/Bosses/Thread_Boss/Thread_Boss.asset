@@ -16,7 +16,7 @@ MonoBehaviour:
     _baseValue: 2
     _modificators: []
   <MaxHealth>k__BackingField:
-    _baseValue: 250
+    _baseValue: 750
     _modificators: []
   <Damage>k__BackingField:
     _baseValue: 3

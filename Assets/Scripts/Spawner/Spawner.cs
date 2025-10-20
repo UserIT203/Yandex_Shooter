@@ -5,7 +5,6 @@ using Zenject;
 
 public class Spawner : MonoBehaviour
 {
-    [Inject] private GameTimeManager _timeManager;
     [Inject] private ItemUseContext _itemUseContext;
     [Inject] private BossUI _bossUI;
 
@@ -32,9 +31,13 @@ public class Spawner : MonoBehaviour
     private Coroutine _spawnCoroutine;
     private IEnemyObserver _enemiesObserver;
     private CustomPool<Bullet> _enemyBulletPool;
+    private GameTimeManager _timeManager;
 
-    private void OnEnable()
+    [Inject]
+    public void Construct(GameTimeManager timeManager)
     {
+        _timeManager = timeManager;
+
         _timeManager.OnGamePaused += Freeze;
         _timeManager.OnGameResumed += Unfreeze;
     }
@@ -54,7 +57,7 @@ public class Spawner : MonoBehaviour
     }
 
     public void StartSpawning(List<EnemyInSpawner> enemies, int enemiesCount,
-        IEnemyObserver enemyObserver, int currentWave)
+        IEnemyObserver enemyObserver, int currentWave, float spawnInterval)
     {
         _canSpawn = true;
         _currentEnemyCount = 0;
@@ -64,6 +67,7 @@ public class Spawner : MonoBehaviour
         _enemiesObserver = enemyObserver;
         _enemies = enemies;
         _enemyCount = enemiesCount;
+        _spawnInterval = spawnInterval;
 
         StartSpawningEnemy();   
     }

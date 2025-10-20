@@ -14,6 +14,9 @@ public class PauseMenu : MenuBaseUI
     [SerializeField] private Button _playButton;
     [SerializeField] private Button _settingsButton;
 
+    [Header("Setting Button")]
+    [SerializeField] private SettingMenu _settingMenu;
+
     [Header("Settings")]
     [SerializeField] private KeyCode _pauseMenuKey;
 
@@ -23,6 +26,7 @@ public class PauseMenu : MenuBaseUI
     {
         _playButton.onClick.AddListener(CloseMenu);
         _homeButton.onClick.AddListener(OnHomeButtonClick);
+        _settingsButton.onClick.AddListener(OnSettingButtonClick);
 
         _playButton.onClick.AddListener(() => AudioManager.PlaySound("ButtonClick"));
         _homeButton.onClick.AddListener(() => AudioManager.PlaySound("ButtonClick"));
@@ -33,6 +37,7 @@ public class PauseMenu : MenuBaseUI
     {
         _playButton.onClick.RemoveListener(CloseMenu);
         _homeButton.onClick.RemoveListener(OnHomeButtonClick);
+        _settingsButton.onClick.RemoveListener(OnSettingButtonClick);
 
         _playButton.onClick.RemoveListener(() => AudioManager.PlaySound("ButtonClick"));
         _homeButton.onClick.RemoveListener(() => AudioManager.PlaySound("ButtonClick"));
@@ -58,6 +63,11 @@ public class PauseMenu : MenuBaseUI
     private void OnHomeButtonClick()
     {
         SceneTransition.SwitchScene("MainMenu");
+    }
+
+    private void OnSettingButtonClick()
+    {
+        _settingMenu.OpenMenu();
     }
 
     protected override void CloseMenuAnimation()

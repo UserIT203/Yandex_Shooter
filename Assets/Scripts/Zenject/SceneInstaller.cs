@@ -101,6 +101,7 @@ public class SceneInstaller : MonoInstaller
 
     private void BindMainElements()
     {
+        Container.Bind<Platform>().FromInstance(_platform).AsSingle();
         Container.Bind<GameTimeManager>().FromComponentInHierarchy().AsSingle();
         Container.Bind<CutsceneManager>().FromComponentInHierarchy().AsSingle();
     }

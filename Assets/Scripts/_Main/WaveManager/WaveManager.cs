@@ -88,7 +88,7 @@ public class WaveManager : MonoBehaviour, IEnemyObserver
 
         _currentEnemiesInWave = _waves[_currentWave].EnemyCount;
         _spawner.StartSpawning(_waves[_currentWave].Enemies, _currentEnemiesInWave,
-            this, _currentWave);
+            this, _currentWave, _waves[_currentWave].SpawnInterval);
 
         onStartWave?.Invoke(_currentWave);
     }
@@ -124,6 +124,8 @@ public class Wave
     public List<EnemyInSpawner> Enemies;
     public int EnemyCount { get => GetEnemiesCount(); }
     public bool HasBoss;
+
+    [field: SerializeField] public float SpawnInterval { get; private set; }
 
     private int GetEnemiesCount()
     {

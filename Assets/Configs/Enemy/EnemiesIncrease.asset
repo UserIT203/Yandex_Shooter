@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: EnemiesIncrease
   m_EditorClassIdentifier: 
   <Speed>k__BackingField:
-    _baseValue: 0.2
+    _baseValue: 0.01
     _modificators: []
   <MaxHealth>k__BackingField:
-    _baseValue: 2
+    _baseValue: 5
     _modificators: []
   <Damage>k__BackingField:
-    _baseValue: 0.2
+    _baseValue: 0.5
     _modificators: []
   <RadiusAttack>k__BackingField:
     _baseValue: 0

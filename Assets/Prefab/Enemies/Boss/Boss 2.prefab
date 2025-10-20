@@ -10380,11 +10380,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df4f24544cce8ce4fb92d8b327226953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _items: []
-  _maxCreateItem: 0
+  _items:
+  - Item: {fileID: 11400000, guid: 96afa85adeb46a543ad894b2a099fe89, type: 2}
+    Probability: 100
+  - Item: {fileID: 11400000, guid: ed1b55aaa1f111a46a952b68844bbb92, type: 2}
+    Probability: 100
+  - Item: {fileID: 11400000, guid: 4da7eac6f1a22b246a913706a7d9a0da, type: 2}
+    Probability: 100
+  _maxCreateItem: 3
   _floatingTextPrefab: {fileID: 957923214053988011, guid: f1a06c3450aafc141a21e886b5305caa, type: 3}
-  _createItemRadius: 0
-  _minDistanceBetweenObjects: 0
+  _createItemRadius: 1
+  _minDistanceBetweenObjects: 0.2
 --- !u!114 &3375719480845374148
 MonoBehaviour:
   m_ObjectHideFlags: 0
