@@ -77,6 +77,7 @@ PlayerSettings:
   androidMinimumWindowHeight: 300
   androidFullscreenMode: 1
   androidAutoRotationBehavior: 1
+  androidPredictiveBackSupport: 1
   defaultIsNativeResolution: 1
   macRetinaSupport: 1
   runInBackground: 1
@@ -742,23 +743,23 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: DOTWEEN
+    Android: DOTWEEN;PLUGIN_YG_2;TMP_YG2;YandexGamesPlatform_yg;InterstitialAdv_yg;RewardedAdv_yg;BannerAdv_yg;StickyAdv_yg
     EmbeddedLinux: DOTWEEN
     GameCoreScarlett: DOTWEEN
     GameCoreXboxOne: DOTWEEN
-    LinuxHeadlessSimulation: DOTWEEN
-    Nintendo Switch: DOTWEEN
-    PS4: DOTWEEN
-    PS5: DOTWEEN
+    LinuxHeadlessSimulation: DOTWEEN;PLUGIN_YG_2;YandexGamesPlatform_yg;TMP_YG2;InterstitialAdv_yg;RewardedAdv_yg;BannerAdv_yg;StickyAdv_yg
+    Nintendo Switch: DOTWEEN;PLUGIN_YG_2;YandexGamesPlatform_yg;TMP_YG2;InterstitialAdv_yg;RewardedAdv_yg;BannerAdv_yg;StickyAdv_yg
+    PS4: DOTWEEN;PLUGIN_YG_2;YandexGamesPlatform_yg;TMP_YG2;InterstitialAdv_yg;RewardedAdv_yg;BannerAdv_yg;StickyAdv_yg
+    PS5: DOTWEEN;PLUGIN_YG_2;YandexGamesPlatform_yg;TMP_YG2;InterstitialAdv_yg;RewardedAdv_yg;BannerAdv_yg;StickyAdv_yg
     QNX: DOTWEEN
     Stadia: DOTWEEN
-    Standalone: DOTWEEN
+    Standalone: DOTWEEN;PLUGIN_YG_2;YandexGamesPlatform_yg;TMP_YG2;InterstitialAdv_yg;RewardedAdv_yg;BannerAdv_yg;StickyAdv_yg
     VisionOS: DOTWEEN
-    WebGL: DOTWEEN
-    Windows Store Apps: DOTWEEN
-    XboxOne: DOTWEEN
-    iPhone: DOTWEEN
-    tvOS: DOTWEEN
+    WebGL: DOTWEEN;PLUGIN_YG_2;TMP_YG2;RU_YG2;YandexGamesPlatform_yg;InterstitialAdv_yg;RewardedAdv_yg;BannerAdv_yg;StickyAdv_yg
+    Windows Store Apps: DOTWEEN;PLUGIN_YG_2;YandexGamesPlatform_yg;TMP_YG2;InterstitialAdv_yg;RewardedAdv_yg;BannerAdv_yg;StickyAdv_yg
+    XboxOne: DOTWEEN;PLUGIN_YG_2;YandexGamesPlatform_yg;TMP_YG2;InterstitialAdv_yg;RewardedAdv_yg;BannerAdv_yg;StickyAdv_yg
+    iPhone: DOTWEEN;PLUGIN_YG_2;YandexGamesPlatform_yg;TMP_YG2;InterstitialAdv_yg;RewardedAdv_yg;BannerAdv_yg;StickyAdv_yg
+    tvOS: DOTWEEN;PLUGIN_YG_2;YandexGamesPlatform_yg;TMP_YG2;InterstitialAdv_yg;RewardedAdv_yg;BannerAdv_yg;StickyAdv_yg
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

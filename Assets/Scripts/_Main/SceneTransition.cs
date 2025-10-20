@@ -42,6 +42,8 @@ public class SceneTransition : MonoBehaviour
     {
         if (Instance._hasLoadScene == true) return;
 
+        YandexManager.Instance.ShowInterstitialAdv();
+
         Instance._animator.SetTrigger("onOpen");
         Instance._sceneLoadingOperation = SceneManager.LoadSceneAsync(sceneName);
         Instance._sceneLoadingOperation.allowSceneActivation = false;

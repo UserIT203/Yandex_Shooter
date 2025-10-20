@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour, IItemHandler
 
     private void FillXp()
     {
+        YandexManager.Instance.ShowInterstitialAdv();
         _capabiliteManager.ShowUpgradeUI();
         _currentXP = _maxXP - _currentXP;
         _maxXP += _increaseMaxXPValue;

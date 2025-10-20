@@ -7,8 +7,6 @@ public class ConcreteCharacterMenu : MenuBaseUI
 {
     public const string LockCharacterText = "Equip";
 
-    [Inject] private GeneralManager _generalManager;
-
     [Header("Links UI")]
     [SerializeField] private TMP_Text _characterName;
     [SerializeField] private Image _characterView;
@@ -24,6 +22,15 @@ public class ConcreteCharacterMenu : MenuBaseUI
     [SerializeField] private Sprite _uneqipCharacter;
 
     private Character _characterInfo;
+
+    private GeneralManager _generalManager;
+
+    [Inject]
+    public void Construct(GeneralManager generalManager)
+    {
+        _generalManager = generalManager;
+        _generalManager.GameData.onAddCoins += SetCoinsText;
+    }
 
     private void OnEnable()
     {

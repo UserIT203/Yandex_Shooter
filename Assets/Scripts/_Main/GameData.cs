@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,9 +11,12 @@ public class GameData : ScriptableObject
     [field: SerializeField] public int Coins { get; private set; }
     [field: SerializeField] public bool ShowTutorial { get; private set; }
 
+    public event Action onAddCoins;
+
     public void AddCoins(int count)
     {
         Coins += count;
+        onAddCoins?.Invoke();
     }
 
     public bool TryRemoveCoins(int count)

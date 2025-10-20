@@ -18,6 +18,7 @@ public class GeneralManager : MonoBehaviour
         get { return _gameData.Coins; }
     }
     public List<Character> Characters => _characters;
+    public GameData GameData => _gameData;
 
     public event Action onBuy;
 

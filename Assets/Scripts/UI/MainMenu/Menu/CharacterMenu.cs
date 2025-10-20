@@ -8,9 +8,6 @@ public class CharacterMenu : MenuBaseUI
 {
     private const string ConcreteMenuName = "ConcreteCharacterMenu";
 
-    [Inject] private GeneralManager _generalManager;
-    [Inject] private MenuManager _menuManager;
-
     [SerializeField] private ConcreteCharacterMenu _concreteCharacterMenu;
     [SerializeField] private RectTransform _upLabelRectTransform;
     [SerializeField] private Transform _content;
@@ -25,6 +22,17 @@ public class CharacterMenu : MenuBaseUI
 
     private List<CharacterCard> _cards = new List<CharacterCard>();
     private float _startPositionY;
+    private GeneralManager _generalManager;
+    private MenuManager _menuManager;
+
+    [Inject]
+    public void Constuct(GeneralManager generalManager, MenuManager menuManager)
+    {
+        _generalManager = generalManager;
+        _menuManager = menuManager;
+
+        _generalManager.GameData.onAddCoins += SetCoinsCountText;
+    }
 
     protected override void Initialized()
     {
