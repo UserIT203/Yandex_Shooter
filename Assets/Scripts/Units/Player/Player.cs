@@ -28,6 +28,8 @@ public class Player : MonoBehaviour, IDamagable, IItemHandler
         _cutsceneManager = cutsceneManager;
 
         _characterStats.Ultimate.Initialized(this);
+
+        YandexManager.Instance.InitializedPlayer(this);
     }
 
     private void OnEnable()

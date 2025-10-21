@@ -10,14 +10,21 @@ public class YandexManager : MonoBehaviour
 {
     [Inject] private GameData _gameData;
 
+    public static YandexManager Instance;
+
     private const string MoneyRewardId = "moneyReward";
+    private const string RebornRewardId = "rebornReward";
     public const int MoneyReward = 250;
 
-    public static YandexManager Instance;
+    private Player _player;
+
+    public EnviroumentData EnviroumentData { get; private set; }
 
     private void Awake()
     {
         InitializedStickBanner();
+
+        EnviroumentData  = new EnviroumentData(YG2.envir.deviceType, YG2.envir.language);
 
         if (Instance == null)
         {
@@ -32,6 +39,14 @@ public class YandexManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
+    public void InitializedPlayer(Player player) => _player = player;
+
+    public void SwitchLanguage(string language)
+    {
+        YG2.SwitchLanguage(language);
+    }
+
+    #region Adv
     private void InitializedStickBanner()
     {
         YG2.StickyAdActivity(true);
@@ -44,7 +59,7 @@ public class YandexManager : MonoBehaviour
 
     private void OnRewardRebornPlayer()
     {
-        
+        _player.Reborn();
     }
 
     public void ShowInterstitialAdv()
@@ -61,7 +76,23 @@ public class YandexManager : MonoBehaviour
                 case MoneyRewardId:
                     OnRewardAddMoney();
                     break;
+                case RebornRewardId:
+                    OnRewardRebornPlayer();
+                    break;
             }
         });
+    }
+    #endregion
+}
+
+public struct EnviroumentData
+{
+    public string Device;
+    public string Language;
+
+    public EnviroumentData(string device, string language)
+    {
+        Device = device;
+        Language = language;
     }
 }

@@ -6,6 +6,8 @@ using Zenject;
 
 public class DeathUI : MonoBehaviour
 {
+    private const string RewardId = "rebornReward";
+
     [Inject] private Player _player;
 
     [Header("Resume Panel Links")]
@@ -65,8 +67,8 @@ public class DeathUI : MonoBehaviour
 
     private void OnRebornPlayer()
     {
+        YandexManager.Instance.ShowRewardAdv(RewardId);
         _resumePanel.Deactivate();
-        _player.Reborn();
     }
 
     public void OpenDeathPanel()
