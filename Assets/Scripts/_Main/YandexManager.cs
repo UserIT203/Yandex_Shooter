@@ -1,10 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 using UnityEngine.Playables;
 using YG;
 using Zenject;
+using System;
 
 public class YandexManager : MonoBehaviour
 {
@@ -17,14 +17,15 @@ public class YandexManager : MonoBehaviour
     public const int MoneyReward = 250;
 
     private Player _player;
+    private string _currentLanguage;
 
     public EnviroumentData EnviroumentData { get; private set; }
+    private Dictionary<string, int> _languageDict = new Dictionary<string, int>();
 
     private void Awake()
     {
         InitializedStickBanner();
-
-        EnviroumentData  = new EnviroumentData(YG2.envir.deviceType, YG2.envir.language);
+        InitializedLanguage();
 
         if (Instance == null)
         {
@@ -39,12 +40,25 @@ public class YandexManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
+    private void InitializedLanguage()
+    {
+        EnviroumentData = new EnviroumentData(YG2.envir.deviceType, YG2.envir.language);
+        _currentLanguage = YG2.envir.language;
+
+        _languageDict.Add("en", 0);
+        _languageDict.Add("ru", 1);
+        _languageDict.Add("tr", 2);
+    }
+
     public void InitializedPlayer(Player player) => _player = player;
 
     public void SwitchLanguage(string language)
     {
         YG2.SwitchLanguage(language);
+        _currentLanguage = language;
     }
+
+    public int GetLanguageIndex() => _languageDict[_currentLanguage];
 
     #region Adv
     private void InitializedStickBanner()
@@ -81,6 +95,11 @@ public class YandexManager : MonoBehaviour
                     break;
             }
         });
+    }
+
+    public void ShowRewardAdv(string rewardId, Action onRewadrComplete = null)
+    {
+        YG2.RewardedAdvShow(rewardId, onRewadrComplete);
     }
     #endregion
 }

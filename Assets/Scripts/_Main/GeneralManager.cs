@@ -65,8 +65,10 @@ public class GeneralManager : MonoBehaviour
 [System.Serializable]
 public class Character
 {
+    public TranslatingText Name;
+
     public PlayerConfig Config;
-    public string Name;
+
     public Sprite CharacterView;
     public int Cost;
     public bool IsBought;

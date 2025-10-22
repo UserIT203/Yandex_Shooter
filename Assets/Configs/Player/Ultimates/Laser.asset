@@ -16,7 +16,12 @@ MonoBehaviour:
   <UltimateName>k__BackingField: Laser
   <Cooldown>k__BackingField: 1
   <UltimateDuration>k__BackingField: 10
-  _description: Laser damage
+  _description:
+    _texts:
+    - Fires a laser that deals damage
+    - "\u0412\u044B\u043F\u0443\u0441\u043A\u0430\u0435\u0442 \u043B\u0430\u0437\u0435\u0440
+      \u043D\u0430\u043D\u043E\u0441\u044F\u0449\u0438\u0439 \u0443\u0440\u043E\u043D"
+    - "Hasar veren bir lazer ate\u015Fler"
   _damage: 10
   _laserPrefab: {fileID: 2112355456495904315, guid: 71d8e693d7bcf0b44937888e6b8bbee0, type: 3}
   _mask:

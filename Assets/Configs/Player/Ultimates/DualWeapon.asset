@@ -16,4 +16,9 @@ MonoBehaviour:
   <UltimateName>k__BackingField: Dual Weapon
   <Cooldown>k__BackingField: 20
   <UltimateDuration>k__BackingField: 10
-  _description: Double damage from weapon
+  _description:
+    _texts:
+    - Double damage from weapon
+    - "\u0414\u0432\u043E\u0439\u043D\u043E\u0439 \u0443\u0440\u043E\u043D \u0441
+      \u043E\u0440\u0443\u0436\u0438\u044F"
+    - "\xC7ift silah hasar\u0131"

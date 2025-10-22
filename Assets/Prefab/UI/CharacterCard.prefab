@@ -278,6 +278,11 @@ MonoBehaviour:
   _defaultSprite: {fileID: 21300000, guid: 06cc88c804ea7264f962742cc728772c, type: 3}
   _buyColor: {r: 0.8396226, g: 0.24951048, b: 0.24951048, a: 1}
   _equipColor: {r: 0.087086126, g: 0.18101925, b: 0.9716981, a: 1}
+  _equipText:
+    _texts:
+    - Equip
+    - "\u041D\u0430\u0434\u0435\u0442\u044C"
+    - Giymek
 --- !u!1 &7987323536613005829
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,8 +350,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3e643a8526351d34799adc9d2ce36d6c, type: 2}
-  m_sharedMaterial: {fileID: 8079212395368854120, guid: 3e643a8526351d34799adc9d2ce36d6c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e080b2f0d6596c647a5b79a3cfd72db5, type: 2}
+  m_sharedMaterial: {fileID: -3072802260847762487, guid: e080b2f0d6596c647a5b79a3cfd72db5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -554,8 +559,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 1000
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3e643a8526351d34799adc9d2ce36d6c, type: 2}
-  m_sharedMaterial: {fileID: 8079212395368854120, guid: 3e643a8526351d34799adc9d2ce36d6c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e080b2f0d6596c647a5b79a3cfd72db5, type: 2}
+  m_sharedMaterial: {fileID: -3072802260847762487, guid: e080b2f0d6596c647a5b79a3cfd72db5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

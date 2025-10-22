@@ -5,8 +5,6 @@ using Zenject;
 
 public class ConcreteCharacterMenu : MenuBaseUI
 {
-    public const string LockCharacterText = "Equip";
-
     [Header("Links UI")]
     [SerializeField] private TMP_Text _characterName;
     [SerializeField] private Image _characterView;
@@ -20,6 +18,9 @@ public class ConcreteCharacterMenu : MenuBaseUI
     [Header("Button Settings")]
     [SerializeField] private Sprite _eqipCharacter;
     [SerializeField] private Sprite _uneqipCharacter;
+
+    [Header("Translation Text Settings")]
+    [SerializeField] private TranslatingText _equipText;
 
     private Character _characterInfo;
 
@@ -56,7 +57,7 @@ public class ConcreteCharacterMenu : MenuBaseUI
 
     private void FillInfo()
     {
-        _characterName.text = _characterInfo.Name;
+        _characterName.text = _characterInfo.Name.Text;
         _characterGameView.sprite = _characterInfo.Config.GFX;
         _characterView.sprite = _characterInfo.CharacterView;
         _ultimateIcon.sprite = _characterInfo.Config.Ultimate.UltimateIcon;
@@ -64,13 +65,13 @@ public class ConcreteCharacterMenu : MenuBaseUI
 
         SetCoinsText();
 
-        if (_generalManager.CurrentCharacte.name == _characterInfo.Name)
+        if (_generalManager.CurrentCharacte.GetHashCode() == _characterInfo.Config.GetHashCode())
             _buyButton.GetComponent<Image>().sprite = _eqipCharacter;
         else
             _buyButton.GetComponent<Image>().sprite = _uneqipCharacter;
 
         if ( _characterInfo.IsBought == true)
-            _costText.text = LockCharacterText;
+            _costText.text = _equipText.Text;
         else
             _costText.text = _characterInfo.Cost.ToString();
     }
@@ -96,7 +97,7 @@ public class ConcreteCharacterMenu : MenuBaseUI
     private void BuyCharacter()
     {
         if(_generalManager.TryBuyCharacter(_characterInfo) == true)
-            _costText.text = LockCharacterText;
+            _costText.text = _equipText.Text;
     }
 
 

@@ -16,7 +16,12 @@ MonoBehaviour:
   <UltimateName>k__BackingField: Rocket
   <Cooldown>k__BackingField: 1
   <UltimateDuration>k__BackingField: 1
-  _description: Shoot rocket from player
+  _description:
+    _texts:
+    - Homing missiles rocket
+    - "\u0421\u0430\u043C\u043E\u043D\u0430\u0432\u043E\u0434\u044F\u0449\u0438\u0435\u0441\u044F
+      \u0440\u0430\u043A\u0435\u0442\u044B"
+    - "G\xFCd\xFCml\xFC f\xFCzeler"
   _radius: 5
   _damage: 30
   _maxTarget: 4

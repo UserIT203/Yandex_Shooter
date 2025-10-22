@@ -18,6 +18,9 @@ public class CharacterCard : MonoBehaviour
     [SerializeField] private Color _buyColor;
     [SerializeField] private Color _equipColor;
 
+    [Header("Translation Text Settings")]
+    [SerializeField] private TranslatingText _equipText;
+
     private int _characterIndex;
     private Image _cardImage;
     private Character _characterInfo;
@@ -55,7 +58,7 @@ public class CharacterCard : MonoBehaviour
         _generalManager = generalManager;
         _characterIndex = characterIndex;
         _characterInfo = generalManager.Characters[characterIndex];
-        _nameText.text = _characterInfo.Name;
+        _nameText.text = _characterInfo.Name.Text;
         _view.sprite = _characterInfo.CharacterView;
 
         if (_characterInfo.Config.GetHashCode() == generalManager.CurrentCharacte.GetHashCode())
@@ -65,7 +68,7 @@ public class CharacterCard : MonoBehaviour
 
         if (_characterInfo.IsBought == true)
         {
-            _buyButtonText.text = "Equip";
+            _buyButtonText.text = _equipText.Text;
             _buyButton.image.color = _equipColor;
         }
         else
@@ -87,7 +90,7 @@ public class CharacterCard : MonoBehaviour
     {
         if (_generalManager.TryBuyCharacter(_characterInfo) == true)
         {
-            _buyButtonText.text = "Equip";
+            _buyButtonText.text = _equipText.Text;
             _buyButton.image.color = _equipColor;
         }
     }

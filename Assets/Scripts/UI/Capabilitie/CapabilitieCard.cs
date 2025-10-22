@@ -96,7 +96,8 @@ public class CapabilitieCard : MonoBehaviour, IPointerEnterHandler, IPointerExit
         if (_isReward)
         {
             Debug.Log("Play Reward");
-            //Логика рекламы и return
+            YandexManager.Instance.ShowRewardAdv("capabilitieReward", OnUpgrade);
+            return;
         }
 
         OnUpgrade();

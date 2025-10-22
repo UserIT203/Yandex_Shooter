@@ -14,10 +14,9 @@ public abstract class UltimateBase : ScriptableObject, IUltimate
 
     [field: SerializeField] public float UltimateDuration { get; protected set; }
 
-    [TextArea(5, 10)]
-    [SerializeField] private string _description; 
+    [SerializeField] private TranslatingText _description; 
 
-    public string Description => _description;
+    public string Description => _description.Text;
     public bool IsStarted { get; protected set; }
 
     protected Player _player;

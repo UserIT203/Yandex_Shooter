@@ -16,7 +16,15 @@ MonoBehaviour:
   <UltimateName>k__BackingField: Tank
   <Cooldown>k__BackingField: 25
   <UltimateDuration>k__BackingField: 5
-  _description: Player increasable
+  _description:
+    _texts:
+    - "Creates an area of \u200B\u200Bswords. Grants temporary invulnerability"
+    - "\u0421\u043E\u0437\u0434\u0430\u0435\u0442 \u043E\u0431\u043B\u0430\u0441\u0442\u044C
+      \u0438\u0437 \u043C\u0435\u0447\u0435\u0439. \u041F\u043E\u043B\u0443\u0447\u0430\u0435\u0442
+      \u043D\u0435\u0443\u044F\u0437\u0432\u0438\u043C\u043E\u0441\u0442\u044C \u043D\u0430
+      \u0432\u0440\u0435\u043C\u044F"
+    - "K\u0131l\u0131\xE7lardan olu\u015Fan bir alan yarat\u0131r. Ge\xE7ici olarak
+      yenilmezlik sa\u011Flar"
   _targetScaleValue: 3
   _animationDuration: 1
   _enemiesLayerMask:
