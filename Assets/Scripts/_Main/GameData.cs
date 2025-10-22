@@ -13,6 +13,13 @@ public class GameData : ScriptableObject
 
     public event Action onAddCoins;
 
+    public void InitializedData(PlayerConfig character, int coins, bool showTutorial)
+    {
+        this.Character = character;
+        this.Coins = coins;
+        this.ShowTutorial = showTutorial;
+    }
+
     public void AddCoins(int count)
     {
         Coins += count;

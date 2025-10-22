@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class Boss : EnemyUnit
 {
     [field: SerializeField] public Sprite BossIcon { get; private set; }
-    [field: SerializeField] public string BossName { get; private set; }
+    [field: SerializeField] public TranslatingText BossName { get; private set; }
 
     [SerializeField] protected List<EnemyInSpawner> _spawnEnemies;
 

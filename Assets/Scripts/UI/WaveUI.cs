@@ -9,7 +9,8 @@ using UnityEngine.UI;
 
 public class WaveUI : MonoBehaviour
 {
-    private const string WaveLabel = "WAVE {0}";
+    [Header("Translating Text Settings")]
+    [SerializeField] private TranslatingText _waveText;
 
     [Header("Text Settigns")]
     [SerializeField] private TMP_Text _waveNumberText;
@@ -80,7 +81,7 @@ public class WaveUI : MonoBehaviour
     private void StartNewWave(int currentWaveNumber)
     {
         _waveNumberText.rectTransform.localScale = _startScale;
-        _waveNumberText.text = string.Format(WaveLabel, currentWaveNumber + 1);
+        _waveNumberText.text = string.Format(_waveText.Text, currentWaveNumber + 1);
 
         _animationSequence?.Kill();
         _animationSequence = DOTween.Sequence();

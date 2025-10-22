@@ -24,7 +24,7 @@ public class BossUI : MonoBehaviour
     public void Initialized(Boss boss)
     {
         _bossImage.sprite = boss.BossIcon;
-        _bossText.text = boss.BossName;
+        _bossText.text = boss.BossName.Text;
         _timeManager.Pause();
 
         PlayAnimation();

@@ -39,7 +39,6 @@ public class CapabilitieUI : MonoBehaviour
 
         int randomValue = Random.Range(0, 2);
         int cardCount = randomValue == 1 ? capabilities.Length : capabilities.Length - 1;
-        Debug.LogWarning("Random Value " + randomValue);
 
         for (int i = 0; i < cardCount; i++) 
         {

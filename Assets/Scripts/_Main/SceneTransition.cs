@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using YG;
 
 [RequireComponent(typeof(CanvasGroup))]
 [RequireComponent(typeof(Animator))]
@@ -42,6 +43,7 @@ public class SceneTransition : MonoBehaviour
     {
         if (Instance._hasLoadScene == true) return;
 
+        YandexManager.Instance.SaveData();
         YandexManager.Instance.ShowInterstitialAdv();
 
         Instance._animator.SetTrigger("onOpen");

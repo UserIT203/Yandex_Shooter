@@ -4516,6 +4516,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aa7534a93b42f346abe724de756dee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _errorText:
+    _texts:
+    - NO MONEY
+    - "\u041D\u0415\u0422 \u0414\u0415\u041D\u0415\u0413"
+    - PARA YOK
   _popUpMenu: {fileID: 1597604619}
   _defaultPlayerConfig: {fileID: 11400000, guid: c386bf598ce252f4caaff92ea9a962d9, type: 2}
   _characters:

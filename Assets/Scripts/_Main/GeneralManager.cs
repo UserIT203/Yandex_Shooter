@@ -2,10 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using YG;
 
 public class GeneralManager : MonoBehaviour
 {
     public static GeneralManager Instance;
+
+    [Header("Translating Text Settings")]
+    [SerializeField] private TranslatingText _errorText;
 
     [SerializeField] private PopUpMenu _popUpMenu;
     [SerializeField] private PlayerConfig _defaultPlayerConfig;
@@ -24,6 +28,8 @@ public class GeneralManager : MonoBehaviour
 
     private void Awake()
     {
+        InitializedData();
+
         if (_gameData.Character == null)
             _gameData.Character = _defaultPlayerConfig;
 
@@ -40,11 +46,26 @@ public class GeneralManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
+    private void InitializedData()
+    {
+        if(YG2.saves.Data != null)
+        {
+            _gameData.InitializedData(_characters[YG2.saves.Data.CharacterID].Config,
+                YG2.saves.Data.Coins,
+                YG2.saves.Data.ShowTutorial);
+        }
+    }
+
+    public int GetCharacterID(PlayerConfig playerConfig)
+    {
+        return _characters.FindIndex(p => p.Config.GetHashCode() == playerConfig.GetHashCode());
+    }
+
     public bool TryBuyCharacter(Character character)
     {
         if(_gameData.TryRemoveCoins(character.Cost) == false)
         {
-            _popUpMenu.OpenPanel("No money");
+            _popUpMenu.OpenPanel(_errorText.Text);
             return false;
         }
 

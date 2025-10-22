@@ -40,6 +40,20 @@ public class YandexManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
+    public void InitializedPlayer(Player player) => _player = player;
+
+    public void SaveData()
+    {
+        if (YG2.saves.Data == null) YG2.saves.Data = new Data();
+
+        YG2.saves.Data.CharacterID = GeneralManager.Instance.GetCharacterID(_gameData.Character);
+        YG2.saves.Data.Coins = _gameData.Coins;
+        YG2.saves.Data.ShowTutorial = _gameData.ShowTutorial;
+
+        YG2.SaveProgress();
+    }
+
+    #region Language
     private void InitializedLanguage()
     {
         EnviroumentData = new EnviroumentData(YG2.envir.deviceType, YG2.envir.language);
@@ -50,8 +64,6 @@ public class YandexManager : MonoBehaviour
         _languageDict.Add("tr", 2);
     }
 
-    public void InitializedPlayer(Player player) => _player = player;
-
     public void SwitchLanguage(string language)
     {
         YG2.SwitchLanguage(language);
@@ -59,6 +71,7 @@ public class YandexManager : MonoBehaviour
     }
 
     public int GetLanguageIndex() => _languageDict[_currentLanguage];
+    #endregion
 
     #region Adv
     private void InitializedStickBanner()

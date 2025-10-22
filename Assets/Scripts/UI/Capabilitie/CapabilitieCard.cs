@@ -23,6 +23,11 @@ public class CapabilitieCard : MonoBehaviour, IPointerEnterHandler, IPointerExit
     [SerializeField] private bool _isReward = false;
     [SerializeField] private Image _rewardIcon;
 
+    [Header("Translating Text Settings")]
+    [SerializeField] private TranslatingText _levelText;
+    [SerializeField] private TranslatingText _maxText;
+    [SerializeField] private TranslatingText _unlockText;
+
     private RectTransform _rectTransform;
     private Button _button;
     private ICapabilitie _currentCapabilite;
@@ -74,18 +79,18 @@ public class CapabilitieCard : MonoBehaviour, IPointerEnterHandler, IPointerExit
         _icon.gameObject.SetActive(true);
         _icon.sprite = capabilite.GetCurrentUpgradeConfig().Icon;
 
-        _descriptions.text = "Level: " + capabilite.Level;
+        _descriptions.text = string.Format(_levelText.Text, capabilite.Level + 1);
 
         if (capabilite.IsMaxLevel())
         {
-            _descriptions.text = "MAX";
+            _descriptions.text = _maxText.Text;
             _button.interactable = false;
             return;
         }
 
         if (capabilite.IsUnlock == false)
         {
-            _descriptions.text = "Unlock";
+            _descriptions.text = _unlockText.Text;
         }
 
         _button.interactable = true;

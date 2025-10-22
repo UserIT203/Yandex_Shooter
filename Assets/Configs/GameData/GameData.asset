@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: GameData
   m_EditorClassIdentifier: 
   <Character>k__BackingField: {fileID: 11400000, guid: c386bf598ce252f4caaff92ea9a962d9, type: 2}
-  <Coins>k__BackingField: 1055
-  <ShowTutorial>k__BackingField: 0
+  <Coins>k__BackingField: 0
+  <ShowTutorial>k__BackingField: 1

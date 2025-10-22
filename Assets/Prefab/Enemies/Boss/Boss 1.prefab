@@ -5181,7 +5181,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _config: {fileID: 11400000, guid: 0609ef69c2fdfcc41b17856ae8ca46b4, type: 2}
   <BossIcon>k__BackingField: {fileID: 718703170, guid: a3e8b26facd3cb84686b3bef7b0038b6, type: 3}
-  <BossName>k__BackingField: Red Roboto
+  <BossName>k__BackingField:
+    _texts:
+    - SHAMAN
+    - "\u0428\u0410\u041C\u0410\u041D"
+    - "\u015EAMAN"
   _spawnEnemies:
   - EnemyType: 3
     EnemyCount: 10

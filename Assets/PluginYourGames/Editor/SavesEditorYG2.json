@@ -1,0 +1,16 @@
+{
+    "intExample": 5,
+    "strExample": "Hello!",
+    "boolExample": [
+        false,
+        false,
+        false,
+        false
+    ],
+    "idSave": 1,
+    "Data": {
+        "CharacterID": 3,
+        "Coins": 1000,
+        "ShowTutorial": true
+    }
+}
